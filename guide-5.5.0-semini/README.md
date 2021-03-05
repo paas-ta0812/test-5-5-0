@@ -8,15 +8,10 @@
 ## 플랫폼 설치 가이드
 - [설치 파일 다운로드 받기](https://paas-ta.kr/download/package)
 - 운영 환경 설치
-  - PaaS-TA 플랫폼 자동화 설치
-    - (Deprecated) ~~[플랫폼 설치 자동화  설치](./use-guide/platform/PAAS-TA_PLATFORM_INSTALL_AUTOMATION_INSTALL_GUIDE_v1.0.md)~~
-    - (Deprecated) ~~[플랫폼 설치 자동화 사용 메뉴얼](./use-guide/platform/PAAS-TA_PLATFORM_INSTALL_AUTOMATION_USE_MANUAL_v1.0.md)~~
   - PaaS-TA 플랫폼 수동 설치
     - [BOSH 설치(AWS, OpenStack)](./install-guide/bosh/PAAS-TA_BOSH2_INSTALL_GUIDE_V5.0.md)
     - [PaaS-TA 설치(AWS, OpenStack)](./install-guide/paasta/PAAS-TA_CORE_INSTALL_GUIDE_V5.0.md)
     - [PaaS-TA-min 설치(AWS)](./install-guide/paasta/PAAS-TA_MIN_INSTALL_GUIDE.md)
-    - (Deprecated) ~~[BOSH 및 PaaS-TA 설치(CLOUDit)](./use-guide/platform/PAAS-TA_PLATFORM_INSTALL_AUTOMATION_CLOUDIT_v1.0.md)~~
-    - (Deprecated) ~~[PaaS-TA 포털 수동 설치(CLOUDit)](./use-guide/platform/PAAS-TA_PLATFORM_INSTALL_AUTOMATION_CLOUDIT_PORTAL_v1.0.md)~~
 
 ##  가이드
 - [CF Migration 가이드 (3.1 to 4.0)](../../../Guide-4.0-ROTELLE/blob/master/PaaS_TA_4.0_migration.md)
@@ -64,13 +59,6 @@
   - [Logging 서비스](./service-guide/tools/PAAS-TA_LOGGING_SERVICE_INSTALL_GUIDE_V1.0.md)
   - [애플리케이션 Gateway 서비스](./service-guide/tools/PAAS-TA_APPLICATION_GATEWAY_SERVICE_INSTALL_GUIDE_V1.0.md)
   - [라이프사이클 관리 서비스](./service-guide/tools/PAAS-TA_LIFECYCLE_MANAGEMENT_SERVICE_INSTALL_GUIDE_V1.0.md)
-- 미터링
-  - (Deprecated) ~~[CF-Abacus](./install-guide/metering/PAAS-TA_METERING_INSTALL_GUIDE.md)~~
-
-## 마켓플레이스 설치 가이드
-**마켓플레이스 설치 전에 BOSH, PaaS-TA, PaaS-TA 포털이 설치되어 있어야 한다.**
-
-- (Deprecated) ~~[PaaS-TA 마켓플레이스](./service-guide/marketplace/PAAS-TA_MARKETPLACE_INSTALL_GUIDE_V1.0.md)~~
 
 ## 모니터링 설치 가이드
 - [PaaS-TA 모니터링](./service-guide/monitoring/PAAS-TA_MONITORING_INSTALL_GUIDE_V5.0.md)
@@ -86,7 +74,7 @@
 - [PaaS-TA Container 서비스 사용자 가이드](./use-guide/tools/PAAS-TA_CONTAINER_SERVICE_USE_GUIDE_V2.0.md)
 - [PaaS-TA Logging 서비스 사용자 가이드](./use-guide/tools/PAAS-TA_LOGGING_SERVICE_USE_GUIDE_V1.0.md)
 - [PaaS-TA Jenkins 서비스](./use-guide/tools/PAAS-TA_JENKINS_SERVICE_USER_GUIDE.md)
-- (Deprecated) ~~[PaaS-TA 마켓플레이스 가이드](./use-guide/marketplace/PAAS-TA_MARKETPLACE_USE_GUIDE_V1.0.md)~~
+
 ## 개발 언어별 애플리케이션 가이드
 - [Node.js](../../../Guide-1.0-Spaghetti-/blob/master/Sample-App-Guide/OpenPaaS_PaaSTA_Application_Nodejs_develope_guide.md)
 - [PHP](../../../Guide-1.0-Spaghetti-/blob/master/Sample-App-Guide/OpenPaaS_PaaSTA_Application_PHP_develope_guide.md)
