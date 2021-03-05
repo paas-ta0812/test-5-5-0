@@ -1,3 +1,3 @@
 # PaaS-TA Guide
 
-* [PaaS-TA 5.5.0 Guide : semini](https://github.com/PaaS-TA/guide/tree/v5.5.0)
+* [PaaS-TA 5.5.0 Guide : semini](guide-5.5.0-semini/README.md)
