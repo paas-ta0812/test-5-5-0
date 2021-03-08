@@ -432,4 +432,4 @@ paasta-webide-service   webide       webide-shared                create succeed
 
 ##### cf push 를 이용해 cf에 앱을 업로드한다.
 
-> ![](/service-guide/images/webide/web-ide-14.png)
+> ![](../images/webide/web-ide-14.png)
