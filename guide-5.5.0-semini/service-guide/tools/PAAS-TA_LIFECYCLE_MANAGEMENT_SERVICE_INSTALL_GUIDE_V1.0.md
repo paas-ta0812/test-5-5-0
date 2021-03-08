@@ -443,22 +443,22 @@ broker: app-lifecycle-service-broker
 > 체계적인 Agile 개발 지원과 프로젝트 협업에 필요한 커뮤니케이션 중심의 문서 및 지식 공유 지원 기능을 제공하는 TAIGA를 dedicated 방식으로 제공합니다.
 > 서비스 관리자 계정은 serviceadmin/<서비스 신청 시 입력한 Password> 입니다.
 >  
-> ![002]
+> ![002](../images/applifecycle-service/image002.png)
 
 ## <div id="3.3"/>  3.3. PaaS-TA 사용자 포탈 - 서비스 신청
 -	PaaS-TA 사용자  포탈에 접속하여, 카탈로그를 통해 서비스를 신청한다.   
 
-![003]
+![003](../images/applifecycle-service/image003.png)
 
 -	대시보드 URL을 통해 서비스에 접근한다.  (서비스의 관리자 계정은 serviceadmin/[서비스 신청시 입력받은 패스워드])  
 
-![004]  
+![004](../images/applifecycle-service/image004.png)
 
  > 라이프사이클 관리 서비스 대시보드
  >
- > ![005]  
+ > ![005](../images/applifecycle-service/image005.png)
  >  
- > ![006]
+ > ![006](../images/applifecycle-service/image006.png)
 
 
 - 라이프사이클 관리 서비스(TAIGA) 참고 자료  
