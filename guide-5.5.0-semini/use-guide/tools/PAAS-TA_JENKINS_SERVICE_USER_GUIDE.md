@@ -68,10 +68,14 @@
 
 ### <div id='7'/>3.1  Jenkins 기본 설정
 Jenkins 관리 -> 시스템 설정 으로 이동한다.
+
 ![JENKINS_3](../images/jenkins/IMAGE3.png)
+
 1.	기본 시스템 설정
 	-	Jenkins Location 설정에서 Jenkins URL이 사용자가 접속한 주소가 아닐 경우, 사용자가 접속한 주소로 수정한다. 
+		
 ![JENKINS_4](../images/jenkins/IMAGE4.png)
+
 2.	Workspace Sharing
 	-	기본적으로 Sample용으로 Template_CF와 Template_K8S를 제공하고 있다. 추후에 필요한 경우 추가를 이용하여, 사용자에 맞게 늘려서 사용하면 된다. 
 
