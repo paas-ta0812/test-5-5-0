@@ -37,7 +37,7 @@ PaaS-TA 3.5 버전부터는 Bosh2.0 기반으로 deploy를 진행하며 기존 B
 ### <div id='1.3'> 1.3. 시스템 구성도
 본 문서의 설치된 시스템 구성도이다. Mongodb Server, Mongodb 서비스 브로커로 최소사항을 구성하였다.
 
-![시스템구성도][mongodb_image_02]
+![시스템구성도](../images/mongodb/mongodb_image_02.png)
 
 <table>
   <tr>
@@ -443,7 +443,7 @@ Mongodb 서비스팩 배포가 완료 되었으면 Application에서 서비스 �
 
 >`$ cf service-brokers`  
 
->![mongodb_image_06]
+>![mongodb_image_06](../images/mongodb/mongodb_image_06.png)
 
 <br>
 
@@ -457,21 +457,21 @@ Mongodb 서비스팩 배포가 완료 되었으면 Application에서 서비스 �
 
 >`$ cf create-service-broker mongodb-shard-service-broker admin cloudfoundry http://10.30.107.114:8080`  
 
-> ![mongodb_image_07]
+> ![mongodb_image_07](../images/mongodb/mongodb_image_07.png)
 
 
 ##### 등록된 mongodb 서비스 브로커를 확인한다.
 
 >`$ cf service-brokers`
 
-> ![mongodb_image_08]
+> ![mongodb_image_08](../images/mongodb/mongodb_image_08.png)
 
 
 ##### 접근 가능한 서비스 목록을 확인한다.
 
 >`$ cf service-access`  
 
-> ![mongodb_image_09]
+> ![mongodb_image_09](../images/mongodb/mongodb_image_09.png)
 
 >서비스 브로커 생성시 디폴트로 접근을 허용하지 않는다.
 
@@ -517,7 +517,7 @@ Sample Web App 구조는 다음과 같다.
 
 >`$ ls -all`
 
-> ![mongodb_image_11]
+> ![mongodb_image_11](../images/mongodb/mongodb_image_11.png)
 
 <br>
 
@@ -531,7 +531,7 @@ Sample Web App에서 Mongodb 서비스를 사용하기 위해서는 서비스 �
 
 >`$ cf marketplace`
 
-> ![mongodb_image_12]
+> ![mongodb_image_12](../images/mongodb/mongodb_image_12.png)
 
 <br>
 
@@ -545,7 +545,7 @@ Sample Web App에서 Mongodb 서비스를 사용하기 위해서는 서비스 �
   
 >`$ cf create-service Mongo-DB default-plan mongodb-service-instance`
 
->![mongodb_image_13]
+>![mongodb_image_13](../images/mongodb/mongodb_image_13.png)
 
 <br>
 
@@ -553,7 +553,7 @@ Sample Web App에서 Mongodb 서비스를 사용하기 위해서는 서비스 �
 
 >`$ cf services`
 
->![mongodb_image_14]
+>![mongodb_image_14](../images/mongodb/mongodb_image_14.png)
 
 <br>
 
@@ -591,7 +591,7 @@ path: target/hello-spring-mysql-1.0.0-BUILD-SNAPSHOT.war      #배포하는 App 
 
 >`$ cf push --no-start`
 
->![mongodb_image_15]
+>![mongodb_image_15](../images/mongodb/mongodb_image_15.png)
 
 <br>
 
@@ -599,13 +599,13 @@ path: target/hello-spring-mysql-1.0.0-BUILD-SNAPSHOT.war      #배포하는 App 
 
 >`$ cf apps`
 
->![mongodb_image_16]
+>![mongodb_image_16](../images/mongodb/mongodb_image_16.png)
 
 <br>
 
 >`$ cf logs hello-spring-mongodb`  **// cf logs {배포된 App명}**
 
-![mongodb_image_17]
+![mongodb_image_17](../images/mongodb/mongodb_image_17.png)
 
 <br>
 
@@ -613,7 +613,7 @@ path: target/hello-spring-mysql-1.0.0-BUILD-SNAPSHOT.war      #배포하는 App 
 
 >`$  cf bind-service hello-spring-Mongodb mongodb-service-instance` 
 
-> ![mongodb_image_42]
+> ![mongodb_image_42](../images/mongodb/mongodb_image_42.png)
 
 <br>
 
@@ -621,7 +621,7 @@ path: target/hello-spring-mysql-1.0.0-BUILD-SNAPSHOT.war      #배포하는 App 
 
 >`$  cf restart hello-spring-mongodb` 
 
-> ![mongodb_image_18]
+> ![mongodb_image_18](../images/mongodb/mongodb_image_18.png)
 
 (참고) 바인드 후 App구동시 Mongodb 서비스 접속 에러로 App 구동이 안될 경우 보안 그룹을 추가한다.
 
@@ -643,7 +643,7 @@ path: target/hello-spring-mysql-1.0.0-BUILD-SNAPSHOT.war      #배포하는 App 
 
 >`$  cf create-security-group Mongo-DB rule.json` 
 
-> ![mongodb_image_19]
+> ![mongodb_image_19](../images/mongodb/mongodb_image_19.png)
 
 <br>
 
@@ -653,7 +653,7 @@ path: target/hello-spring-mysql-1.0.0-BUILD-SNAPSHOT.war      #배포하는 App 
 
 >`$ cf bind-running-security-group Mongo-DB` 
 
-> ![mongodb_image_20]
+> ![mongodb_image_20](../images/mongodb/mongodb_image_20.png)
 
 <br>
 
@@ -661,7 +661,7 @@ path: target/hello-spring-mysql-1.0.0-BUILD-SNAPSHOT.war      #배포하는 App 
 ```
 $ cf restart hello-spring-Mongodb
 ```
-![mongodb_image_21]
+![mongodb_image_21](../images/mongodb/mongodb_image_21.png)
 
 
 ##### App이 정상적으로 Mongodb 서비스를 사용하는지 확인한다.
@@ -670,11 +670,11 @@ $ cf restart hello-spring-Mongodb
 
 >`$  curl hello-spring-Mongodb.115.68.46.30.xip.io` 
 
-> ![mongodb_image_22]
+> ![mongodb_image_22](../images/mongodb/mongodb_image_22.png)
 
 
 ##### 브라우에서 확인
-> ![mongodb_image_23]
+> ![mongodb_image_23](../images/mongodb/mongodb_image_23.png)
 
 
 ## <div id='4'> 4.  Mongodb Client 툴 접속
@@ -688,51 +688,51 @@ MongoChef 프로그램은 무료로 사용할 수 있는 소프트웨어이다.
 
 ##### MongoChef을 다운로드 하기 위해 아래 URL로 이동하여 설치파일을 다운로드 한다.
 [**http://3t.io/mongochef/download/platform/**](http://3t.io/mongochef/download/platform/)
-> ![mongodb_image_24]
+> ![mongodb_image_24](../images/mongodb/mongodb_image_24.png)
 
 
 ##### 다운로드한 설치파일을 실행한다.
-> ![mongodb_image_25]
+> ![mongodb_image_25](../images/mongodb/mongodb_image_25.png)
 
 <br>
 
 ##### MongoChef 설치를 위한 안내사항이다. Next 버튼을 클릭한다.
-> ![mongodb_image_26]
+> ![mongodb_image_26](../images/mongodb/mongodb_image_26.png)
 
 <br>
 
 ##### 프로그램 라이선스에 관련된 내용이다. 동의(I accept the terms in the License Agreement)에 체크 후 Next 버튼을 클릭한다.
-> ![mongodb_image_27]
+> ![mongodb_image_27](../images/mongodb/mongodb_image_27.png)
 
 <br>
 
 ##### MongoChef 을 설치할 경로를 설정 후 Next 버튼을 클릭한다. 별도의 경로 설정이 필요 없을 경우 default로 C드라이브 Program Files 폴더에 설치가 된다.
-> ![mongodb_image_28]
+> ![mongodb_image_28](../images/mongodb/mongodb_image_28.png)
 
 <br>
 
 ##### Install 버튼을 클릭하여 설치를 진행한다.
-> ![mongodb_image_29]
+> ![mongodb_image_29](../images/mongodb/mongodb_image_29.png)
 
 <br>
 
 ##### Finish 버튼 클릭으로 설치를 완료한다.
-> ![mongodb_image_30]
+> ![mongodb_image_30](../images/mongodb/mongodb_image_30.png)
 
 <br>
 
 ##### MongoChef를 실행했을 때 처음 뜨는 화면이다. 이 화면에서 Server에 접속하기 위한 profile을 설정/저장하여 접속할 수 있다. Connect버튼을 클릭한다.
-> ![mongodb_image_31]
+> ![mongodb_image_31](../images/mongodb/mongodb_image_31.png)
 
 <br>
 
 ##### 새로운 접속 정보를 작성하기 위해New Connection 버튼을 클릭한다.
-> ![mongodb_image_32]
+> ![mongodb_image_32](../images/mongodb/mongodb_image_32.png)
 
 <br>
 
 ##### Server에 접속하기 위한 Connection 정보를 입력한다.
-> ![mongodb_image_33]
+> ![mongodb_image_33](../images/mongodb/mongodb_image_33.png)
 
 <br>
 
@@ -741,22 +741,22 @@ MongoChef 프로그램은 무료로 사용할 수 있는 소프트웨어이다.
 
 <br>
 
-> ![mongodb_image_34]
+> ![mongodb_image_34](../images/mongodb/mongodb_image_34.png)
 
 <br>
 
 ##### Authentication탭으로 이동하여 mongodb 의 인증정보를 입력한다.
-> ![mongodb_image_35]
+> ![mongodb_image_35](../images/mongodb/mongodb_image_35.png)
 
 <br>
 
 ##### SSH 터널 탭을 클릭하고 PaaS-TA 운영 관리자에게 제공받은 SSH 터널링 가능한 서버 정보를 입력한다.
-> ![mongodb_image_36]
+> ![mongodb_image_36](../images/mongodb/mongodb_image_36.png)
 
 <br>
 
 ##### 모든 정보를 입력했으면 Test Connection 버튼을 눌러 접속 테스트를 한다.
-> ![mongodb_image_37]
+> ![mongodb_image_37](../images/mongodb/mongodb_image_37.png)
 
 <br>
 
@@ -764,22 +764,22 @@ MongoChef 프로그램은 무료로 사용할 수 있는 소프트웨어이다.
 
 
 ##### Save 버튼을 눌러 작성한 접속정보를 저장한다.
-> ![mongodb_image_38]
+> ![mongodb_image_38](../images/mongodb/mongodb_image_38.png)
 
 <br>
 
 ##### 방금 저장한 접속정보를 선택하고 Connect 버튼을 클릭하여 접속한다.
-> ![mongodb_image_39]
+> ![mongodb_image_39](../images/mongodb/mongodb_image_39.png)
 
 <br>
 
 ##### 접속이 완료되면 좌측에 스키마 정보가 나타난다. 컬럼을 더블클릭 해보면 우측에 적재되어있는 데이터가 출력된다.
-> ![mongodb_image_40]
+> ![mongodb_image_40](../images/mongodb/mongodb_image_40.png)
 
 <br>
 
 ##### 우측 화면에 쿼리 항목에 Query문을 작성한 후 실행 버튼(삼각형)을 클릭한다. Query문에 이상이 없다면 정상적으로 결과를 얻을 수 있을 것이다.
-> ![mongodb_image_41]
+> ![mongodb_image_41](../images/mongodb/mongodb_image_41.png)
 
 
 [mongodb_image_01]:/service-guide/images/mongodb/mongodb_image_01.png
