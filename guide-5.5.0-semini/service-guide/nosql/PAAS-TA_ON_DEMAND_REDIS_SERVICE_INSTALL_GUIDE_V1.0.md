@@ -654,18 +654,18 @@ success
 
 
 ##### 관리자 포탈에 접속해 서비스 관리의 서비스 브로커 페이지에서 브로커 리스트를 확인한다..
-![1](../images/redis/redis_test1.png)
+![1](../images/redis/redis_test1.PNG)
 ##### On-Demand-Redis 서비스 브로커를 등록한다.
-![2](../images/redis/redis_test2.png)
-![3](../images/redis/redis_test3.png)
+![2](../images/redis/redis_test2.PNG)
+![3](../images/redis/redis_test3.PNG)
 ##### 등록된 On-Demand-Redis 서비스 브로커를 확인한다.
-![4](../images/redis/redis_test4.png)
+![4](../images/redis/redis_test4.PNG)
 ##### 서비스관리의 서비스 제어 페이지에서 접근 가능한 서비스 목록을 확인한다.
-![5](../images/redis/redis_test5.png)
+![5](../images/redis/redis_test5.PNG)
 
 서비스 브로커 등록시 최초에는 접근을 허용하지 않는다. 따라서 access는 none으로 설정된다.
 ##### 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
-![6](../images/redis/redis_test6.png)
+![6](../images/redis/redis_test6.PNG)
 
 ### <div id='4.1'> 4.1. 서비스 신청
 사용자 포탈에서 서비스 신청하기 위해서는 관리자 포탈의 카탈로그페이지에서 서비스 등록을 먼저 해주어야 사용이 가능하다.
@@ -679,13 +679,13 @@ success
 
 ##### 생성된 Redis 서비스 인스턴스의 status를 확인한다.
 Service status : in progress
-![9](../images/redis/redis_test9.png)
+![9](../images/redis/redis_test9.PNG)
  
 Service status : created succeed
-![10](../images/redis/redis_test10.png)
+![10](../images/redis/redis_test10.PNG)
 
 ##### 관리자포탈 보안의 시큐리티그룹 페이지로 이동해 redis_[서비스 할당된 space guid] 가 생성된것을 확인한다.
-![11](../images/redis/redis_test11.png)
+![11](../images/redis/redis_test11.PNG)
 
 ## <div id='5'> 5. Redis Client 툴 접속
 Application에 바인딩 된 Redis 서비스 연결정보는 Private IP로 구성되어 있기 때문에 Redis Client 툴에서 직접 연결할 수 없다. 따라서 Redis Client 툴에서 SSH 터널, Proxy 터널 등을 제공하는 툴을 사용해서 연결하여야 한다. 본 가이드는 SSH 터널을 이용하여 연결 하는 방법을 제공하며 Redis Client 툴로써는 오픈 소스인 Redis Desktop Manager로 가이드한다. Redis Desktop Manager 에서 접속하기 위해서 먼저 SSH 터널링할수 있는 VM 인스턴스를 생성해야한다. 이 인스턴스는 SSH로 접속이 가능해야 하고 접속 후 PaaS-TA에 설치한 서비스팩에 Private IP 와 해당 포트로 접근이 가능하도록 시큐리티 그룹을 구성해야 한다. 이 부분은 OpenStack 관리자 및 PaaS-TA 운영자에게 문의하여 구성한다. vsphere 에서 구성한 인스턴스는 공개키(.pem) 로 접속을 해야 하므로 공개키는 운영 담당자에게 문의하여 제공받는다. 참고) 개인키(.ppk)로는 접속이 되지 않는다.
