@@ -33,7 +33,8 @@ PaaS-TA 3.5 버전부터는 Bosh2.0 기반으로 deploy를 진행하며 기존 B
 
 ### <div id="1.3"/>1.3. 시스템 구성도
 본 문서의 설치된 시스템 구성도이다. Mysql Server, GlusterFS 서비스 브로커로 최소사항을 구성하였고 서비스 백엔드는 외부에 구성되어 있다.
-![시스템 구성도][glusterfs_image_01]
+
+![시스템 구성도](../images/glusterfs/glusterfs_image_01.png)
 
 * 설치할때 cloud config에서 사용하는 VM_Tpye명과 스펙 
 
@@ -469,7 +470,7 @@ Sample App 구조는 다음과 같다.
 
 >`$ ls -all`
 
->![glusterfs_image_07]
+>![glusterfs_image_07](../images/glusterfs/glusterfs_image_07.png)
 
 <br>
 
@@ -481,7 +482,7 @@ Sample App에서 GlusterFS 서비스를 사용하기 위해서는 서비스 신�
 
 >`$ cf marketplace`
 
->![glusterfs_image_08]
+>![glusterfs_image_08](../images/glusterfs/glusterfs_image_08.png)
 
 <br>
 
@@ -494,7 +495,7 @@ Sample App에서 GlusterFS 서비스를 사용하기 위해서는 서비스 신�
 
 >`$ cf create-service glusterfs glusterfs-1000Mb glusterfs-service-instance`
 
->![glusterfs_image_09]
+>![glusterfs_image_09](../images/glusterfs/glusterfs_image_09.png)
 
 <br>
 
@@ -503,14 +504,14 @@ Sample App에서 GlusterFS 서비스를 사용하기 위해서는 서비스 신�
 
 >`$ cf services`
 
->![glusterfs_image_10]
+>![glusterfs_image_10](../images/glusterfs/glusterfs_image_10.png)
 
 <br>
 
 
 ##### 브라우에서 이미지 확인
 
-> ![glusterfs_image_17]
+> ![glusterfs_image_17](../images/glusterfs/glusterfs_image_17.png)
 
 [glusterfs_image_01]:/service-guide/images/glusterfs/glusterfs_image_01.png
 
@@ -525,4 +526,3 @@ Sample App에서 GlusterFS 서비스를 사용하기 위해서는 서비스 신�
 [glusterfs_image_15]:/service-guide/images/glusterfs/glusterfs_image_15.png
 [glusterfs_image_16]:/service-guide/images/glusterfs/glusterfs_image_16.png
 [glusterfs_image_17]:/service-guide/images/glusterfs/glusterfs_image_17.jpeg
-
