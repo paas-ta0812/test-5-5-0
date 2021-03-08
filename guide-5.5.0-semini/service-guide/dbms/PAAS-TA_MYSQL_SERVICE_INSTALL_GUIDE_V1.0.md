@@ -560,7 +560,7 @@ destination ips : mysql 인스턴스 ips.
 
 >`$ cf create-security-group p-mysql rule.json`  
 
->![update_mysql_vsphere_30]  
+>![update_mysql_vsphere_30](../images/mysql/update_mysql_vsphere_30.png)
 
 <br>
 
@@ -569,7 +569,7 @@ destination ips : mysql 인스턴스 ips.
 >`$ cf bind-staging-security-group p-mysql`
 >`$ cf bind-running-security-group p-mysql`  
 >`$ cf restart mysql-sample-app`  
->![update_mysql_vsphere_31] 
+>![update_mysql_vsphere_31](../images/mysql/update_mysql_vsphere_31.png)
 ```  
 $ cf restart mysql-sample-app  
 Stopping app mysql-sample-app in org demo / space dev as demo...
@@ -609,7 +609,7 @@ buildpack: java_buildpack
 ##### App이 정상적으로 MySQL 서비스를 사용하는지 확인한다.  
 
 > 브라우져에서 확인  
->![update_mysql_vsphere_34]  
+>![update_mysql_vsphere_34](../images/mysql/update_mysql_vsphere_34.png)
 
 ## <div id='4'> 4. MySQL Client 툴 접속  
 
@@ -629,19 +629,19 @@ HeidiSQL 프로그램은 무료로 사용할 수 있는 오픈소스 소프트�
 
 ##### 다운로드한 설치파일을 실행한다.
 
->![mysql_vsphere_4.1.02]
+>![mysql_vsphere_4.1.02](../images/mysql/mysql_vsphere_4.1.02.png)
 
 <br>
 
 ##### HeidSQL 설치를 위한 안내사항이다. Next 버튼을 클릭한다.
 
->![mysql_vsphere_4.1.03]
+>![mysql_vsphere_4.1.03](../images/mysql/mysql_vsphere_4.1.03.png)
 
 <br>
 
 ##### 프로그램 라이선스에 관련된 내용이다. 동의(I accept the agreement)에 체크 후 Next 버튼을 클릭한다.
 
->![mysql_vsphere_4.1.04]
+>![mysql_vsphere_4.1.04](../images/mysql/mysql_vsphere_4.1.04.png)
 
 <br>
 
@@ -649,14 +649,14 @@ HeidiSQL 프로그램은 무료로 사용할 수 있는 오픈소스 소프트�
 
 >별도의 경로 설정이 필요 없을 경우 default로 C드라이브 Program Files 폴더에 설치가 된다.
 
->![mysql_vsphere_4.1.05]
+>![mysql_vsphere_4.1.05](../images/mysql/mysql_vsphere_4.1.05.png)
 
 <br>
 
 ##### 설치 완료 후 시작메뉴에 HeidiSQL 바로가기 아이콘의 이름을 설정하는 과정이다.  
 >Next 버튼을 클릭하여 다음 과정을 진행한다.
 
->![mysql_vsphere_4.1.06]
+>![mysql_vsphere_4.1.06](../images/mysql/mysql_vsphere_4.1.06.png)
 
 <br>
 
@@ -669,49 +669,49 @@ HeidiSQL 프로그램은 무료로 사용할 수 있는 오픈소스 소프트�
 
 > 체크박스에 체크 설정/해제를 완료했다면 Next 버튼을 클릭한다.
 
->![mysql_vsphere_4.1.07]
+>![mysql_vsphere_4.1.07](../images/mysql/mysql_vsphere_4.1.07.png)
 
 <br>
 
 ##### 설치를 위한 모든 설정이 한번에 출력된다. 확인 후 Install 버튼을 클릭하여 설치를 진행한다.
 
->![mysql_vsphere_4.1.08]
+>![mysql_vsphere_4.1.08](../images/mysql/mysql_vsphere_4.1.08.png)
 
 <br>
 
 ##### Finish 버튼 클릭으로 설치를 완료한다.
 
->![mysql_vsphere_4.1.09]
+>![mysql_vsphere_4.1.09](../images/mysql/mysql_vsphere_4.1.09.png)
 
 <br>
 
 ##### HeidiSQL을 실행했을 때 처음 뜨는 화면이다. 이 화면에서 Server에 접속하기 위한 profile을 설정/저장하여 접속할 수 있다. 신규 버튼을 클릭한다.
 
->![mysql_vsphere_4.1.10]
+>![mysql_vsphere_4.1.10](../images/mysql/mysql_vsphere_4.1.10.png)
 
 <br>
 
 ##### 어떤 Server에 접속하기 위한 Connection 정보인지 별칭을 입력한다.
 
->![mysql_vsphere_4.1.11]
+>![mysql_vsphere_4.1.11](../images/mysql/mysql_vsphere_4.1.11.png)
 
 <br>
 
 ##### 네트워크 유형의 목록에서 MySQL(SSH tunel)을 선택한다.
 
->![mysql_vsphere_4.1.12]
+>![mysql_vsphere_4.1.12](../images/mysql/mysql_vsphere_4.1.12.png)
 
 <br>
 
 ##### 아래 붉은색 영역에 접속하려는 서버 정보를 모두 입력한다.
 
->![mysql_vsphere_4.1.13]
+>![mysql_vsphere_4.1.13](../images/mysql/mysql_vsphere_4.1.13.png)
 
 >서버 정보는 Application에 바인드되어 있는 서버 정보를 입력한다. cf env <app_name> 명령어로 이용하여 확인한다.
 
 >**예)** $cf env hello-spring-mysql
 
->![mysql_vsphere_4.1.14]
+>![mysql_vsphere_4.1.14](../images/mysql/mysql_vsphere_4.1.14.png)
 
 <br>
 
@@ -719,13 +719,13 @@ HeidiSQL 프로그램은 무료로 사용할 수 있는 오픈소스 소프트�
 
 >(참고) 만일 개인 키로 접속이 가능한 경우에는 openstack용 Open PaaS Mysql 서비스팩 설치 가이드를 참고한다.
 
->![mysql_vsphere_4.1.15]
+>![mysql_vsphere_4.1.15](../images/mysql/mysql_vsphere_4.1.15.png)
 
 <br>
 
 ##### 접속이 완료되면 좌측에 스키마 정보가 나타난다. 하지만 초기설정은 테이블, 뷰, 프로시져, 함수, 트리거, 이벤트 등 모두 섞여 있어서 한눈에 구분하기가 힘들어서 접속한 DB 별칭에 마우스 오른쪽 클릭 후 "트리 방식 옵션" - "객체를 유형별로 묶기"를 클릭하면 아래 화면과 같이 각 유형별로 구분이된다.
 
->![mysql_vsphere_4.1.16]
+>![mysql_vsphere_4.1.16](../images/mysql/mysql_vsphere_4.1.16.png)
 
 <br>
 
@@ -733,7 +733,7 @@ HeidiSQL 프로그램은 무료로 사용할 수 있는 오픈소스 소프트�
 
 >쿼리문에 이상이 없다면 정상적으로 결과를 얻을 수 있을 것이다.
 
->![mysql_vsphere_4.1.17]
+>![mysql_vsphere_4.1.17](../images/mysql/mysql_vsphere_4.1.17.png)
 
 
 [mysql_vsphere_1.3.01]:/service-guide/images/mysql/mysql_vsphere_1.3.01.png
