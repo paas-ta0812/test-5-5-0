@@ -34,7 +34,7 @@ PaaS-TA 3.5 버전부터는 Bosh2.0 기반으로 deploy를 진행하며 기존 B
 
 본 문서의 설치된 시스템 구성도이다. Pinpoint Server, HBase의 HBase Master2, HBase Slave2, Collector 2, Pinpoint 서비스 브로커, WebUI3로 최소사항을 구성하였다.
 
-![시스템구성도][pinpoint_image_01]
+![시스템구성도](../images/pinpoint/pinpoint_image_01.png)
 
 <table>
   <tr>
@@ -394,7 +394,6 @@ Pinpoint 서비스팩 배포가 완료 되었으면 Application에서 서비스 
 ```
 $ cf service-brokers
 ```
-```
 Getting service brokers as admin...
 
 name   url
@@ -671,7 +670,7 @@ OK
 
 -   App이 정상적으로 Pinpoint 서비스를 사용하는지 확인한다.
 
-![pinpoint_image_03]
+![pinpoint_image_03](../images/pinpoint/pinpoint_image_03.png)
 
 
 -  환경변수 확인
