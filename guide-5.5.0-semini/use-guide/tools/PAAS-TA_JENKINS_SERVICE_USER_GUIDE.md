@@ -53,10 +53,10 @@
 ### <div id='6'/>2.2  Jenkis 서비스 생성 및 접속
 
 1.	사용자 포탈 – 카탈로그 페이지에서, Jenkins서비스를 선택한다.
-![JENKINS_1]
+![JENKINS_1](../images/jenkins/IMAGE1.png)
 2.	서비스 이름을 입력 후 생성을 선택한다.
 3.	대시보드에 서비스탭에서 생성 유무를 확인한다.
-![JENKINS_2]
+![JENKINS_2](../images/jenkins/IMAGE2.png)
 4.	대시보드 버튼을 클릭하여, 접속한다.
 5.	초기 패스워드와 계정은 admin/admin이다.
 
@@ -68,10 +68,10 @@
 
 ### <div id='7'/>3.1  Jenkins 기본 설정
 Jenkins 관리 -> 시스템 설정 으로 이동한다.
-![JENKINS_3]  
+![JENKINS_3](../images/jenkins/IMAGE3.png)
 1.	기본 시스템 설정
 	-	Jenkins Location 설정에서 Jenkins URL이 사용자가 접속한 주소가 아닐 경우, 사용자가 접속한 주소로 수정한다. 
-![JENKINS_4]  
+![JENKINS_4](../images/jenkins/IMAGE4.png)
 2.	Workspace Sharing
 	-	기본적으로 Sample용으로 Template_CF와 Template_K8S를 제공하고 있다. 추후에 필요한 경우 추가를 이용하여, 사용자에 맞게 늘려서 사용하면 된다. 
 
@@ -87,7 +87,7 @@ Jenkins 서비스를 이용하여, 빌드 및 CF 배포에 관해서 기술되�
 <br>
 
 ### <div id='8'/> 4.1.	빌드
-![JENKINS_5]  
+![JENKINS_5](../images/jenkins/IMAGE5.png)
 
 빌드는 소스를 형상관리에서 끌어와, 소스를 빌드를 하는 스탭이다. 기본 설정탭에서 다음과 같이 설정한다. Shared Workspace -> Template_CF을 설정한다. 
 
@@ -95,7 +95,7 @@ Jenkins 서비스를 이용하여, 빌드 및 CF 배포에 관해서 기술되�
 
 소스 코드 관리탭으로 이동하여, Git(SCM,Github )을 선택 후 Repository URL을 입력한다. Branch탭에 Branch명을 뜰때까지 대기한다.
 
-![JENKINS_6]  
+![JENKINS_6](../images/jenkins/IMAGE6.png)
 - 예제 소스는 Gradle로 구성되어, Gradle 구성으로 설명한다.
 
 Add build step을 클릭하여 Gradle script를 선택하여, 스탭을 추가한다. Invoke Gradle에서 버전을 선택 후 Tasks에 빌드 방식을 입력한다. Clearn build -x test(삭제O 테스트 X 빌드 O)를 입력한다.
@@ -124,11 +124,11 @@ Execute shell탭에서 CF배포에 필요한 Manifest 파일을 작성한다.
 	EOF
 ```
 ### <div id='9'/> 4.2. CF Deploy
-![JENKINS_7]  
+![JENKINS_7](../images/jenkins/IMAGE7.png)
 Deploy는 빌드에서 생성된 빌드파일을 CF 배포하는 스탭이다. 기본 설정탭에서 다음과 같이 설정한다. Shared Workspace -> Template_CF을 설정한다. 
 
 - Shared Workspace는 Job별로 공간을 생성하지 않고, 한 공간에서 Job을 진행할 수 있도록 제공되는 기능이다. Shared Workspace는 Jenkis 관리 -> 시스템 설정에서 설정 해야한다.
-![JENKINS_8]  
+![JENKINS_8](../images/jenkins/IMAGE8.png)
 
 Add build step을 클릭하여, Execute Shell 를 선택하여 스탭을 추가한다. (기본 예제 소스 붙여넣기)
 
@@ -164,13 +164,13 @@ Blue&Green 배포 프로세스
   5. 기존 서비스를 제거하고, 신규서비스를 주 서비스로 운영한다.
 	
 
-![JENKINS_9]  
+![JENKINS_9](../images/jenkins/IMAGE9.png)
 
-![JENKINS_10]  
+![JENKINS_10](../images/jenkins/IMAGE10.png)
 
 Deploy(Blue&Green)는 빌드에서 생성된 빌드파일을 CF 배포하는 스탭이다.. 기본 설정탭에서 다음과 같이 설정한다. Shared Workspace -> Template_CF을 설정한다. 
 
-![JENKINS_11]  
+![JENKINS_11](../images/jenkins/IMAGE11.png)
 	Add build step을 클릭하여, Execute Shell 를 선택하여 스탭을 추가한다. (기본 예제 소스 붙여넣기)
 
 	CF_API=https://api. CF 도메인 -> 예) https://api.10.0.0.1.xip.io
@@ -207,10 +207,10 @@ Deploy(Blue&Green)는 빌드에서 생성된 빌드파일을 CF 배포하는 스
 ### <div id='11'/> 4.4	CF Deploy(Rolling)
 Rolling Update란? Blue&Green과 비슷한 형태의 배포로 동일한 이름의 인스턴스를 내부적으로 생성하여, 자동으로 기존 서비스와 신규서비스를 교체하는 업데이트이다. 
 
-![JENKINS_12]  
+![JENKINS_12](../images/jenkins/IMAGE12.png)
 Deploy(Blue&Green)는 빌드에서 생성된 빌드파일을 CF 배포하는 스탭이다. 기본 설정탭에서 다음과 같이 설정한다. Shared Workspace -> Template_CF을 설정한다. 
  
-![JENKINS_13]  
+![JENKINS_13](../images/jenkins/IMAGE13.png)
 Add build step을 클릭하여, Execute Shell 를 선택하여 스탭을 추가한다. (기본 예제 소스 붙여넣기)
 
 	CF_API=https://api. CF 도메인 -> 예) https://api.10.0.0.1.xip.io
@@ -244,13 +244,13 @@ Jenkins 서비스를 이용하여, 빌드 및 Kubernetes 배포에 관해서 기
 <br>
 
 ### <div id='12'/> 5.1.	K8S_Setting
-![JENKINS_15]  
+![JENKINS_15](../images/jenkins/IMAGE15.png)
 
 Setting은 K8S 접속하기 위하여, Kubectl을 설정하는 과정이다.  기본 설정탭에서 다음과 같이 설정한다. Shared Workspace -> Template_K8S를 설정한다. 
 
-![JENKINS_16]  
+![JENKINS_16](../images/jenkins/IMAGE16.png)
 CaaS에서 제공하는 Access페이지의 정보를 모두 입력한다.  
-![JENKINS_17]  
+![JENKINS_17](../images/jenkins/IMAGE17.png)
 
 Pem파일을 열어 내용을 cert.crt에 입력한다.
 다음과 같이 설정후 저장한다.
@@ -267,9 +267,9 @@ Build은 K8S 배포하기 위하여, 소스 빌드 및 Docker Image 생성을 �
   4.	Docker Build를 진행한다.
   5.	Docker Push를 진행하여, 레파지토리 서버에 등록한다.  
 
-![JENKINS_18]  
+![JENKINS_18](../images/jenkins/IMAGE18.png)
 
-![JENKINS_19]  
+![JENKINS_19](../images/jenkins/IMAGE19.png)
 
 	Cat > application.yml << EOF
 	spring:
@@ -319,11 +319,11 @@ Build은 K8S 배포하기 위하여, 소스 빌드 및 Docker Image 생성을 �
 <br>
 
 ### <div id='14'/> 5.3.	K8S_Deploy
-![JENKINS_20]    
+![JENKINS_20](../images/jenkins/IMAGE20.png)
 
 Deploy은 K8S 배포 위한 기본 설정이다. 기본 설정탭에서 다음과 같이 설정한다. Shared Workspace -> Template_K8S를 설정한다.   
 
-![JENKINS_21]  
+![JENKINS_21](../images/jenkins/IMAGE21.png)
 
 	BEFOREJOB_BUILD_NUMBER=$((($cat /hoem/jenkins_home/jobs/Template_K8S_Build/nextBuildNumber) -1))
 	-> 이전 JOB의 빌드번호를 가져온다. 이 예제에서는 이전 JOB은 빌드를 의미한다.
@@ -412,11 +412,11 @@ Deploy은 K8S 배포 위한 기본 설정이다. 기본 설정탭에서 다음�
 
 ### <div id='15'/> 5.4.	K8S_Deploy(Blue&Green)  
 
-![JENKINS_23]  
+![JENKINS_23](../images/jenkins/IMAGE23.png)
 
 Deploy은 K8S 배포 위한 기본 설정이다. 기본 설정탭에서 다음과 같이 설정한다. Shared Workspace -> Template_K8S을 설정한다.   
 
-![JENKINS_24]  
+![JENKINS_24](../images/jenkins/IMAGE24.png)
 
 	BEFOREJOB_BUILD_NUMBER=$((($cat /var/jenkins_home/jobs/Template_K8S_Build/nextBuildNumber) -1))
 	-> 이전 JOB의 빌드번호를 가져온다. 이 예제에서는 이전 JOB은 빌드를 의미한다.
@@ -534,9 +534,9 @@ Deploy은 K8S 배포 위한 기본 설정이다. 기본 설정탭에서 다음�
 
 ### <div id='16'/> 5.5.	K8S_Deploy(Rolling)
 Rolling Update란? Blue&Green과 비슷한 형태의 배포로 동일한 이름의 인스턴스를 내부적으로 생성하여, 자동으로 기존 서비스와 신규서비스를 교체하는 업데이트이다.   
-![JENKINS_25]  
+![JENKINS_25](../images/jenkins/IMAGE25.png)
 Deploy은 K8S 배포 위한 기본 설정이다. 기본 설정탭에서 다음과 같이 설정한다. Shared Workspace -> Template_K8S을 설정한다.   
-![JENKINS_26]  
+![JENKINS_26](../images/jenkins/IMAGE26.png)
 
 	BEFOREJOB_BUILD_NUMBER=$((($cat /home/jenkins_home/jobs/Template_K8S_Build/nextBuildNumber) -1))
 	-> 이전 JOB의 빌드번호를 가져온다. 이 예제에서는 이전 JOB은 빌드를 의미한다.
