@@ -68,6 +68,7 @@
 
 ### <div id='7'/>3.1  Jenkins 기본 설정
 Jenkins 관리 -> 시스템 설정 으로 이동한다.
+
 ![JENKINS_3](../images/jenkins/IMAGE3.png)
 
 1.	기본 시스템 설정
