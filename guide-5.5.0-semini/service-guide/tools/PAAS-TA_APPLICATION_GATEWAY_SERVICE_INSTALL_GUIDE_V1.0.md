@@ -457,9 +457,9 @@ PaaS-TA 운영자 포탈에 접속하여 서비스를 등록한다.
 
 > 애플리케이션 Gateway 서비스 대시보드
 >
-> ![005]
-> ![006]
-> ![007]
+> ![005](../images/apigateway-service/image005.png)
+> ![006](../images/apigateway-service/image006.png)
+> ![007](../images/apigateway-service/image007.png)
 
 
 - 애플리케이션 Gateway 서비스(WSO2) 참고 자료  
