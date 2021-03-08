@@ -511,7 +511,7 @@ Sample App에서 GlusterFS 서비스를 사용하기 위해서는 서비스 신�
 
 ##### 브라우에서 이미지 확인
 
-> ![glusterfs_image_17](../images/glusterfs/glusterfs_image_17.png)
+>![glusterfs_image_17](../images/glusterfs/glusterfs_image_17.jpeg)
 
 [glusterfs_image_01]:/service-guide/images/glusterfs/glusterfs_image_01.png
 
