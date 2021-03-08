@@ -512,16 +512,16 @@ laasclient
 > ※ Group Table  
 > 코드 ID  : LAAS  
 > 코드 이름 : Logging Service  
-> ![003]
+> ![003](../images/logging-service/image003.png)
 >
 > ※ Detail Table  
 > Key : laas_base_url  
 > Value : http://<Logging Service 접근 IP>/app/laas  
 > 요약 : Logging Service Base URL  
 > 사용 : Y  
-> ![004]
+> ![004](../images/logging-service/image004.png)
 
-![005]
+![005](../images/logging-service/image005.png)
 
 [001]:/service-guide/images/logging-service/image001.png
 [002]:/service-guide/images/logging-service/image002.png
