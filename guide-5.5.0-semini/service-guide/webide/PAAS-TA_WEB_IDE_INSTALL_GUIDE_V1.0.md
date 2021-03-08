@@ -37,7 +37,7 @@ PaaS-TA 3.5 버전부터는 Bosh2.0 기반으로 deploy를 진행하며 기존 B
 ### <div id='1.3'/> 1.3. 시스템 구성도
 본 장에서는 WEB-IDE의 시스템 구성에 대해 기술하였다. Browser(PaaS-TA Portal), WEB IDE Server, Workspace, Desktop IDE로 최소사항을 구성하였다.
 
-![](/service-guide/images/webide/web-ide-01.png)
+![](../images/webide/web-ide-01.png)
 
 | 구분 | Resource Pool | 스펙 |
 |--------|-------|-------|
@@ -398,13 +398,13 @@ paasta-webide-service   webide       webide-shared                create succeed
 
 - 사용할 언어를 선택하고 Create workspace and project 로 새로운 프로젝트를 시작한다.
 
-![](/service-guide/images/webide/web-ide-08-1.png)
+![](../images/webide/web-ide-08-1.png)
 
 <br>
 
 - Workspace를 구성하기 위해 Docker 관련 자료를 다운로드한다.
 
-![](/service-guide/images/webide/web-ide-09.png)
+![](../images/webide/web-ide-09.png)
 
 <br>
 
@@ -412,11 +412,11 @@ paasta-webide-service   webide       webide-shared                create succeed
 
 - Open Project를 누르면 Workspace 화면이 열린다.
 
-![](/service-guide/images/webide/web-ide-10.png)
+![](../images/webide/web-ide-10.png)
 
 - 실제로 소스를 개발해서 빌드하거나 GIT이나 SVN에서 IMPORT 한다.
 
-![](/service-guide/images/webide/web-ide-11.png)
+![](../images/webide/web-ide-11.png)
 
 <br>
 
@@ -424,11 +424,11 @@ paasta-webide-service   webide       webide-shared                create succeed
 
 ##### -cf api 명령을 이용해 endpoint를 지정한다.
 
-> ![](/service-guide/images/webide/web-ide-12.png)
+> ![](../images/webide/web-ide-12.png)
 
 ##### cf login 명령어로 로그인하고 조직과 공간을 선택한다.
 
-> ![](/service-guide/images/webide/web-ide-13.png)
+> ![](../images/webide/web-ide-13.png)
 
 ##### cf push 를 이용해 cf에 앱을 업로드한다.
 
