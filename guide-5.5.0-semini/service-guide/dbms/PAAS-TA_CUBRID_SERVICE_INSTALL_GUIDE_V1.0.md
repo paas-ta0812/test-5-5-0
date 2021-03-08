@@ -672,7 +672,7 @@ $ curl hello-spring-cubrid.115.68.47.178.xip.io
 
 ##### 브라우져에서 확인
 
->![3-3-8-1](../images/3-3-8-1.png)
+>![3-3-8-1](../images/cubrid/3-3-8-1.png)
 
 <br>
 
