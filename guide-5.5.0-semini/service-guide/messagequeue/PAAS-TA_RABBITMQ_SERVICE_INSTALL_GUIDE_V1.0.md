@@ -31,7 +31,7 @@ PaaS-TA 3.5 버전부터는 Bosh2.0 기반으로 deploy를 진행하며 기존 B
 ### <div id='1.3'> 1.3. 시스템 구성도
 본 문서의 설치된 시스템 구성도이다. RabbitMQ(1대), RabbitMQ 서비스 브로커, haproxy로 최소사항을 구성하였다.
 
-![시스템 구성도][rabbitmq_image_01]
+![시스템 구성도](../images/rabbitmq/rabbitmq_image_01.png)
 
 <table>
   <tr>
@@ -594,14 +594,14 @@ start command:   thin -R config.ru start
 
 >`http://test-app.<YOUR_DOMAIN>/read`
 
->![rabbitmq_image_12]
+>![rabbitmq_image_12](../images/rabbitmq/rabbitmq_image_12.png)
 
 ####  스토어 엔드포인트 테스트
 >`curl -XPOST -d 'test' http://test-app.<YOUR-DOMAIN>/store`
 
 >`curl -XGET http://test-app.<YOUR-DOMAIN>/store`
 
->![rabbitmq_image_13]
+>![rabbitmq_image_13](../images/rabbitmq/rabbitmq_image_13.png)
 
 ####  큐 엔드포인트 테스트
 >`curl -XPOST -d 'test' http://test-app.<YOUR-DOMAIN>/queues/<YOUR-QUEUE-NAME>`
