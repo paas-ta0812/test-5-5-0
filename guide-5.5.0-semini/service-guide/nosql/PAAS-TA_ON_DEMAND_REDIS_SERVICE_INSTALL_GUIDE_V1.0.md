@@ -37,6 +37,7 @@
 
 ### <div id='1.3'> 1.3. 시스템 구성도
 본 문서의 설치된 시스템 구성도이다. Redis, MariaDB, On-Demand 서비스 브로커로 최소사항을 구성하였다.
+
 ![시스템 구성도](../images/redis/redis_image_01.png)
 
 <table>
