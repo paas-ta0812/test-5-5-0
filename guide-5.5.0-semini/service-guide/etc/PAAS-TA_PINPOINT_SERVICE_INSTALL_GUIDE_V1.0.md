@@ -391,7 +391,6 @@ Pinpoint 서비스팩 배포가 완료 되었으면 Application에서 서비스 
 
 -   서비스 브로커 목록을 확인한다.
 
-```
 $ cf service-brokers
 ```
 Getting service brokers as admin...
@@ -402,9 +401,7 @@ No service brokers found
 
 -   Pinpoint 서비스 브로커를 등록한다.
 
-```
 $ cf create-service-broker {서비스브로커 이름} {서비스브로커 사용자ID} {서비스브로커 사용자비밀번호} http://{서비스브로커 URL(IP)}
-```
 ```
 서비스브로커 이름 : 서비스브로커 관리를 위해 PaaS-TA에서 보여지는 명칭이다. 서비스 Marketplace에서는 각각의 API 서비스 명이 보여지니 여기서 명칭은 서비스브로커 명칭이다.
 
@@ -413,9 +410,7 @@ $ cf create-service-broker {서비스브로커 이름} {서비스브로커 사�
 서비스브로커 URL : 서비스브로커가 제공하는 API를 사용할 수 있는 URL을 입력한다.
 ```
 
-```
 $ cf create-service-broker pinpoint-service-broker admin cloudfoundry http://<URL(IP)>:8080
-```
 ```
 Creating service broker pinpoint-service-broker as admin...
 OK
@@ -423,9 +418,7 @@ OK
 
 -   등록된 Pinpoint 서비스 브로커를 확인한다.
 
-```
 $ cf service-brokers
-```
 ```
 Getting service brokers as admin...
 name url
@@ -434,9 +427,7 @@ pinpoint-service-broker http://URL(IP):8080
 
 -   접근 가능한 서비스 목록을 확인한다.
 
-```
 $ cf service-access
-```
 ```
 Getting service access as admin...
 broker: Pinpoint-service-broker
@@ -447,19 +438,15 @@ Pinpoint Pinpoint\_standard none
 
 -   특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
 
-```
 $ cf enable-service-access Pinpoint
-```
-
 ```
 Enabling access to all plans of service Pinpoint for all orgs as admin...
 OK
 ```
 
-서비스 접근 허용을 확인한다.
-```
+-   서비스 접근 허용을 확인한다.
+-   
 $ cf service-access
-```
 ```
 Getting service access as admin...
 broker: Pinpoint-service-broker
@@ -474,10 +461,7 @@ Sample Web App은 PaaS-TA에 App으로 배포가 된다. 배포된 App에 Pinpoi
 -   Spring-music App을 이용하여 Pinpoint 모니터링을 테스트 하였다.
 -   앱을 다운로드 후 –b 옵션을 주어 buildpack을 지정하여 push 해 놓는다.
 
-```
 $ cf push -b java_buildpack_pinpoint --no-start
-```
-
 ```
 Using manifest file /home/ubuntu/workspace/bd_test/spring-music/manifest.yml
 
@@ -497,9 +481,7 @@ Done uploading
 OK
 ```
 
-```
 $ cf apps
-```
 ```
 Getting apps in org org / space space as admin...
 OK
@@ -519,10 +501,7 @@ Sample Web App에서 Pinpoint 서비스를 사용하기 위해서는 서비스 �
 
 -   먼저 PaaS-TA Marketplace에서 서비스가 있는지 확인을 한다.
 
-```
 $ cf marketplace
-```
-
 ```
 Getting services from marketplace in org org / space space as admin...
 OK
@@ -533,19 +512,14 @@ Pinpoint   Pinpoint_standard   A simple pinpoint implementation
 
 -   Marketplace에서 원하는 서비스가 있으면 서비스 신청(Provision)을 하여 서비스 인스턴스를 생성한다.
 
-```
 $ cf create-service {서비스명} {서비스플랜} {내서비스명}
-```
 ```
 서비스명 : p-Pinpoint로 Marketplace에서 보여지는 서비스 명칭이다.
 서비스플랜 : 서비스에 대한 정책으로 plans에 있는 정보 중 하나를 선택한다. Pinpoint 서비스는 10 connection, 100 connection 를 지원한다.
 내서비스명 : 내 서비스에서 보여지는 명칭이다. 이 명칭을 기준으로 환경설정정보를 가져온다.
-
 ```
 
-```
 $ cf create-service Pinpoint Pinpoint_standard PS1
-```
 ```
 Creating service instance PS1 in org org / space space as admin...
 OK
@@ -553,9 +527,7 @@ OK
 
 -   생성된 Pinpoint 서비스 인스턴스를 확인한다.
 
-```
 $ cf services
-```
 ```
 Getting services in org org / space space as admin...
 OK
@@ -573,9 +545,8 @@ PS1                      Pinpoint                 Pinpoint_standard             
 -   Sample Web App에서 생성한 서비스 인스턴스 바인드 신청을 한다.
 
 - 서비스 인스턴스 확인
-```
+ 
 $ cf s
-```
 ```
 Getting services in org org / space space as admin...
 OK
@@ -583,13 +554,11 @@ OK
 name                     service                  plan                 bound apps   last
 PS1                      Pinpoint                 Pinpoint_standard                 create
 my_rabbitmq_service      p-rabbitmq               standard                          create succeeded   rabbitmq-service-broker
-
 ```
+
 - 서비스 바인드
-```:q!
 
 $ cf bind-service spring-music-pinpoint PS1 -c '{"application_name":"spring-music"}'
-```
 ```
 Binding service PS1 to app spring-music-pinpoint in org org / space space as admin...
 OK
@@ -608,11 +577,8 @@ cf bind-service <application이름> PS1 -c "{\"application_name\":\"<application
 
 -   바인드가 적용되기 위해서 App을 restage한다.
 
-```
 $ cf restage spring-music-pinpoint
 ```
-```
-
 Restaging app spring-music-pinpoint in org org / space space as admin...
 Downloading binary_buildpack...
 Downloading go_buildpack...
@@ -675,9 +641,7 @@ OK
 
 -  환경변수 확인
 
-```
 $ cf env spring-music-pinpoint
-```
 ```
 Getting env variables for app spring-music-pinpoint in org org / space space as admin...
 OK
@@ -739,10 +703,9 @@ No running env variables have been set
 No staging env variables have been set
 ```
 
-- App 정상 구동 확인
-```
+-   App 정상 구동 확인
+
 $ curl http://<URL(IP)>/#/main/spring-music-pinpoint@TOMCAT
-```
 
 [pinpoint_image_01]:/service-guide/images/pinpoint/pinpoint-image1.png
 [pinpoint_image_02]:/service-guide/images/pinpoint/pinpoint-image2.png
