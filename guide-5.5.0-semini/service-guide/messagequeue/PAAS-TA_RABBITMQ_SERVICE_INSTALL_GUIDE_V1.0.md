@@ -608,7 +608,7 @@ start command:   thin -R config.ru start
 
 >`curl -XGET http://test-app.<YOUR-DOMAIN>/queues/<YOUR-QUEUE-NAME>`
 
->![rabbitmq_image_14]
+>![rabbitmq_image_14](../images/rabbitmq/rabbitmq_image_14.png)
 
 [rabbitmq_image_01]:/service-guide/images/rabbitmq/rabbitmq_image_01.png
 
