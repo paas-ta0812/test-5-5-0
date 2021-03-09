@@ -36,7 +36,7 @@ To upgrade from paasta-3.1 to 4.0, it cannot be upgraded with the existing metho
 If you will migrate to Paasta 4.0, you need to bakcup the ccdb, uaadb and blobstore data and restore them.
 
 
-![PaaSTa_Migration_Image]
+![](paasta4.0-migration.png)
 
 
 ## <div id='5'/>2.1.	pre-requsite
