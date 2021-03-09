@@ -72,4 +72,4 @@
       * [플랫폼 설치 자동화 가이드(VSPHERE)](guide-5.5.0-semini/use-guide/platform/PAAS-TA_PLATFORM_INSTALL_AUTOMATION_VSPHERE_v1.0.md)
       * [플랫폼 설치 자동화 사용자 가이드-Hybrid](guide-5.5.0-semini/use-guide/platform/PaaS-TA_INSTALL_AUTOMATION_USE_GUIDE_HYBRID_[OPS_AWS]_v1.0.md)
       * [플랫폼 설치 자동화 사용자 가이드-Hybrid (OPS_AZURE)](guide-5.5.0-semini/use-guide/platform/PaaS-TA_INSTALL_AUTOMATION_USE_GUIDE_HYBRID_[OPS_AZURE]_v1.0.md)
-   * [PaaS-TA Migration](guide-5.5.0-semini/etc/migration/PaaS_TA_4.0_migration.md)
+  * [PaaS-TA Migration](guide-5.5.0-semini/etc/migration/PaaS_TA_4.0_migration.md)
