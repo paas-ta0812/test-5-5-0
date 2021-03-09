@@ -14,7 +14,7 @@
     - [PaaS-TA-min 설치(AWS)](./install-guide/paasta/PAAS-TA_MIN_INSTALL_GUIDE.md)
 
 ##  가이드
-- [CF Migration 가이드 (3.1 to 4.0)](https://github.com/PaaS-TA/Guide-4.0-ROTELLE/blob/master/PaaS_TA_4.0_migration.md)
+- [CF Migration 가이드 (3.1 to 4.0)](./etc/migration/PaaS_TA_4.0_migration.md)
   
 ## 포털 설치 가이드
 **VM Type 배포/ App Type 배포 중 배포 방식을 선택하여 설치한다.**
