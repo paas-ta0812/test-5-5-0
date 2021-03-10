@@ -35,7 +35,7 @@
     * [Monitoring](guide-5.5.0-semini/service-guide/monitoring/README.md)
       * [Monitoring 설치 가이드](guide-5.5.0-semini/service-guide/monitoring/PAAS-TA_MONITORING_INSTALL_GUIDE_V5.0.md)
       * [PaaS-TA Monitoring 설치 가이드](guide-5.5.0-semini/service-guide/monitoring/PAAS-TA_MONITORING_PAAS-TA_MONITORING_INSTALL.md)
-      * [Pinpoint 설치 가이드](guide-5.5.0-semini/service-guide/PAAS-TA_MONITORING_PINPOINT_MONITORING_INSTALL.md)
+      * [Pinpoint 설치 가이드](guide-5.5.0-semini/service-guide/monitoring/PAAS-TA_MONITORING_PINPOINT_MONITORING_INSTALL.md)
       * [Container 설치 가이드](guide-5.5.0-semini/service-guide/monitoring/PAAS-TA_MONITORING_CONTAINER_SERVICE_INSTALL.md)
       * [Logsearch 설치 가이드](guide-5.5.0-semini/service-guide/monitoring/PAAS-TA_MONITORING_LOGSEARCH_INSTALL.md)
       * [Monasca 설치 가이드](guide-5.5.0-semini/service-guide/monitoring/PAAS-TA_MONITORING_MONASCA_INSTALL.md)
