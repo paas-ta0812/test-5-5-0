@@ -35,17 +35,23 @@
 <div id='1'></div>
 # 1. 문서 개요
 
+
 <div id='2'></div>
 ### 1.1 목적
 
+
 본 문서(node.js API 서비스 미터링 애플리케이션 개발 가이드)는 파스-타 플랫폼 프로젝트의 미터링 플러그인과 Node.js API 애플리케이션을 연동시켜 API 서비스를 미터링하는 방법에 대해 기술 하였다.
+
 
 <div id='3'></div>
 ### 1.2 범위
+
 본 문서의 범위는 파스-타 플랫폼 프로젝트의 Node.js API 서비스 애플리케이션 개발과 CF-Abacus 연동에 대한 내용으로 한정되어 있다.
 
 <div id='4'></div>
+
 ### 1.3 참고자료
+
 **<https://docs.cloudfoundry.org/devguide/>**  
 **<https://docs.cloudfoundry.org/buildpacks/node/node-tips.html>**  
 **<https://nodejs.org/>**  
@@ -54,9 +60,12 @@
 
 
 <div id='5'></div>
+
 # 2. Node.js API 미터링 개발가이드
 
+
 <div id='6'></div>
+
 ### 2.1 개요
 
 API 서비스 및 해당 API 서비스를 사용하는 애플리케이션을 Node.js 언어로 작성 한다. API 서비스를 사용하는 애플리케이션과 API 서비스를 바인딩하고 해당 애플리케이션에 바인딩된 환경정보(VCAP_SERVICES)를 이용해 각 서비스별 접속정보를 획득하여 애플리케이션에 적용하여 API 서비스를 호출하는 애플리케이션을 작성 한다. 또한 API 서비스는 서비스 요청을 처리함과 동시에 API 사용 내역을 CF-ABACUS에 전송하는 애플리케이션을 작성 한다.
