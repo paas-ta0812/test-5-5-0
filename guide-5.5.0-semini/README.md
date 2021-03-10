@@ -76,15 +76,15 @@
 
 ## 개발 언어별 애플리케이션 가이드
 - [Node.js](./etc/Sample-App-Guide/OpenPaaS_PaaSTA_Application_Nodejs_develope_guide.md)
-- [PHP](./etc/Sample-App-Guide/github.com/PaaS-TA/Guide-1.0-Spaghetti-/blob/master/Sample-App-Guide/OpenPaaS_PaaSTA_Application_PHP_develope_guide.md)
-- [Python](./etc/Sample-App-Guide/github.com/PaaS-TA/Guide-1.0-Spaghetti-/blob/master/Sample-App-Guide/OpenPaaS_PaaSTA_Application_Python_develope_guide.md)
-- [Ruby](./etc/Sample-App-Guide/github.com/PaaS-TA/Guide-1.0-Spaghetti-/blob/master/Sample-App-Guide/OpenPaaS_PaaSTA_Application_Ruby_develope_guide.md)
-- [Java](./etc/Sample-App-Guide/github.com/PaaS-TA/Guide-1.0-Spaghetti-/blob/master/Sample-App-Guide/OpenPaaS_PaaSTA_Application_Java_develope_guide.md)
-- [Go](./etc/Sample-App-Guide/github.com/PaaS-TA/Guide-1.0-Spaghetti-/blob/master/Sample-App-Guide/OpenPaaS_PaaSTA_Application_Go_develope_guide.md)
+- [PHP](./etc/Sample-App-Guide/OpenPaaS_PaaSTA_Application_PHP_develope_guide.md)
+- [Python](./etc/Sample-App-Guide/OpenPaaS_PaaSTA_Application_Python_develope_guide.md)
+- [Ruby](./etc/Sample-App-Guide/OpenPaaS_PaaSTA_Application_Ruby_develope_guide.md)
+- [Java](./etc/Sample-App-Guide/OpenPaaS_PaaSTA_Application_Java_develope_guide.md)
+- [Go](./etc/Sample-App-Guide/OpenPaaS_PaaSTA_Application_Go_develope_guide.md)
 
 ## 플랫폼 개발 가이드
 - [스템셀 개발 가이드](./etc/Development-Guide/OpenPaaS_PaaSTA_Build_Stemcell_guide.md)
-- [서비스팩 개발 가이드](./etc/Development-Guide/PaaS-TA/Guide-1.0-Spaghetti-/blob/master/Development-Guide/ServicePack_develope_guide.md)
+- [서비스팩 개발 가이드](./etc/Development-Guide/ServicePack_develope_guide.md)
 - [빌드팩 개발 가이드](./etc/Development-Guide/Buildpack_develope_guide.md)
 - [애플리케이션 APIPlatform 도로주소 개발 가이드](./etc/Development-Guide/Application_APIPlatform_dorojuso_devlope_guide.md)
 - [퍼블릭 API 개발 가이드](./etc/Development-Guide/PublicAPI_devlope_guide.md)
