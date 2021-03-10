@@ -1,2 +1,2 @@
-# Container-Platform 단독 배포
+# Container-Platform 배포
 
