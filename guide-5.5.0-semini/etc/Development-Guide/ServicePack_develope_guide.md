@@ -67,27 +67,27 @@ http://www.appdirect.com
 개방형 클라우드 플랫폼 Service API는 Cloud Controller와 Service Broker  사이의 규약을 정의한다. Broker는 HTTP (or HTTPS) endpoints URI 형식으로 구현된다. 하나 이상의 Service가 하나의 Broker 에 의해 제공 될 수 있고, 로드 밸런싱이 가능하게 수평 확장성 있게 제공 될 수 있다.
 
 #### <a name="8"/>2.2. Service Architecture
->![openpaas-servicepack-01]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-01.PNG)
 [그림출처]: http://docs.cloudfoundry.org/services/overview.html
 
 Services 는 Service Broker API 라고 불리우는 cloud controller 클라이언트 API를 구현하여 개방형 클라우드 플랫폼에서 사용된다. Services API는 독립적인 cloud controller API의 버전이다.
 이는 플랫폼에서 외부 application을 이용 가능하게 한다. (database, message queue, rest endpoint , etc)
 
 #### <a name="9"/>2.3. Service Broker API Architecture
->![openpaas-servicepack-02]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-02.PNG)
 [그림출처]: http://docs.cloudfoundry.org/services/api.html
 
 개방형 클라우드 플랫폼 Service API는 Cloud Controller 와 Service Broker 사이의 규약 (catalog, provision, deprovision, update provision plan, bind, unbind)이고 Service Broker 는 RESTful API 로 구현하고 Cloud Controller 에 등록한다.
 
 #### <a name="10"/>2.4. Pivotal(Cloud Foundry) Marketplace Model
->![openpaas-servicepack-03]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-03.PNG)
 [그림출처]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 AppDirect: 클라우드 서비스 marketplace 및 관리 솔루션의 선두 업체이고 많은 글로벌 회사의 marketplace를 구축하였다. (삼성, Cloud Foundry, ETC)
 AppDirect는 Cloud Foundry 서비스 중개(brokerage) 기능과 부가 서비스를 제공한다. 
 
 Service Provider 및 Cloud Foundry 통합에 관련 설명
->![openpaas-servicepack-04]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-04.PNG)
 [그림출처]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 #### <a name="11"/>2.5. 개발 가이드
@@ -96,11 +96,11 @@ Service Provider 및 Cloud Foundry 통합에 관련 설명
 본 개발 가이드는 Service Broker 에서 service back-end를 제어하는 방식을 가이드 한다.AppDirect를 사용하는 경우에는 http://go.appdirect.com/request-more-information를 참고하여 개발한다.
 
 Service Broker는 6개의 기본 API 기능이 필요하다. (상세 설명은 각 API 가이드 참고)
->![openpaas-servicepack-05]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-05.PNG)
 
 Service Broker API의 두 가지 주요 버전은 현재 개방형 클라우드 플랫폼 v1 및 v2를 지원한다. v1은 사용 되지 않으며 개방형 클라우드 플랫폼의 다음 버전에서 제거 될 수 있으니 Service Broker는 v2로 구현하는 것을 권장한다.
 - 버전 정보 (가이드 문서는 2.5 버전을 기준으로 작성함)
->![openpaas-servicepack-06]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-06.PNG)
 
 - 인증
 
@@ -125,19 +125,19 @@ Cloud Controller 는 모든 요청에 HTTP 기본 인증(인증 헤더)을 사�
 
 2.1. Status Code
 
->![openpaas-servicepack-07]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-07.PNG)
 
 2.2. Body (* 필드는 필수)
->![openpaas-servicepack-09]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-09.PNG)
 
 2.3. Service Metadata
->![openpaas-servicepack-10]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-10.PNG)
 
 2.4.	Plan Metadata
->![openpaas-servicepack-11]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-11.PNG)
 
 2.5.	Quota Plan
->![openpaas-servicepack-12]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-12.PNG)
 
 ◎ sample body response message
 	
@@ -309,20 +309,20 @@ Catalog API 경우에는 서비스의 종류와 관계없이 Service 및 Plan �
 - clearDB plan 예
 [그림출처] :http://run.pivotal.io/
 
->![openpaas-servicepack-14]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-14.PNG)
 
->![openpaas-servicepack-15]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-15.PNG)
  
->![openpaas-servicepack-16]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-16.PNG)
 
->![openpaas-servicepack-17]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-17.PNG)
 
 ◎ Pivotal 서비스 Dashboard 예시
 - clearDB Dashboard 예
 [그림출처] :https://www.cleardb.com/
->![openpaas-servicepack-18]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-18.PNG)
 
->![openpaas-servicepack-19]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-19.PNG)
  
 ##### <a name="13"/>2.5.2. Provision API 가이드
 Broker가 Cloud Controller로 부터 provision 요구를 수신하면 개발자를 위한 새로운 서비스 인스턴스를 생성한다. provision 시 서비스들의 종류에 따라 provision 결과는 다르다.
@@ -345,15 +345,15 @@ Mysql DataBase 인 경우에는 새로운 DATABASE 스키마를 생성한다. �
 	}' -X PUT -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
 
 1.3.	Body
->![openpaas-servicepack-20]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-20.PNG)
 
 2. Response
 2.1. Status Code
->![openpaas-servicepack-21]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-21.PNG)1]
 
 2.2.	Body 
 모든 응답 bodies 는 JSON Object ({}) 형식으로 한다.
->![openpaas-servicepack-22]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-22.PNG)
 
 2.3.	Dashboard Single Sign-On.
 Single Sign-On (SSO)는 개방형 클라우드 플랫폼 사용자들이 개방형 클라우드 플랫폼 자격 증명을 사용하여 third-party 서비스의 대시 보드에 접근한다. 서비스 대시 보드는 서비스가 제공하는 기능의 일부 또는 전부를 사용할 수 있는 웹 인터페이스이다. SSO는 반복되는 로그인과 여러 서비스의 계정을 통합 관리한다. OAuth2 프로토콜 인증을 처리하기 때문에 사용자의 자격 증명은 직접 서비스로 전송하지 않는다. SSO 기능을 사용하려면 Cloud Controller UAA client 에 서비스 브로커의 생성 및 삭제 할 수 있는 권한이 있어야 한다. 이 클라이언트는 개방형 클라우드 플랫폼 설치시 구성한다. (설치 문서 참고)
@@ -502,12 +502,12 @@ Update Instance API는 기존의 서비스 인스턴스의 plan를 수정 한다
 	}' -X PATCH -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
 
 1.3.	Body
->![openpaas-servicepack-23]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-23.PNG)
 
 2.	Response
 2.1.	Status Code
 STATUS CODE	DESCRIPTION
->![openpaas-servicepack-24]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-24.PNG)
 
 2.2.	Body 
 모든 응답 bodies 는 JSON Object ({}) 형식으로 한다.
@@ -590,7 +590,7 @@ STATUS CODE	DESCRIPTION
 	DELETE /v2/service_instances/:instance_id
 
 1.2.	Parameters
->![openpaas-servicepack-25]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-25.PNG)
 
 1.3.	cURL
 	$ curl 'http://username:password@broker-url/v2/service_instances/:instance_id?service_id=
@@ -598,7 +598,7 @@ STATUS CODE	DESCRIPTION
 
 2.	Response
 2.1.	Status Code
->![openpaas-servicepack-26]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-26.PNG)
 
 2.2.	Body 
 모든 응답 bodies 는 JSON Object ({}) 형식으로 한다.
@@ -726,21 +726,21 @@ Provision만으로 서비스를 사용할 수 있을 경우에는 bind 기능 �
 	}' -X PUT -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
 
 1.3.	Body
->![openpaas-servicepack-27]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-27.PNG)
 
 2.	Response
 2.1.	Status Code
->![openpaas-servicepack-28]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-28.PNG)
 다른 상태코드(Status Code) 응답은 실패를 의미한다.
 
 2.2.	Body 
->![openpaas-servicepack-29]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-29.PNG)
 
 2.3.	Binding Credentials 
 서비스 바인딩 경우 바인드 API 호출에 응답하여 사용자가 Application에서 사용 할 수있는 인증 정보를 반환한다. 개방형 클라우드 플랫폼 환경 변수 VCAP_SERVICES에 이러한 자격 증명을 제공한다. 가능하면 credentials(자격증명) 필드 목록에서 사용하기를 권장한다. 필요에 따라 추가 필드를 제공 할 수 있지만 제공되는 필드로 사용자의 요구 사항을 충족하는 경우 해당 필드를 사용한다.
 
 중요: 연결 문자열(connection string)을 지원하는 서비스를 제공하는 경우 적어도 uri 키를 제공해야한다.위에서 언급 한 바와 같이 또한 별도의 자격 증명 필드를 제공 할 수있다. Buildpacks 및 Application 라이브러리는 uri 키를 사용한다.
->![openpaas-servicepack-30]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-30.PNG)
 
 ◎ Example VCAP_SERVICES 결과
 
@@ -926,7 +926,7 @@ Provision만으로 서비스를 사용할 수 있을 경우에는 bind 기능 �
 	DELETE /v2/service_instances/:instance_id/service_bindings/:binding_id
 
 1.2.	Parameters
->![openpaas-servicepack-31]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-31.PNG)
 
 1.3.	cURL
 	$ curl 'http://username:password@broker-url/v2/service_instances/:instance_id/
@@ -934,7 +934,7 @@ Provision만으로 서비스를 사용할 수 있을 경우에는 bind 기능 �
 
 2.	Response
 2.1.	Status Code
->![openpaas-servicepack-32]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-32.PNG)
 
 2.2.	Body 
 모든 응답 bodies 는 JSON Object ({}) 형식으로 한다.
@@ -1050,7 +1050,7 @@ BOSH release 는 jobs(packages 구동 스크립트, monit 스크립트 등), pac
 
 #### <a name="20"/>3.2.	Bosh Architecture
  
->![openpaas-servicepack-33]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-33.PNG)
 
 [그림출처]: http://www.cloudsofchange.com/2012/05/fork-in-road-to-cloud.html
 
@@ -1059,7 +1059,7 @@ BOSH release 는 jobs(packages 구동 스크립트, monit 스크립트 등), pac
 -	IaaS 종류에 따라 CPIs 구현 내용이 달라짐. (CPI : Cloud Provider Interface)
 -	Worker 들은 Director에 의해 결정된 task 들을 실행시키는 역할을 함
 
->![openpaas-servicepack-34]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-34.PNG)
 
 [그림출처]: https://www.ibm.com/developerworks/community/blogs/fe313521-2e95-46f2-817d-44a4f27eba32/entry/porting_cloud_foundry_on_power8_ubuntu_le?lang=en
 
@@ -1069,49 +1069,49 @@ BOSH release 는 jobs(packages 구동 스크립트, monit 스크립트 등), pac
 ##### <a name="22"/>3.3.1. packages
 packages에는 Boshrelease 설치를 위한 바이너리에 대한 종속성을 준비하는데 필요한 정보를 제공한다. (packaging, pre_packaging, spec 파일)
 
->![openpaas-servicepack-35]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-35.PNG)
  
 ##### <a name="23"/>3.3.2. jobs
 설치되는 package 들의 jobs(processes) 의 구동 및 정지 script 들과 모니터링(monit) script 로 구성한다.
 
->![openpaas-servicepack-36]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-36.PNG)
 
 ##### <a name="24"/>3.3.3. src
 service release 에서 사용하는 컨포넌트 소스 코드 또는 pre-compiled software 파일로 구성한다.
  
->![openpaas-servicepack-37]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-37.PNG)
  
 ##### <a name="25"/>3.3.4. shared
 ruby 및 lib 와 같은 공통 컴포넌트 소스를 관리한다. (옵션)
  
->![openpaas-servicepack-38]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-38.PNG)
  
 ##### <a name="26"/>3.3.5. releases
 -	버전별 서비스 release yml 파일들을 관리한다.(yaml 설치 방식)
 -	버전별 서비스 release tgz 압축 파일들을 관리한다. (tarball 설치 방식)
 -	Yaml 및 tarball 설치 방식은 아래 개발 가이드 참고한다.
  
->![openpaas-servicepack-39]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-39.PNG)
 
 ##### <a name="27"/>3.3.6. config
 최종 release를 저장하기 위한 Bosh blobstore에 URL 및 액세스 자격 증명을 위한 설정 파일로 구성한다.
  
->![openpaas-servicepack-40]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-40.PNG)
 
 ##### <a name="28"/>3.3.7. final_builds
 최종 jobs 및 packages 에 대한 public blobstore 정보를 제공한다.
 
->![openpaas-servicepack-41]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-41.PNG)
  
 ##### <a name="29"/>3.3.8. deployments
 IaaS 별 service 배포 manifest 파일 들을 관리한다.
  
->![openpaas-servicepack-42]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-42.PNG)
 
 ##### <a name="30"/>3.3.9. content_migrations
 이번버전으로 부터의 마이그레이션 정보 파일 들을 관리한다. (옵션)
  
->![openpaas-servicepack-43]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-43.PNG)
  
 #### <a name="31"/>3.4.개발 가이드
 service를 Bosh release를 통해 배포 해야 하기 때문에 Bosh release 개발 방식에 따라
@@ -1225,7 +1225,7 @@ bosh document 에서는 pre_packaging 파일의 사용은 권장되지 않으며
 예) dependency 그래프
 [그림출처]: https://bosh.io/docs/create-release.html
  
->![openpaas-servicepack-44]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-44.PNG)
 
 4.2	“bosh generate package PACKAGE_NAME” 명령어로 spec script file 를 자동생성한다.
 4.2.1	예) $ bosh generate package test (service release 폴더에서 실행)
@@ -1540,7 +1540,7 @@ BOSH Deplyment manifest 의 내용은 아래와 같다.
 1.	Deployment Identification
 name [String, required]: 배포의 이름. 단일 BOSH Director는 다수의 배포를 관리하고 그들의 이름으로 구별 한다.
 director_uuid [String, required]:BOSH CLI가 배포에 대한 모든 작업을 허용하기위한 현재 대상 BOSH Director의 UUID와 일치해야한다. ‘bosh status’ CLI 을 통해서 현재 BOSH Director 에 target 되어 있는 UUID를 확인할수 있다.
->![openpaas-servicepack-45]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-45.PNG)
 
 bosh status CLI
  
@@ -1878,13 +1878,13 @@ Software(서비스팩 software)를 배포하는 bosh deploy CLI 명령어를 제
 아래의 단계로 배포를 진행한다.
 
 1. Deploy 할 deployment manifest 파일을 BOSH 에 지정한다.(bosh deployment CLI)
->![openpaas-servicepack-46]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-46.PNG)
  
 2. Software 를 배포한다. (bosh deploy CLI)
->![openpaas-servicepack-47]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-47.PNG)
  
 3. 배포된 Software 를 확인한다. (bosh vms)
->![openpaas-servicepack-48]
+>![](./images2/openpaas-servicepack/openpaas-servicepack-48.PNG)
 
  [openpaas-servicepack-01]:/images/openpaas-servicepack/openpaas-servicepack-01.PNG
  [openpaas-servicepack-02]:/images/openpaas-servicepack/openpaas-servicepack-02.PNG
