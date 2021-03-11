@@ -229,7 +229,6 @@ Spring Framework를 이용하여 개발을 하였으며 사용한 컴포넌트�
     <td>현재 페이지 번호(currentPage), 페이지당 데이터 개수(countPerPage)와 검색할 단어(keyword)를 Paramater로 받아 검색을 수행합니다.</td>
   </tr>
 </table>
-- 상세한 API 정의서는 별첨A.를 참조하여 주세요.
 
 
 #### <a name="16"/>4.2.2. 도로명 주소 관리 서비스
