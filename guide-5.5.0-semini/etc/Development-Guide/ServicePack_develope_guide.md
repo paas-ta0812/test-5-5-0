@@ -75,18 +75,16 @@ Services 는 Service Broker API 라고 불리우는 cloud controller 클라이�
 
 #### <a name="9"/>2.3. Service Broker API Architecture
 >![](./images2/openpaas-servicepack/openpaas-servicepack-02.PNG)
-[그림출처]: http://docs.cloudfoundry.org/services/api.html
-
 
 개방형 클라우드 플랫폼 Service API는 Cloud Controller 와 Service Broker 사이의 규약 (catalog, provision, deprovision, update provision plan, bind, unbind)이고 Service Broker 는 RESTful API 로 구현하고 Cloud Controller 에 등록한다.
+[그림출처]: http://docs.cloudfoundry.org/services/api.html
 
 #### <a name="10"/>2.4. Pivotal(Cloud Foundry) Marketplace Model
 >![](./images2/openpaas-servicepack/openpaas-servicepack-03.PNG)
-[그림출처]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
-
 
 AppDirect: 클라우드 서비스 marketplace 및 관리 솔루션의 선두 업체이고 많은 글로벌 회사의 marketplace를 구축하였다. (삼성, Cloud Foundry, ETC)
-AppDirect는 Cloud Foundry 서비스 중개(brokerage) 기능과 부가 서비스를 제공한다. 
+AppDirect는 Cloud Foundry 서비스 중개(brokerage) 기능과 부가 서비스를 제공한다.
+[그림출처]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 Service Provider 및 Cloud Foundry 통합에 관련 설명
 >![](./images2/openpaas-servicepack/openpaas-servicepack-04.PNG)
