@@ -70,6 +70,7 @@ http://www.appdirect.com
 >![](./images2/openpaas-servicepack/openpaas-servicepack-01.PNG)
 [그림출처]: http://docs.cloudfoundry.org/services/overview.html
 
+
 Services 는 Service Broker API 라고 불리우는 cloud controller 클라이언트 API를 구현하여 개방형 클라우드 플랫폼에서 사용된다. Services API는 독립적인 cloud controller API의 버전이다.
 이는 플랫폼에서 외부 application을 이용 가능하게 한다. (database, message queue, rest endpoint , etc)
 
@@ -77,11 +78,13 @@ Services 는 Service Broker API 라고 불리우는 cloud controller 클라이�
 >![](./images2/openpaas-servicepack/openpaas-servicepack-02.PNG)
 [그림출처]: http://docs.cloudfoundry.org/services/api.html
 
+
 개방형 클라우드 플랫폼 Service API는 Cloud Controller 와 Service Broker 사이의 규약 (catalog, provision, deprovision, update provision plan, bind, unbind)이고 Service Broker 는 RESTful API 로 구현하고 Cloud Controller 에 등록한다.
 
 #### <a name="10"/>2.4. Pivotal(Cloud Foundry) Marketplace Model
 >![](./images2/openpaas-servicepack/openpaas-servicepack-03.PNG)
 [그림출처]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
+
 
 AppDirect: 클라우드 서비스 marketplace 및 관리 솔루션의 선두 업체이고 많은 글로벌 회사의 marketplace를 구축하였다. (삼성, Cloud Foundry, ETC)
 AppDirect는 Cloud Foundry 서비스 중개(brokerage) 기능과 부가 서비스를 제공한다. 
@@ -309,20 +312,20 @@ Catalog API 경우에는 서비스의 종류와 관계없이 Service 및 Plan �
 - clearDB plan 예
 [그림출처] :http://run.pivotal.io/
 
->![](./images2/openpaas-servicepack/openpaas-servicepack-14.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-14.png)
 
->![](./images2/openpaas-servicepack/openpaas-servicepack-15.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-15.png)
  
->![](./images2/openpaas-servicepack/openpaas-servicepack-16.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-16.png)
 
->![](./images2/openpaas-servicepack/openpaas-servicepack-17.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-17.png)
 
 ◎ Pivotal 서비스 Dashboard 예시
 - clearDB Dashboard 예
 [그림출처] :https://www.cleardb.com/
->![](./images2/openpaas-servicepack/openpaas-servicepack-18.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-18.png)
 
->![](./images2/openpaas-servicepack/openpaas-servicepack-19.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-19.png)
  
 ##### <a name="13"/>2.5.2. Provision API 가이드
 Broker가 Cloud Controller로 부터 provision 요구를 수신하면 개발자를 위한 새로운 서비스 인스턴스를 생성한다. provision 시 서비스들의 종류에 따라 provision 결과는 다르다.
@@ -1050,7 +1053,7 @@ BOSH release 는 jobs(packages 구동 스크립트, monit 스크립트 등), pac
 
 #### <a name="20"/>3.2.	Bosh Architecture
  
->![](./images2/openpaas-servicepack/openpaas-servicepack-33.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-33.png)
 
 [그림출처]: http://www.cloudsofchange.com/2012/05/fork-in-road-to-cloud.html
 
@@ -1059,7 +1062,7 @@ BOSH release 는 jobs(packages 구동 스크립트, monit 스크립트 등), pac
 -	IaaS 종류에 따라 CPIs 구현 내용이 달라짐. (CPI : Cloud Provider Interface)
 -	Worker 들은 Director에 의해 결정된 task 들을 실행시키는 역할을 함
 
->![](./images2/openpaas-servicepack/openpaas-servicepack-34.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-34.png)
 
 [그림출처]: https://www.ibm.com/developerworks/community/blogs/fe313521-2e95-46f2-817d-44a4f27eba32/entry/porting_cloud_foundry_on_power8_ubuntu_le?lang=en
 
@@ -1069,49 +1072,49 @@ BOSH release 는 jobs(packages 구동 스크립트, monit 스크립트 등), pac
 ##### <a name="22"/>3.3.1. packages
 packages에는 Boshrelease 설치를 위한 바이너리에 대한 종속성을 준비하는데 필요한 정보를 제공한다. (packaging, pre_packaging, spec 파일)
 
->![](./images2/openpaas-servicepack/openpaas-servicepack-35.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-35.png)
  
 ##### <a name="23"/>3.3.2. jobs
 설치되는 package 들의 jobs(processes) 의 구동 및 정지 script 들과 모니터링(monit) script 로 구성한다.
 
->![](./images2/openpaas-servicepack/openpaas-servicepack-36.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-36.png)
 
 ##### <a name="24"/>3.3.3. src
 service release 에서 사용하는 컨포넌트 소스 코드 또는 pre-compiled software 파일로 구성한다.
  
->![](./images2/openpaas-servicepack/openpaas-servicepack-37.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-37.png)
  
 ##### <a name="25"/>3.3.4. shared
 ruby 및 lib 와 같은 공통 컴포넌트 소스를 관리한다. (옵션)
  
->![](./images2/openpaas-servicepack/openpaas-servicepack-38.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-38.png)
  
 ##### <a name="26"/>3.3.5. releases
 -	버전별 서비스 release yml 파일들을 관리한다.(yaml 설치 방식)
 -	버전별 서비스 release tgz 압축 파일들을 관리한다. (tarball 설치 방식)
 -	Yaml 및 tarball 설치 방식은 아래 개발 가이드 참고한다.
  
->![](./images2/openpaas-servicepack/openpaas-servicepack-39.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-39.png)
 
 ##### <a name="27"/>3.3.6. config
 최종 release를 저장하기 위한 Bosh blobstore에 URL 및 액세스 자격 증명을 위한 설정 파일로 구성한다.
  
->![](./images2/openpaas-servicepack/openpaas-servicepack-40.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-40.png)
 
 ##### <a name="28"/>3.3.7. final_builds
 최종 jobs 및 packages 에 대한 public blobstore 정보를 제공한다.
 
->![](./images2/openpaas-servicepack/openpaas-servicepack-41.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-41.png)
  
 ##### <a name="29"/>3.3.8. deployments
 IaaS 별 service 배포 manifest 파일 들을 관리한다.
  
->![](./images2/openpaas-servicepack/openpaas-servicepack-42.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-42.png)
 
 ##### <a name="30"/>3.3.9. content_migrations
 이번버전으로 부터의 마이그레이션 정보 파일 들을 관리한다. (옵션)
  
->![](./images2/openpaas-servicepack/openpaas-servicepack-43.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-43.png)
  
 #### <a name="31"/>3.4.개발 가이드
 service를 Bosh release를 통해 배포 해야 하기 때문에 Bosh release 개발 방식에 따라
@@ -1225,7 +1228,7 @@ bosh document 에서는 pre_packaging 파일의 사용은 권장되지 않으며
 예) dependency 그래프
 [그림출처]: https://bosh.io/docs/create-release.html
  
->![](./images2/openpaas-servicepack/openpaas-servicepack-44.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-44.png)
 
 4.2	“bosh generate package PACKAGE_NAME” 명령어로 spec script file 를 자동생성한다.
 4.2.1	예) $ bosh generate package test (service release 폴더에서 실행)
@@ -1540,7 +1543,7 @@ BOSH Deplyment manifest 의 내용은 아래와 같다.
 1.	Deployment Identification
 name [String, required]: 배포의 이름. 단일 BOSH Director는 다수의 배포를 관리하고 그들의 이름으로 구별 한다.
 director_uuid [String, required]:BOSH CLI가 배포에 대한 모든 작업을 허용하기위한 현재 대상 BOSH Director의 UUID와 일치해야한다. ‘bosh status’ CLI 을 통해서 현재 BOSH Director 에 target 되어 있는 UUID를 확인할수 있다.
->![](./images2/openpaas-servicepack/openpaas-servicepack-45.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-45.png)
 
 bosh status CLI
  
@@ -1878,13 +1881,13 @@ Software(서비스팩 software)를 배포하는 bosh deploy CLI 명령어를 제
 아래의 단계로 배포를 진행한다.
 
 1. Deploy 할 deployment manifest 파일을 BOSH 에 지정한다.(bosh deployment CLI)
->![](./images2/openpaas-servicepack/openpaas-servicepack-46.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-46.png)
  
 2. Software 를 배포한다. (bosh deploy CLI)
->![](./images2/openpaas-servicepack/openpaas-servicepack-47.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-47.png)
  
 3. 배포된 Software 를 확인한다. (bosh vms)
->![](./images2/openpaas-servicepack/openpaas-servicepack-48.PNG)
+>![](./images2/openpaas-servicepack/openpaas-servicepack-48.png)
 
  [openpaas-servicepack-01]:/images/openpaas-servicepack/openpaas-servicepack-01.PNG
  [openpaas-servicepack-02]:/images/openpaas-servicepack/openpaas-servicepack-02.PNG
