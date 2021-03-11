@@ -66,7 +66,7 @@
 
 ### <a name="21"/>2.1. 어플리케이션 배포 프로세스
 
-![그림 2-1 개방형 클라우드 플랫폼에서의 어플리케이션 배포 프로세스][buildpack_develope_guide_01]
+![그림 2-1 개방형 클라우드 플랫폼에서의 어플리케이션 배포 프로세스](./images2/openpaas-buildpack-devolpe-guide/buildpack_develope_guide_01.png)
 
 **그림 2-1 개방형 클라우드 플랫폼에서의 어플리케이션 배포 프로세스**
 
@@ -157,7 +157,7 @@
 
 ### <a name="23"/>2.3. 빌드팩 아키텍처
 
-![그림2-2 빌드팩 런타임 아키텍처][buildpack_develope_guide_02]
+![그림2-2 빌드팩 런타임 아키텍처](./images2/openpaas-buildpack-devolpe-guide/buildpack_develope_guide_02.png)
 
 **그림2-2 빌드팩 런타임 아키텍처**
 
