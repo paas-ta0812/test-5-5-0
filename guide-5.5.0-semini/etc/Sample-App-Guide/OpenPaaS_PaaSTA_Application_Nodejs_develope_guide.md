@@ -1092,7 +1092,7 @@ test:
 2.2.  리눅스
 
 ><div>$ make test
-![](./image/nodejs/2-5-5-0.png)
+![](./image/nodejs/2-5-0-0.png)
 
 [2-2-1-0]:/Sample-App-Guide/image/nodejs/2-2-1-0.png
 [2-2-1-1]:/Sample-App-Guide/image/nodejs/2-2-1-1.png
