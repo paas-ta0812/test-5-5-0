@@ -68,7 +68,6 @@
 
 ![그림 2-1 개방형 클라우드 플랫폼에서의 어플리케이션 배포 프로세스](./images2/openpaas-buildpack-devolpe-guide/buildpack_develope_guide_01.png)
 
-**그림 2-1 개방형 클라우드 플랫폼에서의 어플리케이션 배포 프로세스**
 
 개방형 클라우드 플랫폼에 배포되는 어플리케이션은 크게
 업로드(Upload), 스테이지(Stage), 시작(Start) 3단계의 프로세스를 거쳐
@@ -159,7 +158,6 @@
 
 ![그림2-2 빌드팩 런타임 아키텍처](./images2/openpaas-buildpack-devolpe-guide/buildpack_develope_guide_02.png)
 
-**그림2-2 빌드팩 런타임 아키텍처**
 
 빌드팩은 어플리케이션 배포 프로세스의 스테이지 단계에서
 실행된다. \[그림 2-2\]는 빌드팩의 아키텍처를 나타낸다.
