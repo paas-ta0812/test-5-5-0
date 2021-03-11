@@ -126,9 +126,11 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
 	![](./images/image7.png)
 
 2. 이클립스 통합개발환경 케플러 버전을 설치하기 위해서는 다운로드 페이지의 오른쪽 사이드바에 “MORE DOWNLOADS”에 “Eclipse Kepler(4.3)”을 클릭한다.
+
 	![](./images/image8.png)
 
 3. 다운로드 화면이 표시되면, “Eclipse IDE for Java EE Developers” 의 우측에 사용하고 있는 운영체제에 적합한 다운로드 링크를 클릭하여 다운로드한다.
+
 	![](./images/image11.png)
 
 4. 다운로드 받은 파일의 압축을 해제하고 “eclipse.exe” 파일을 실행하여 별도의 설치 없이 이클립스를 사용할 수 있다.
@@ -183,6 +185,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
     Warning” 경고창이 표시되면 무시하고 “OK” 버튼을 클릭하여 설치를
     재개한다.  
     “Cancel” 버튼을 클릭하면 설치 되지 않고 종료된다.
+    
 	![](./images/image21.png)
 
 8. 설치가 완료되면 “Software Updates” 대화창이 나타나고, Open PaaS
@@ -190,6 +193,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
  버튼을 클릭하여 전자정부 표준프레임워크를 재시작한다.  
  만약 “No” 버튼을 클릭하면 전자정부 프레임워크는 재시작되지 않고 Open
  PaaS 개발환경을 이용 할 수 없다.
+ 
 	![](./images/image25.png)
 
 9. 재시작을 완료하면 설치가 완료된다.
@@ -324,6 +328,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
     “Next” 버튼을 클릭하여 다음 페이지로 진행한다.  
     “Finish” 버튼을 클릭하면 현재까지의 상태가 반영되어 배포가 된다.  
     "Cancel” 버튼을 클릭하면 배포가 취소된다.
+    
     ![](./images/image50.png)
 
 4. “배포 실행” 대화창이 표시된다. 이 대화창은 애플리케이션의 도메인과 서브도메인을 지정해주고, “배포된 URL”을 확인하며, 메모리 제한 설정과 배포된 애플리케이션의 시작 여부를 설정 할 수 있다.  
@@ -334,6 +339,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
     모두 설정 하였으면 “Next” 버튼을 클릭하여 다음 페이지로 이동한다.  
     “Finish” 버튼을 클릭하면 현재까지의 상태가 반영되어 배포가 된다.  
     “Cancel” 버튼을 클릭하면 배포가 취소된다.
+    
     ![](./images/image52.png)
 
 5. “서비스팩 선택” 대화창이 표시된다. 이 대화창은 애플리케이션에 바인딩 할 서비스팩 인스턴스를 추가 또는 바인딩 할 수 있다.  
@@ -343,15 +349,18 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
       원하는 서비스팩 인스턴스를 선택한 뒤, “Next” 버튼을 클릭하여 다음 페이지로 진행한다.  
       “Finish” 버튼을 클릭하면 현재까지의 상태가 반영되어 배포가 된다.  
       “Cancel” 버튼을 클릭하면 배포가 취소된다.
+      
     ![](./images/image53.png)
 
 6. “환경 변수” 대화창이 표시된다. 이 대화창은 애플리케이션에 환경 변수를 추가, 수정, 및 삭제를 할 수 있는 대화창이다.  
       환경 변수 추가 및 삭제, 수정은 [***5.4 애플리케이션 인스턴스 관리***](#54-애플리케이션-인스턴스-관리)를 참고한다.  
       환경 변수를 추가 및 삭제, 수정을 완료 후, “Finish” 버튼을 클릭하여 배포를 완료한다.  
       “Cancel” 버튼을 클릭하면 배포가 취소된다.
+      
     ![](./images/image56.png)
 
 7. 배포가 완료되면 서버 편집기의 “애플리케이션과 서비스팩” 탭에서 배포된 애플리케이션을 확인 할 수 있다.
+
     ![](./images/image58.png)
 
 ##### 드래그로 추가
@@ -374,12 +383,14 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
 ##### 프로젝트 컨텍스트 메뉴로 추가하기
 
 1. “Package Exlporer” 에서 배포를 원하는 프로젝트를 선택한 뒤, 마우스 오른쪽 버튼을 클릭 후. “Run As” – “Run on Server”를 선택한다.
+
     ![](./images/image63.png)
 
 2. "Run On Server” 대화창이 표시된다. 이 대화창은 배포를 원하는 서버를 선택하는 대화창이다.  
       “Servers” 리스트에 있는 “Cloud” – “Open PaaS” 를 선택한다.(만약 리스트 화면에 “Cloud” – “Open PaaS”가 보이지 않는다면 서버를 추가하거나, “How do you want to select the server?” 에서 “Choose an existing server”를 라디오 버튼을 선택한다.)  
       “Next” 버튼을 클릭하여 배포를 진행한다.  
       “Finish” 버튼을 클릭하면 즉시 배포가 된다.
+      
     ![](./images/image66.png)
 
 3. [***“Add and Remove”***](#51-애플리케이션-배포) 과정과 동일하므로 참고한다.
@@ -403,6 +414,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
     서버 편집기를 실행한다.  
     편집기에서 라우트라는 목록을 찾는다.  
     “제거…” 버튼을 클릭한다.
+    
     ![](./images/image68.png)
 
 2.  “클라우드 라우트 목록” 대화창이 표시된다. 이 대화창은 클라우드 라우트 목록을 조회 또는 제거 할 수 있는
@@ -410,6 +422,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
     제거를 원하는 라우트를 클릭 한 뒤, “제거”를 클릭하고 “Finish” 버튼을
     클릭하면 라우트가 삭제된다.  
     “Cancel” 버튼을 클릭하면 삭제될 라우트들이 복구된다.
+    
     ![](./images/image70.png)
 
 ### 5.4 애플리케이션 인스턴스 관리
@@ -433,6 +446,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
 
 1. 일반 섹션에서 매핑된 URL 목록 항목을 찾는다.  
       “연필” 모양의 아이콘을 클릭한다.
+      
 	![](./images/image73.png)
 
 2. “매핑된 URL 설정” 대화창이 표시된다.  
@@ -453,6 +467,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
 	![](./images/image77.png)
 
 4. 현재 상태에서는 “매핑된 URL” 추가 사항이 플랫폼 서버에 반영되지 않았으므로 “매핑된 URL” 설정 대화창에서 “Finish” 버튼을 눌러야 최종 완료가 된다. 만약 “Cancel” 버튼을 클릭하면 지금까지 진행한 모든 작업들이 취소된다.
+
     ![](./images/image79.png)
   
 ##### 매핑된 URL 수정
@@ -465,9 +480,11 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
 3. “추가 또는 애플리케이션 URL 수정” 대화창이 표시된다. 이 대화창은 애플리케이션을 수정 할 수 있는 대화창이다.  
       원하는 서브도메인을 수정하고, 도메인을 선택하면 “배포된 URL”이 자동으로 작성된다.  
       작성이 완료 되었으면 “Finish” 버튼을 클릭한다.
+      
     ![](./images/image81.png)
 
 4. 현재 상태에서는 “매핑된 URL” 수정 사항이 플랫폼 서버에 반영되지 않았으므로 “매핑된 URL” 설정 대화창에서 “Finish” 버튼을 눌러야 최종 완료가 된다. 만약 “Cancel” 버튼을 클릭하면 지금까지 진행한 모든 작업들이 취소된다.
+
     ![](./images/image83.png)
 
 ##### 매핑된 URL 제거
@@ -499,6 +516,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
 
 2. “환경변수” 대화창이 표시된다. 이 대화창은 환경 변수를 관리 할 수 있는 대화창이다.  
       이 대화창의 첫 페이지는 환경 변수 목록을 보여준다.
+      
     ![](./images/image053.png)
 
 ##### 환경 변수 추가
@@ -521,6 +539,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
 1. [***“환경 변수 목록 조회”***](#환경-변수-목록-조회) 과정을 진행한다.
 
 2. 환경 변수를 추가하기 위해 환경 변수 목록에서 수정을 원하는 환경 변수를 클릭 후 오른쪽 “수정” 버튼을 클릭한다.
+
 	![](./images/image94.png)
 
 3. 변수 이름과 값을 입력해 주십시오. 대화창이 표시된다. 이 대화창은 환경 변수 수정 할 수 있는 대화창이다.  
@@ -571,6 +590,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
     편집기에서 애플리케이션 목록을 찾아 삭제를 원하는 애플리케이션을
     리스트에서 찾아 선택하고, 마우스 오른쪽 버튼을 클릭한 뒤, “제거”
     버튼을 클릭한다.
+    
 	![](./images/image103.png)
 
 2. 만약 서비스팩 인스턴스와 바인딩이 되어 있다면 “서비스팩 삭제”
@@ -630,6 +650,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
     애플리케이션을 선택할 수 있다.  
     리스트에서 바인딩 할 애플리케이션을 체크 한 후, “Finish” 버튼을
     클릭하면 바인딩이 완료 된다.
+    
 	![](./images/image116.png)
 
 ### 5.8 서비스팩 인스턴스 바인딩 해제
@@ -673,6 +694,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
 
 4. 매니페스트 파일(manifest.yml)에 설정한 내용이 반영된 것을 확인할 수 있다.
 	![](./images/image121.png)
+	
 	![](./images/image131.png)
 
 ### 6.2 매니페스트 저장
@@ -704,6 +726,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
     콘솔창에 “HTTP 로그”를 찍고 싶다면 “HTTP 로그 추적”을 체크하고,
     그렇지 않다면 체크하지 않는다.  
      “OK” 버튼을 클릭하여 설정을 완료한다.
+     
 	![](./images/image130.png)
 
 
