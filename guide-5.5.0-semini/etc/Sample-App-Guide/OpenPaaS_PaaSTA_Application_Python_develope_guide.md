@@ -44,21 +44,17 @@
 		-	[3.2.4.	django 애플리케이션 생성](#3-2-4)  
 
 
-<div id='1'></div>
-#1. 개요
-<div id='1-1'></div>
-##1.1. 문서 개요  
+### 1. 개요
 
-<div id='1-1-1'></div>
-#####1.1.1 목적  
+#### 1.1. 문서 개요  
+
+##### 1.1.1 목적  
 본 문서(python 애플리케이션 개발 가이드)는 Open PaaS프로젝트의 서비스팩(Mysql, Cubrid, MongoDB, RabbitMQ, Radis, GlusterFS)을 python 애플리케이션과 연동하여서비스를 사용하고 애플리케이션을 배포하는 방법에 대해 제시하는 문서이다.
-
-<div id='1-1-2'></div>  
-#####1.1.2 범위  
+ 
+##### 1.1.2 범위  
 본 문서의 범위는 Open PaaS 프로젝트의 python 애플리케이션 개발과 서비스팩 연동에 대한 내용으로 한정한다.
-
-<div id='1-1-3'></div>  
-#####1.1.3 참고 자료  
+ 
+##### 1.1.3 참고 자료  
 [**http://docs.run.pivotal.io/buildpacks/python/index.html**](http://docs.run.pivotal.io/buildpacks/python/index.html) <br>
 [**http://www.cubrid.com/manual/93/api/python.html**](http://www.cubrid.com/manual/93/api/python.html) <br>
 [**https://docs.djangoproject.com/en/1.9/intro/tutorial01**](https://docs.djangoproject.com/en/1.9/intro/tutorial01) <br>
@@ -68,7 +64,7 @@
 #2.python 애플리케이션개발가이드  
 
 <div id='2-1'></div>
-##2.1.	개요
+#### 2.1. 개요
 Open PaaS에 등록된 다양한 서비스팩을 python 언어로 작성된 애플리케이션과 바인딩하고 해당 애플리케이션에 바인딩 된 환경정보(VCAP_SERVICES)에서 각 서비스별 접속정보를 획득하여 애플리케이션에 적용하여 이용 할 수 있도록 Windows 환경에서 python 애플리케이션을 작성할 수 있도록 한다. 
 
 <div id='2-2'></div>  
@@ -86,7 +82,7 @@ python 샘플 애플리케이션 개발이 이루어진 환경은 다음과 같�
 
 [**https://www.python.org/downloads/release/python-2710/**](https://www.python.org/downloads/release/python-2710/)
 	
-![python-2]
+![](./image/python/image2.png)
 
 * 다운로드
 
@@ -107,12 +103,13 @@ Windows x86-64 MSI installer
  명령 프롬프트에서 'python' 을 입력하여 python의 실행을 확인한다.
 `Python`
 
-![python-3]  
+![](./image/python/image3.png)
+
 
 * python 실행 종료 
  python이 정상적으로 실행되었음을 확인하였으므로 'ctrl'+'c'를 입력하여 python을 종료한다. 
 
-![python-4]  
+![](./image/python/image4.png)
 
 * pip 설치 확인  
  명령 프롬프트에서 pip 입력
@@ -120,7 +117,7 @@ Windows x86-64 MSI installer
 
 `pip`
 
-![python-5]  
+![](./image/python/image5.png)
 
 ※ ip는 python 관련 패키지 설치를 지원하는 도구이다. 일반적으로 python을 설치하면 함께 설치되지만 경우에 따라 pip 설치가 되지 않을 수 있다. 이 때는 python 설치에 기본으로 제공되는 또 다른 설치도구인 easy_install을 사용하여 pip를 설치한다.
 
@@ -164,13 +161,13 @@ Windows x86-64 MSI installer
 
  가상환경이 정상적으로 실행되면 명령 프롬프트의 다음 화면과 같이 명령어 입력 줄에 가상환경 명칭이 붙는다.
 
-![python-6]
+![](./image/python/image6.png)
   
  ※ 가상환경을 실행을 종료시키기 위해서는 deactivate 명령어를 이용한다. 가상환경이 종료되면 명령어 입력 줄의 가상환경 명칭이 제거된다
 
 `deactivate`
 
-![python-7]
+![](./image/python/image7.png)
 
 <div id='2-2-3'></div>
 #####2.2.3. Django 설치
@@ -178,7 +175,7 @@ Windows x86-64 MSI installer
 
 `pip install Django==1.8.6`
 
-![python-8]
+![](./image/python/image8.png)
 
  ※ 가상환경에 장고를 설치하고자 하는 사용자는 가상환경을 실행시킨 상태에서 명령어를 입력한다.
 
@@ -206,7 +203,7 @@ Sample-App: [http://extdisk.hancom.com:8080/share.cgi?ssid=0icB5ZW](http://extdi
 
 다음과 같은 구조로 파일이 생성된다. 
  
-![python-9] 
+![](./image/python/image9.png)
 
 <table>
 	<tr>
@@ -247,7 +244,7 @@ Sample-App: [http://extdisk.hancom.com:8080/share.cgi?ssid=0icB5ZW](http://extdi
 
 프로젝트의 파일 구조를 보면 붉은색 박스 부분이 추가 된 것을 확인할 수 있다
 
-![python-10] 
+![](./image/python/image10.png)
 
 <table>
 	<tr>
@@ -674,7 +671,7 @@ Sample-App: [http://extdisk.hancom.com:8080/share.cgi?ssid=0icB5ZW](http://extdi
 
 `$ cf marketplace`
 
-![pyhthon-11]
+![](./image/python/image11.png)
 
  상단의 명령어를 통해 확인한 서비스 목록에서 사용하고자 하는 서비스를 생성한다. 샘플 애플리케이션에서는 MySQL, Cubrid, MongoDB, Resdis, RabbitMQ, GlusterFS 서비스를 사용하므로 6개의 서비스를 생성한다. 서비스 생성 명령어는 다음과 같다. 상단의 그림에서 파란색 박스로 표시된 부분이 서비스 명이다.
 
@@ -811,7 +808,7 @@ $ cf bind-service python-sample-app python-rabbitmq
 
 테스트를 실행하면 다음과 같은 화면을 확인할 수 있다.
 
-![python-12]
+![](./image/python/image12.png)
 
  * 테스트 결과를 html 파일로 저장할 경우
 
@@ -825,12 +822,12 @@ $ cf bind-service python-sample-app python-rabbitmq
 
 테스트가 완료되면 nosetests.html 파일이 생성되는 것을 확인할 수 있다.
 
-![python-13]
+![](./image/python/image13.png)
 
 생성된 nosetests.html 파일은 다음과 같은 화면을 출력한다. Detail 버튼을 눌러 세부 사항을 확인할 수 있다.
  
-![python-14]
-![python-15]
+![](./image/python/image14.png)
+![](./image/python/image15.png)
 
 <div id='3'></div>
 #3. 부록
@@ -864,92 +861,92 @@ $ cf bind-service python-sample-app python-rabbitmq
 
  PyDev는 이클립스에서 python 개발을 가능하게 하는 이클립스 플러그인이다. 
  
-![python-16]
+![](./image/python/image16.png)
  
 이클립스가 실행되면 상단 메뉴바의 help - Eclipse Marketplace를 클릭한다.
 
-![python-17]
+![](./image/python/image17.png)
 
 마켓 플레이스에서 'pydev'로 검색한다.
 
-![python-18]
+![](./image/python/image18.png)
 
 검색 결과에서 'PyDev'를 찾아 'install' 버튼을 클릭한다.
 
-![python-19]
-![python-20]
+![](./image/python/image19.png)
+![](./image/python/image20.png)
 
 설치가 시작되면 몇 가지 사항에 대해 사용자에게 확인 및 동의를 요구한다.
 'Confirm' 버튼을 클릭하여 다음단계로 진행한다.
 
-![python-21]
+![](./image/python/image21.png)
  
 ①번과 같이 저작권 조항에 동의를 표하고 'finish' 버튼을 클릭한다.
  
-![python-22]
+![](./image/python/image22.png)
  
 ① 체크박스에 체크하고 'ok' 버튼을 클릭한다. 이 과정에서 체크박스에 체크하지 않으면 PyDev설치가 취소된다.
 
 
-![python-22]
+![](./image/python/image22.png)
  
 
 설치가 완료되면 이클립스를 재시작해야 한다. 'Yes' 버튼을 선택한다.
 
 
-![python-23]
+![](./image/python/image23.png)
  
 
 <div id='3-2-2'></div>
 #####3.2.2. python 설정
 
 
-![python-23]
+![](./image/python/image23.png)
 
  재실행된 이클립스에서 상단 Windows - Preferences를 클릭하여 설정화면을 연다. 
  
-![python-24]
+![](./image/python/image24.png)
  
  그림처럼 ①,②,③의 순서로 클릭하여 Python Interpreters 설정 화면을 연다. ④번의 Quick Auto-Config를 클릭하면 중앙의 파란색 박스처럼 설치된 python 버전을 확인할 수 있다. python 설치 시, 환경변수 설정을 하지 않은 경우는 python 정보가 제대로 나타나지 않을 수 있다. 
 
  ※가상환경을 구성하여 패키지를 설치한 사용자는 다음의 안내를 따른다.
 
-![python-25]
+![](./image/python/image25.png)
 
  'New' 버튼을 클릭하여 가상환경을 추가한다. 
 
-![python-26]
+![](./image/python/image26.png)
 
 가상환경 명칭을 입력하고 Browse 버튼을 클릭한다.
 
-![python-27]
+![](./image/python/image27.png)
 
 가상환경의 python.exe 파일의 경로를 지정한다.
 
-![python-28]
+![](./image/python/image28.png)
 
 'ok' 버튼을 클릭해 인터프리터 추가를 완료한다.
 
-![python-29]
+![](./image/python/image29.png)
 
 인터프리터를 추가했다면 'ok' 버튼을 눌러 설정을 완료한다. 
 
 <div id='3-2-3'></div>
 #####3.2.3. django 프로젝트 생성
  
-![python-30]
+![](./image/python/image30.png)
  
 화면 상단의 File - New - Other를 클릭하여 프로젝트 생성 창을 실행한다.
 
-![python-31]
+![](./image/python/image31.png)
 
 ①번과 같이 PyDev를 클릭해 하단 메뉴를 열고 메뉴 중 ② PyDev Django Project를 선택하고 'Next '버튼을 눌러 다음단계로 진행한다.
 
-![python-32] 
+![](./image/python/image32.png)
 
  ①번 위치에 프로젝트 이름을 입력한다. 주의할 점은 명령어를 사용할 때와 마찬가지로 django는 프로젝트 이름에 '-'(hyphen)을 포함할 수 없기 때문에 '_'(underscore)로 대체한다. ②번 박스처럼 인터프리터를 선택한다. 가상환경을 구성한 사용자는 가상환경을 선택한다. 그리고 'Next' 버튼을 눌러 다음 단계로 진행한다.
 
-![python-33] 
+![](./image/python/image33.png)
 
  샘플 애플리케이션에서는 django의 ORM(객체 관계 매핑) 기능을 사용하지 않기 때문에 Database 설정을 하지 않는다. 그림처럼 기존의 값을 삭제하고 'Finish'버튼을 눌러 프로젝트 생성을 완료한다.
 
@@ -957,15 +954,15 @@ $ cf bind-service python-sample-app python-rabbitmq
 3.2.4.	django 애플리케이션 생성
 </div>
 
-![python-34]
+![](./image/python/image34.png)
 
  이클립스 화면 좌측의 PyDev Package Explorer에서 생성한 프로젝트를 찾을 수 있다. 생성한 프로젝트에 마우스를 올리고 마우스 오른쪽 버튼을 클릭하여 메뉴를 연다. 메뉴에서 Django 메뉴를 찾아 'Create appliation (manage.py startapp)'을 선택한다. 
  
-![python-35] 
+![](./image/python/image35.png)
 
 애플리케이션 이름을 입력하는 창이 생성된다. 애플리케이션 이름 역시 프로젝트와 마찬가지로 '-'(hyphen)을 포함할 수 없기 때문에 '_'(underscore)로 대체한다. 'ok' 버튼을 입력하면 django 애플리케이션 생성이 완료된다.
 
-![python-36] 
+![](./image/python/image36.png)
 
 
 
