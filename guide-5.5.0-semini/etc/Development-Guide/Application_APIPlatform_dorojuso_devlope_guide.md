@@ -265,6 +265,7 @@ Spring Framework를 이용하여 개발을 하였으며 사용한 컴포넌트�
   </tr>
 </table>
 
+상세한 API 정의서는 별첨A.를 참조하여 주세요.
 
 ### <a name="17"/>4.3. 소스 설명
 
@@ -280,7 +281,9 @@ DoroJusomanagerController는 DoroJusoConroller와 같이 BaseController를 상�
 
 #### <a name="19"/>4.3.2. 소스 리스트 및 설명
 해당 소스의 위치는 “개방형 클라우드 플랫폼”의 Git Hub에 위치하며 일반에게 공개할 위치는 따로 홈페이지를 통해서 공유가 될 예정입니다.
-(개발을 위한 Private 위치는 [**https://github.com/OpenPaaSRnD/service_egov_common_juso/tree/master/service_egov_common_juso**](https://github.com/OpenPaaSRnD/service_egov_common_juso/tree/master/service_egov_common_juso) 입니다)
+
+개발을 위한 Private 위치는 입니다.
+[**https://github.com/OpenPaaSRnD/service_egov_common_juso/tree/master/service_egov_common_juso**](https://github.com/OpenPaaSRnD/service_egov_common_juso/tree/master/service_egov_common_juso)
 
 <table>
   <tr>
@@ -397,6 +400,7 @@ DoroJusomanagerController는 DoroJusoConroller와 같이 BaseController를 상�
   </tr>
 </table>
 
+상세한 API 정의서는 별첨A.를 참조하여 주세요.
 
 # <a name="20"/>5. 도로명 주소 서비스 등록(API 플랫폼)
 4장에서 만들어지 도로명 주소 서비스는 인증/API 관리(Life cycle)부분이 없습니다. 단순히 요청에 대해 응답하는 구조입니다. 실제 서비스를 위해서는 사용자 인증, Token 발생/관리, API의 Life cycle 관리, 통계 등의 많은 필수 기능들이 필요합니다. 이를 위해 기존의 전자정부 프레임워크의 공통 컴포넌트를 서비스화 할 때 도움을 주고자 API 플랫폼을 선정하여 이를 통해서 서비스가 이루어지도록 하였습니다.
