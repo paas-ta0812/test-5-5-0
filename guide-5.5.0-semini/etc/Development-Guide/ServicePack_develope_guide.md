@@ -68,11 +68,10 @@ http://www.appdirect.com
 
 #### <a name="8"/>2.2. Service Architecture
 >![](./images2/openpaas-servicepack/openpaas-servicepack-01.PNG)
-[그림출처]: http://docs.cloudfoundry.org/services/overview.html
-
 
 Services 는 Service Broker API 라고 불리우는 cloud controller 클라이언트 API를 구현하여 개방형 클라우드 플랫폼에서 사용된다. Services API는 독립적인 cloud controller API의 버전이다.
 이는 플랫폼에서 외부 application을 이용 가능하게 한다. (database, message queue, rest endpoint , etc)
+[그림출처]: http://docs.cloudfoundry.org/services/overview.html
 
 #### <a name="9"/>2.3. Service Broker API Architecture
 >![](./images2/openpaas-servicepack/openpaas-servicepack-02.PNG)
