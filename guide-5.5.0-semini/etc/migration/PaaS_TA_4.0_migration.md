@@ -36,7 +36,7 @@ Paasta 4.0에서는 3.1이전 버전과 배포 방식 및 version upgrade하는 
 
 Paasta 4.0으로 migration하기위해서는 ccdb, uaadb 및 blobstore data를 bakcup하여 restore해야 한다.
 
-!\[PaaSTa\_Migration\_Image\]
+![](paasta4.0-migration.png)
 
 ### 2.1.    pre-requsite
 
