@@ -80,42 +80,42 @@ Ruby 애플리케이션 개발을 위해 다음과 같은 환경으로 개발환
 
 1)	Ruby & DevKit 다운로드   
 **<http://rubyinstaller.org/downloads/>**   
-![ruby01]
+![](./image/ruby/ruby_01.png)
 - 다운로드  
 RubyInstallers : Ruby 1.9.3-p551  
 DEVELOPMENT KIT : DevKit-tdm-32-4.5.2-20111229-1559-sfx  
 
 2)	Ruby 설치
 - Ruby 1.9.3-p551.exe 더블클릭하여 설치를 실행한다.   
-![ruby02]    
+![](./image/ruby/ruby_02.png)  
 - “OK” 버튼 클릭  
 
-![ruby03]  
+![](./image/ruby/ruby_03.png)
 - “I accet the License” 선택 후 “Next” 버튼 클릭   
 
-![ruby04]  
+![](./image/ruby/ruby_04.png)
 - “Add Ruby executables to your PATH” 선택 후 “Install” 버튼 클릭   
 	
-![ruby05]  
+![](./image/ruby/ruby_05.png) 
 - “Finish” 버튼을 클릭하여 Ruby 설치를 종료한다.   
 
 
 3)	DEVELOPMENT KIT 설치
 - DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe을 더블클릭하여 설치를 실행한다.   
-![ruby06]  
-![ruby07]  
+![](./image/ruby/ruby_06.png) 
+![](./image/ruby/ruby_07.png)
 - 설치할 폴더를 지정하고 “Extract”버튼을 클릭한다.
 - Windows의 CMD 창을 실행하여 DevKit 설치 폴더로 이동한다.  
 
 >ruby dk.rb init
 -	“ruby dk.rb init” 명령을 실행하여 “config.yml” 파일을 생성한다.
-![ruby08] 
+![](./image/ruby/ruby_08.png)
 
 >ruby dk.rb install
 -	“ruby dk.rb install” 명령을 실행하여 DevKit을 설치한다.
-![ruby09] 
+![](./image/ruby/ruby_09.png)
 -	“ruby –v” 명령을 실행하여 루비 버전을 확인한다.
-![ruby10] 
+![](./image/ruby/ruby_10.png)
 
 4)	Ruby On Rails 설치
 -	“gem update rdoc” 명령을 실행하여 rdoc gem을 업데이트한다.(미 실행시 rails install시 에러가 발생 할 수 있다.)
