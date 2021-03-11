@@ -55,8 +55,8 @@
 전자정부 프레임워크의 공통 컴포넌트 중 “도로명 주소 검색”기능을 자체 DB로 구축합니다. 데이터는 도로명 주소 안내시스템([***http://www.juso.go.kr***](http://www.juso.go.kr))에서 제공하는 정보를 이용하며 도로명 주소 서비스 Open API의 스펙을 그대로 활용하여 제작합니다. 이렇게 만들어진 API를 인증, 관리하기 위해 API 플랫폼을 활용합니다. 
 
 ##### <a name="5"/>1.1.3. 참고 자료
--   [가이드]주소구축(전체주소)활용 방법.pdf’ – 도로명 주소 안내시스템([***http://www.juso.go.kr***](http://www.juso.go.kr)) 에서 다운
--   [가이드]OpenAPI 연계신청 및 활용 방법.pdf’ – 도로명 주소 안내시스템([***http://www.juso.go.kr***](http://www.juso.go.kr)) 에서 다운
+-   [가이드]주소구축(전체주소)활용 방법.pdf – 도로명 주소 안내시스템([***http://www.juso.go.kr***](http://www.juso.go.kr))에서 다운
+-   [가이드]OpenAPI 연계신청 및 활용 방법.pdf – 도로명 주소 안내시스템([***http://www.juso.go.kr***](http://www.juso.go.kr))에서 다운
 -   WSO2 API Manager Document – Getting Started - Quick Start Guide([***https://docs.wso2.com/display/AM180/Quick+Start+Guide***](https://docs.wso2.com/display/AM180/Quick+Start+Guide))
 
 
@@ -231,6 +231,7 @@ Spring Framework를 이용하여 개발을 하였으며 사용한 컴포넌트�
 </table>
 ※ 상세한 API 정의서는 별첨A.를 참조하여 주세요.
 
+
 #### <a name="16"/>4.2.2. 도로명 주소 관리 서비스
 <table>
   <tr>
@@ -266,7 +267,9 @@ Spring Framework를 이용하여 개발을 하였으며 사용한 컴포넌트�
 </table>
 ※ 상세한 API 정의서는 별첨A.를 참조하여 주세요.
 
+
 ### <a name="17"/>4.3. 소스 설명
+
 
 #### <a name="18"/>4.3.1. Class Diagram
 주요 Class에 대한 구성은 아래의 Class Diagram과 같습니다. Model과 Exception, Utility는 제외한 프로세스에서 중요한 Controller, Service, DAO를 표시하였습니다.
@@ -275,6 +278,7 @@ Spring Framework를 이용하여 개발을 하였으며 사용한 컴포넌트�
 
 BaseController는 각종 Exception을 정의하고 있습니다. 이를 상속받은 DoroJusoController가 도로명 주소 검색에 대한 Control하게 되면 DoroJusoService에서 비즈니스 로직을 담당합니다.
 DoroJusomanagerController는 DoroJusoConroller와 같이 BaseController를 상속받으며 도로명 주소를 관리하기 위한 등록, 수정, 삭제를 할 수 있는 서비스(API)를 Control하며 DoroJusoManagerService에서 관리를 위한 비즈니스 로직을 담당합니다.
+
 
 #### <a name="19"/>4.3.2. 소스 리스트 및 설명
 해당 소스의 위치는 “개방형 클라우드 플랫폼”의 Git Hub에 위치하며 일반에게 공개할 위치는 따로 홈페이지를 통해서 공유가 될 예정입니다.
