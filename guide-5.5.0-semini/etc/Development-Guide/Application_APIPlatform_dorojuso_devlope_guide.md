@@ -264,7 +264,6 @@ Spring Framework를 이용하여 개발을 하였으며 사용한 컴포넌트�
     <td>도로명 주소 데이터를 삭제합니다.</td>
   </tr>
 </table>
-※ 상세한 API 정의서는 별첨A.를 참조하여 주세요.
 
 
 ### <a name="17"/>4.3. 소스 설명
@@ -397,7 +396,6 @@ DoroJusomanagerController는 DoroJusoConroller와 같이 BaseController를 상�
     <td>도로명 주소 검색의 비즈니스 로직을 담당하는 Service입니다.</td>
   </tr>
 </table>
-
 
 
 # <a name="20"/>5. 도로명 주소 서비스 등록(API 플랫폼)
