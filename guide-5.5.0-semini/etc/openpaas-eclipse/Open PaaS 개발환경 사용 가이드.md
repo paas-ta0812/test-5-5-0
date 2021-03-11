@@ -109,6 +109,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
 
 5. 명령 프롬프트에서 “java –version” 명령을 실행하여 설치된 자바 버전이
     정상적으로 출력되는지 확인한다.
+    
 	![java version](./images/image6.jpeg)
 
 ### 2.3 전자정부 표준프레임워크 설치
@@ -121,6 +122,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
 이클립스 통합개발환경 케플러 버전의 설치 절차는 다음과 같다.
 
 1. 이클립스 홈페이지의 이클립스 통합개발환경 다운로드 페이지(**http://www.eclipse.org/downloads/**)에 접속한다.
+
 	![](./images/image7.png)
 
 2. 이클립스 통합개발환경 케플러 버전을 설치하기 위해서는 다운로드 페이지의 오른쪽 사이드바에 “MORE DOWNLOADS”에 “Eclipse Kepler(4.3)”을 클릭한다.
@@ -271,6 +273,7 @@ http://docs.run.pivotal.io/buildpacks/java/sts.html
 
 1. 서버 복제를 위해 “Servers” 탭에서 복제를 원하는 서버를 선택 한 후,
     오른쪽 버튼을 누르고 “서버 복제”를 선택한다.
+    
 	![](./images/image38.png)
 
 2. “조직 및 스페이스 목록” 대화창이 표시된다. 이 대화창은 복제를 원하는 조직의 스페이스를 선택하는 대화창이다.  
