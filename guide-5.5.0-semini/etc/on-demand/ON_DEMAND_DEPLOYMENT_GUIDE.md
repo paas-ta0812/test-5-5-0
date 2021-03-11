@@ -45,11 +45,11 @@
 
 ### <a name="21"/>2.1. 온디멘드 서비스 아키텍쳐 및 프로세스
 
->![On-Demand_Image_01]
+>![](./images/1.png)
 
 **그림 2-1 개방형 클라우드 플랫폼에서의 온디멘드 서비스 아키텍쳐**
 
->![On-Demand_Image_02]
+>![](./images/2.png)
 
 **그림 2-2 개방형 클라우드 플랫폼에서의 온디멘드 서비스 프로세스**
 
@@ -97,27 +97,27 @@
 개방형 클라우드 플랫폼 Service API는 Cloud Controller와 Service Broker 사이의 규약을 정의한다. Broker는 HTTP (or HTTPS) endpoints URI 형식으로 구현된다. 하나 이상의 Service가 하나의 Broker 에 의해 제공 될 수 있고, 로드 밸런싱과 수평 확장성이 가능하게 제공 될 수 있다.
 
 #### <a name="31"/>3.1. Service Architecture
->![On-Demand_Image_03]
+>![](./images/3.png)
 [그림출처]: http://docs.cloudfoundry.org/services/overview.html
 
 Services 는 Service Broker API 라고 불리우는 cloud controller 클라이언트 API를 구현하여 개방형 클라우드 플랫폼에서 사용된다. Services API는 독립적인 cloud controller API의 버전이다.
 이는 플랫폼에서 외부 application을 이용 가능하게 한다. (database, message queue, rest endpoint , etc)
 
 #### <a name="32"/>3.2. Service Broker API Architecture
->![On-Demand_Image_04]
+>![](./images/4.png)
 [그림출처]: http://docs.cloudfoundry.org/services/api.html
 
 개방형 클라우드 플랫폼 Service API는 Cloud Controller 와 Service Broker 사이의 규약 (catalog, provision, deprovision, update provision plan, bind, unbind)이고 Service Broker 는 RESTful API 로 구현하고 Cloud Controller 에 등록한다.
 
 #### <a name="33"/>3.3. Pivotal(Cloud Foundry) Marketplace Model
->![On-Demand_Image_05]
+>![](./images/5.png)
 [그림출처]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 AppDirect: 클라우드 서비스 marketplace 및 관리 솔루션의 선두 업체이고 많은 글로벌 회사의 marketplace를 구축하였다. (삼성, Cloud Foundry, ETC)
 AppDirect는 Cloud Foundry 서비스 중개(brokerage) 기능과 부가 서비스를 제공한다.
 
 Service Provider 및 Cloud Foundry 통합에 관련 설명
->![On-Demand_Image_06]
+>![](./images/6.png)
 [그림출처]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 # <a name="4"/>4. 온디멘드 서비스 브로커 API 개발 가이드
