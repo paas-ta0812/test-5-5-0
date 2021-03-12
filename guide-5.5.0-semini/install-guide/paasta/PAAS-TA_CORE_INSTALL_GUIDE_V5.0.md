@@ -1,9 +1,9 @@
 ## Table of Contents
 
 1. [개요](#1)  
-　● [목적](#1.1)  
-　● [범위](#1.2)  
-　● [참고 자료](#1.3)  
+　∙ [목적](#1.1)  
+　∙ [범위](#1.2)  
+　∙ [참고 자료](#1.3)  
 2. [PaaS-TA 5.5.1](#2)  
 3. [PaaS-TA 5.5.1 설치](#3)  
 　3.1. [Prerequisite](#3.1)  
@@ -11,20 +11,20 @@
 　3.3. [Stemcell 업로드](#3.3)  
 　3.4. [Runtime Config 설정](#3.4)  
 　3.5. [Cloud Config 설정](#3.5)  
-　　●  [AZs](#3.5.1)  
-　　●  [VM types](#3.5.2)  
-　　●  [Compilation](#3.5.3)  
-　　●  [Disk Size](#3.5.4)  
-　　●  [Networks](#3.5.5)  
+　　∙  [AZs](#3.5.1)  
+　　∙  [VM types](#3.5.2)  
+　　∙  [Compilation](#3.5.3)  
+　　∙  [Disk Size](#3.5.4)  
+　　∙  [Networks](#3.5.5)  
 　3.6. [PaaS-TA 설치 파일](#3.6)  
 　　3.6.1. [PaaS-TA 설치 Variable 파일](#3.6.1)    
-　　　●  [common_vars.yml](#3.6.1.1)  
-　　　●  [vars.yml](#3.6.1.2)  
-　　　●  [PaaS-TA 그외 Variable List](#3.6.1.3)  
+　　　∙  [common_vars.yml](#3.6.1.1)  
+　　　∙  [vars.yml](#3.6.1.2)  
+　　　∙  [PaaS-TA 그외 Variable List](#3.6.1.3)  
 　　3.6.2. [PaaS-TA Operation 파일](#3.6.2)  
 　　3.6.3. [PaaS-TA 설치 Shell Scripts](#3.6.3)  
-　　　●  [deploy-aws.sh](#3.6.3.1)  
-　　　●  [deploy-openstack.sh](#3.6.3.2)  
+　　　∙  [deploy-aws.sh](#3.6.3.1)  
+　　　∙  [deploy-openstack.sh](#3.6.3.2)  
 　3.7. [PaaS-TA 설치](#3.7)  
 　3.8. [PaaS-TA 설치 - 다운로드 된 Release 파일 이용 방식](#3.8)  
 　3.9. [PaaS-TA 로그인](#3.9)   
@@ -35,11 +35,11 @@
 
 # <div id='1'/>1.  문서 개요 
 
-## <div id='1.1'/>● 목적
+## <div id='1.1'/>1.1 목적
 본 문서는 Inception 환경(설치환경)에서 BOSH2(이하 BOSH) 설치 후, BOSH를 기반으로 Monitoring을 적용하지 않은 PaaS-TA를 설치하기 위한 가이드를 제공하는 데 그 목적이 있다.
 
 
-## <div id='1.2'/>● 범위
+## <div id='1.2'/>1.2 범위
 본 문서는 cf-deployment v13.19.0을 기준으로 작성되었다.  
 PaaS-TA은 bosh-deployment를 기반으로 한 BOSH 환경에서 설치한다.  
 
@@ -49,7 +49,7 @@ PaaS-TA는 VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenS
 
 현재 PaaS-TA 5.5.1에서 검증한 IaaS 환경은 AWS, OpenStack 환경이다.
 
-## <div id='1.3'/>● 참고 자료
+## <div id='1.3'/>1.3 참고 자료
 
 본 문서는 Cloud Foundry의 BOSH Document와 Cloud Foundry Document를 참고로 작성하였다.
 
