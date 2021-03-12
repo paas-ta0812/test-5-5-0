@@ -177,7 +177,7 @@ monitoring_web_network: "default"	# Monitoring-WEB 네트워크
 #### <div id='8'/>●	deploy-paasta-monitoring.sh
 
 ```
-bosh -e {director_name} -n -d paasta-monitoring deploy paasta-monitoring.yml  \
+$ bosh -e {director_name} -n -d paasta-monitoring deploy paasta-monitoring.yml  \
 	-o use-public-network-openstack.yml \
 	-o use-compiled-releases-paasta-monitoring.yml \
 	-l paasta-monitoring-vars.yml \
@@ -191,7 +191,7 @@ bosh -e {director_name} -n -d paasta-monitoring deploy paasta-monitoring.yml  \
 > $ vi ${HOME}/workspace/paasta-5.1/deployment/monitoring-deployment/paasta-monitoring/deploy-paasta-monitoring.sh
 
 ```
-bosh -e {director_name} -n -d paasta-monitoring deploy paasta-monitoring.yml  \
+$ bosh -e {director_name} -n -d paasta-monitoring deploy paasta-monitoring.yml  \
 	-o use-public-network-openstack.yml \
 	-l paasta-monitoring-vars.yml \
 	-l ../../common/common_vars.yml
