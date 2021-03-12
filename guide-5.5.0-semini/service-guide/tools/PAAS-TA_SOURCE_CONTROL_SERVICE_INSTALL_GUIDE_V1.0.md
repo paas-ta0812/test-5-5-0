@@ -154,6 +154,7 @@ Succeeded
 - 형상관리 서비스에서 사용하는 변수는 system_domain이다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
+
 ```
 # BOSH INFO
 bosh_ip: "10.0.1.6"				# BOSH IP
@@ -202,9 +203,7 @@ portal_web_user_url: "http://portal-web-user.52.78.88.252.xip.io"
 
 ### ETC INFO
 abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io")
-
 ```
-
 
 - Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
 
@@ -291,6 +290,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d source-control-service deploy --no-redact sour
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/source-control-service  
 $ sh ./deploy.sh  
@@ -300,7 +300,7 @@ $ sh ./deploy.sh
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
   
-  - 설치 릴리즈 파일 다운로드 : [paasta-sourcecontrol-release-1.0.1.tgz](http://45.248.73.44/index.php/s/4tXpCPCoRtbTXrK/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-sourcecontrol-release-1.0.1.tgz](http://45.248.73.44/index.php/s/4tXpCPCoRtbTXrK/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -334,7 +334,8 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d source-control-service deploy --no-redact sour
     -v releases_dir="/home/ubuntu/workspace/paasta-5.5.1/release"  
 ```  
 
-- 서비스를 설치한다.  
+- 서비스를 설치한다. 
+ 
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/source-control-service   
 $ sh ./deploy.sh  
@@ -455,7 +456,6 @@ $ uaac token client get <UAA_ADMIN_CLIENT_ID> -s <UAA_ADMIN_CLIENT_SECRET>
 Successfully fetched token via client credentials grant.
 Target: https://uaa.<DOMAIN>
 Context: admin, from client admin
-
 ```
 
 - 형상관리 서비스 계정을 생성 한다.  
@@ -516,6 +516,7 @@ paasta-sourcecontrol    p-paasta-sourcecontrol   Default                      cr
 ```
 
 - 서비스 상세의 대시보드 URL 정보를 확인하여 서비스에 접근한다.
+
  ```
  ### 서비스 상세 정보의 Dashboard URL을 확인한다.
  $ cf service paasta-sourcecontrol
