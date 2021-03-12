@@ -5,9 +5,9 @@
 　2.1. [Prerequisite](#3)  
 　2.2. [설치 파일 다운로드](#4)  
 　2.3. [Logsearch 설치 환경설정](#5)   
-　　● [common_vars.yml](#6)  
-　　● [logsearch-vars.yml](#7)  
-　　● [deploy-logsearch.sh](#8)  
+　　∙ [common_vars.yml](#6)  
+　　∙ [logsearch-vars.yml](#7)  
+　　∙ [deploy-logsearch.sh](#8)  
 　2.4. [Logsearch 설치](#9)  
 　2.5. [서비스 설치 확인](#10)
 
