@@ -896,10 +896,10 @@ ex) uaa_login_logout_redirect_parameter_whitelist=["{PaaS-TA PORTAL URI}","{PaaS
 
 2. uaa_login_links_passwd : UAA 페이지에서 Reset Password 버튼 클릭 시 이동하는 링크 주소
 
-![](./images/uaa-login.png)  
+>![](./images/uaa-login.png)  
 
 3. uaa_login_links_signup : UAA 페이지에서 Create Account 버튼 클릭 시 이동하는 링크 주소
-![](./images/uaa-log-2.png)  
+>![](./images/uaa-log-2.png)  
 
 
 ```
@@ -920,7 +920,7 @@ ex) uaa_client_portal_secret="portalclient"
   paasta-portal deploy 파일 안의 portal_client_secret의 값과 일치해야 한다.
 ```
 
-![](./images/paasta-value.png)
+>![](./images/paasta-value.png)
 
 6. uaa_client_admin_secret : UAAC Admin Client에 접근하기 위한 Secret 변수
 
