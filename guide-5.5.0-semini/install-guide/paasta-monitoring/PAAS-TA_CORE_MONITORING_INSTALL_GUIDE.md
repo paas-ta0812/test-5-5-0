@@ -1,9 +1,9 @@
 ## Table of Contents
 
 1. [개요](#1)  
-　● [목적](#1.1)  
-　● [범위](#1.2)  
-　● [참고 자료](#1.3)  
+　∙ [목적](#1.1)  
+　∙ [범위](#1.2)  
+　∙ [참고 자료](#1.3)  
 2. [PaaS-TA 5.5.0](#2)  
 3. [PaaS-TA 5.5.0 설치](#3)  
 　3.1. [Prerequisite](#3.1)  
@@ -11,20 +11,20 @@
 　3.3. [Stemcell 업로드](#3.3)  
 　3.4. [Runtime Config 설정](#3.4)  
 　3.5. [Cloud Config 설정](#3.5)  
-　　●  [AZs](#3.5.1)  
-　　●  [VM types](#3.5.2)  
-　　●  [Compilation](#3.5.3)  
-　　●  [Disk Size](#3.5.4)  
-　　●  [Networks](#3.5.5)  
+　　∙  [AZs](#3.5.1)  
+　　∙  [VM types](#3.5.2)  
+　　∙  [Compilation](#3.5.3)  
+　　∙  [Disk Size](#3.5.4)  
+　　∙  [Networks](#3.5.5)  
 　3.6. [PaaS-TA 설치 파일](#3.6)  
 　　3.6.1. [PaaS-TA 설치 Variable 파일](#3.6.1)    
-　　　●  [common_vars.yml](#3.6.1.1)  
-　　　●  [vars.yml](#3.6.1.2)  
-　　　●  [PaaS-TA 그외 Variable List](#3.6.1.3)  
+　　　∙  [common_vars.yml](#3.6.1.1)  
+　　　∙  [vars.yml](#3.6.1.2)  
+　　　∙  [PaaS-TA 그외 Variable List](#3.6.1.3)  
 　　3.6.2. [PaaS-TA Operation 파일](#3.6.2)  
 　　3.6.3. [PaaS-TA 설치 Shell Scripts](#3.6.3)  
-　　　●  [deploy-aws-monitoring.sh](#3.6.3.1)  
-　　　●  [deploy-openstack-monitoring.sh](#3.6.3.2)  
+　　　∙  [deploy-aws-monitoring.sh](#3.6.3.1)  
+　　　∙  [deploy-openstack-monitoring.sh](#3.6.3.2)  
 　3.7. [PaaS-TA 설치](#3.7)  
 　3.8. [PaaS-TA 설치 - 다운로드 된 Release 파일 이용 방식](#3.8)  
 　3.9. [PaaS-TA 로그인](#3.9)   
@@ -35,11 +35,11 @@
 
 # <div id='1'/>1.  문서 개요 
 
-## <div id='1.1'/>● 목적
+## <div id='1.1'/>1.1  목적
 본 문서는 Inception 환경(설치환경)에서 BOSH2(이하 BOSH) 설치 후, BOSH를 기반으로 Monitoring을 적용한 PaaS-TA를 설치하기 위한 가이드를 제공하는 데 그 목적이 있다.
 
 
-## <div id='1.2'/>● 범위
+## <div id='1.2'/>1.2  범위
 본 문서는 cf-deployment v13.19.0을 기준으로 작성되었다.  
 PaaS-TA는 bosh-deployment를 기반으로 한 BOSH 환경에서 설치한다.  
 
@@ -49,7 +49,7 @@ PaaS-TA는 VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenS
 
 현재 PaaS-TA 5.5.0에서 검증한 IaaS 환경은 AWS, OpenStack 환경이다.
 
-## <div id='1.3'/>● 참고 자료
+## <div id='1.3'/>1.3  참고 자료
 
 본 문서는 Cloud Foundry의 BOSH Document와 Cloud Foundry Document를 참고로 작성하였다.
 
@@ -67,7 +67,7 @@ PaaS-TA는 BOSH를 기반으로 설치된다. BOSH CLI를 사용하여 BOSH를 �
 
 PaaS-TA 3.1 버전까지는 PaaS-TA Container, Controller를 각각의 deployment로 설치했지만, PaaS-TA 3.5 버전부터 paasta-deployment 하나로 통합되었으며, 한 번에 PaaS-TA를 설치한다. 
 
-![PaaSTa_BOSH_Use_Guide_Image2]  
+![](./images/bosh2-1.png)  
 
 # <div id='3'/>3. PaaS-TA 5.5.0 설치
 ## <div id='3.1'/>3.1. Prerequisite
@@ -98,6 +98,7 @@ $ git clone https://github.com/PaaS-TA/monitoring-deployment.git -b v5.5.0  # v5
 ## <div id='3.3'/>3.3. Stemcell 업로드
 Stemcell은 배포 시 생성되는 PaaS-TA VM Base OS Image이며, PaaS-TA 5.5.0은 Ubuntu xenial stemcell 621.94를 기반으로 한다.  
 기본적인 Stemcell 업로드 명령어는 다음과 같다.  
+
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
 ```
@@ -109,6 +110,7 @@ BOSH_ENVIRONMENT는 BOSH 설치 시 사용한 Director 명이고, CURRENT_IAAS�
 - Stemcell 업로드 Script의 설정 수정 (BOSH_ENVIRONMENT 수정)
 
 > $ vi ~/workspace/paasta-5.5.0/deployment/paasta-deployment/bosh/upload-stemcell.sh
+
 ```                     
 #!/bin/bash
 STEMCELL_VERSION=621.94
@@ -173,6 +175,7 @@ $ unzip stemcell.zip
 - 오프라인 Stemcell 업로드 Script의 설정 수정 (BOSH_ENVIRONMENT, STEMCELL_DIR 수정)
 
 > $ vi ~/workspace/paasta-5.5.0/deployment/paasta-deployment/bosh/offline-upload-stemcell.sh
+
 ```                     
 #!/bin/bash
 STEMCELL_VERSION=621.94
@@ -202,11 +205,10 @@ $ cd ~/workspace/paasta-5.5.0/deployment/paasta-deployment/bosh
 $ source offline-upload-stemcell.sh
 ```
 
-
-
 ## <div id='3.4'/>3.4. Runtime Config 설정 
 Runtime config는 BOSH로 배포되는 VM에 적용되는 설정이다.
-기본적인 Runtime Config 설정 명령어는 다음과 같다.  
+기본적인 Runtime Config 설정 명령어는 다음과 같다. 
+
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} update-runtime-config {PATH} --name={NAME}
 ```
@@ -224,6 +226,7 @@ PaaS-TA 5.5.0은 Runtime Config 설정 스크립트를 지원하며, BOSH 로그
 
   - Runtime Config 업데이트 Script 수정 (BOSH_ENVIRONMENT 수정)
 > $ vi ~/workspace/paasta-5.5.0/deployment/paasta-deployment/bosh/update-runtime-config.sh
+
 ```                     
 #!/bin/bash
 
@@ -232,13 +235,16 @@ BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (PaaS-TA에
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n runtime-configs/dns.yml
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n --name=os-conf runtime-configs/os-conf.yml
 ```
+
 - Runtime Config 업데이트 Script 실행
+
 ```                     
 $ cd ~/workspace/paasta-5.5.0/deployment/paasta-deployment/bosh
 $ source update-runtime-config.sh
 ```
 
   - Runtime Config 확인  
+  
   ```  
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config --name=os-conf
@@ -264,6 +270,7 @@ $ wget https://nextcloud.paas-ta.org/index.php/s/G7ossXeZZHeMPTQ/download --cont
 - 오프라인 Runtime Config 업데이트 Script 수정 (BOSH_ENVIRONMENT, RELEASE_DIR 수정)
 
 > $ vi ~/workspace/paasta-5.5.0/deployment/paasta-deployment/bosh/offline-update-runtime-config.sh
+
 ```                     
 #!/bin/bash
   
@@ -282,9 +289,6 @@ bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n --name=os-conf runtime-conf
 $ cd ~/workspace/paasta-5.5.0/deployment/paasta-deployment/bosh
 $ source offline-update-runtime-config.sh
 ```
-
-
-
 
 ## <div id='3.5'/>3.5. Cloud Config 설정
 
@@ -618,30 +622,30 @@ $ bosh -e ${BOSH_ENVIRONMENT} update-cloud-config ~/workspace/paasta-5.5.0/deplo
 $ bosh -e ${BOSH_ENVIRONMENT} cloud-config  
 ```
 
-### <div id='3.5.1'/>● AZs
+### <div id='3.5.1'/>3.5.1 AZs
 
 PaaS-TA에서 제공되는 Cloud Config 예제는 z1 ~ z6까지 설정되어 있다.  
 z1 ~ z3까지는 PaaS-TA VM이 설치되는 Zone이며, z4 ~ z6까지는 서비스가 설치되는 Zone으로 정의한다.  
 3개 단위로 설정하는 이유는 서비스 3중화를 위해서이다.  
 PaaS-TA를 설치하는 환경에 따라 다르게 설정해도 된다.
 
-### <div id='3.5.2'/>● VM Types
+### <div id='3.5.2'/>3.5.2 VM Types
 
 VM Type은 IaaS에서 정의된 VM Type이다.  
 
 ※ 다음은 AWS에서 정의한 Instance Type이다.
-![PaaSTa_FLAVOR_Image]
+![](../images/paasta/images/aws-vmtype.PNG)
 
-### <div id='3.5.3'/>● Compilation
+### <div id='3.5.3'/>3.5.3 Compilation
 PaaS-TA 및 서비스 설치 시, PaaS-TA는 Compile VM을 생성하여 소스를 컴파일하고, PaaS-TA VM을 생성하여 컴파일된 파일을 대상 VM에 설치한다.  
 컴파일이 끝난 VM은 삭제된다.
 
 ※ Worker 수는 Compile VM의 수로, 많을수록 컴파일 속도가 빨라진다.
 
-### <div id='3.5.4'/>● Disk Size
+### <div id='3.5.4'/>3.5.4 Disk Size
 PaaS-TA 및 서비스가 설치되는 VM의 Persistent Disk Size이다.
 
-### <div id='3.5.5'/>● Networks
+### <div id='3.5.5'/>3.5.5 Networks
 Networks는 AZ 별 Subnet Network, DNS, Security Groups, Network ID를 정의한다.  
 보통 AZ 별로 256개의 IP를 정의할 수 있도록 Range Cider를 정의한다.
 
@@ -738,6 +742,7 @@ abacus_url: "http://abacus.xx.xx.xxx.xxx.xip.io"	# Abacus URL (e.g. "http://abac
 PaaS-TA를 설치 할 때 적용되는 각종 변수값이나 배포 될 VM의 설정을 변경할 수 있다.
 
 > $ vi ~/workspace/paasta-5.5.0/deployment/paasta-deployment/paasta/vars.yml
+
 ```
 # SERVICE VARIABLE
 deployment_name: "paasta"			# Deployment Name
@@ -915,7 +920,7 @@ ex) uaa_client_portal_secret="portalclient"
   paasta-portal deploy 파일 안의 portal_client_secret의 값과 일치해야 한다.
 ```
 
-![PaaSTa_VALUE_Image]
+![](./images/paasta-value.png)
 
 6. uaa_client_admin_secret : UAAC Admin Client에 접근하기 위한 Secret 변수
 
@@ -1102,6 +1107,7 @@ PaaS-TA 배포 시, 설치 Option을 추가해야 한다. 설치 Option에 대�
 ### 
 
 #### <div id='3.6.3.1'/>● deploy-aws-monitoring.sh
+
 ```
 BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
 
@@ -1119,6 +1125,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-T
 ```
 
 #### <div id='3.6.3.2'/>● deploy-openstack-monitoring.sh
+
 ```
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
 	-o operations/openstack.yml \					# OpenStack 설정
@@ -1137,7 +1144,6 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-T
 ```
 $ chmod +x ~/workspace/paasta-5.5.0/deployment/paasta-deployment/paasta/*.sh
 ```
-
 
 
 ## <div id='3.7'/>3.7.  PaaS-TA 설치
@@ -1330,7 +1336,6 @@ uaa/f8f6b0e8-2bbf-4be5-8f69-ac8dc7a3d943                  running        z2  10.
 
 Succeeded
 ```
-
 
 
 ## <div id='3.9'/>3.9.  PaaS-TA 로그인 
