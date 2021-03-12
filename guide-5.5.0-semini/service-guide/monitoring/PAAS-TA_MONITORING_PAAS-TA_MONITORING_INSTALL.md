@@ -4,9 +4,9 @@
 　2.1\. [Prerequisite](#3)  
 　2.2\. [설치 파일 다운로드](#4)  
 　2.3\. [PaaS-TA Monitoring 설치 환경설정](#5)  
-　　● [common_vars.yml](#6)  
-　　● [paasta-monitoring-vars.yml](#7)  
-　　● [deploy-paasta-monitoring.sh](#8)  
+　　∙ [common_vars.yml](#6)  
+　　∙ [paasta-monitoring-vars.yml](#7)  
+　　∙ [deploy-paasta-monitoring.sh](#8)  
 　2.4\. [PaaS-TA Monitoring 설치](#9)  
 　2.5\. [서비스 설치 확인](#10)  
 3\. [PaaS-TA Monitoring Dashboard 접속](#11)  
@@ -38,12 +38,15 @@
 ### <div id='4'/>2.2. 설치 파일 다운로드
 
 - PaaS-TA Monitoring을 설치하기 위한 deployment가 존재하지 않는다면 다운로드 받는다
+
 ```
 $ cd ${HOME}/workspace/paasta-5.1/deployment
 $ git clone https://github.com/paas-ta/common.git –b v5.0.1
 $ git clone https://github.com/paas-ta/monitoring-deployment.git –b v5.5.0
 ```
+
 기본적으로 온라인 설치로 설정되어 있으나 오프라인 설치 시 release, stemcell 설치 파일 다운로드는 아래 다운로드 에서 받고 설치한다.
+
 ```
 아래 주소로 이동한다. 관련 release, stemcell 파일들을 받을 수 있다.
 https://nextcloud.paas-ta.org/index.php/s/Z2zfK6RjYNE3CeT
@@ -62,6 +65,7 @@ PaaS-TA Monitoring을 설치할 때는 paasta_admin_username, paasta_admin_passw
 paasta_admin_username, paasta_admin_password는 PaaS-TA를 설치할 때의 변수값과 같은 값을 주어 설치를 한다
 metric_url는 Monitoring 옵션을 포함한 BOSH와 PaaS-TA를 설치할 때의 변수값과 같은 값을 주어 설치를 한다.
 saas_monitoring_url는 Pinpoint Monitoring을 설치할 때의 변수값과 같은 값을 주어 설치를 한다.
+
 ```
 # BOSH
 bosh_url: "10.0.1.6"				# BOSH URL ('bosh env' 명령어를 통해 확인 가능)
@@ -85,6 +89,7 @@ saas_monitoring_url: "61.252.53.248"		# Pinpoint HAProxy WEBUI의 Public IP
 ```
 
 ### <div id='7'/>● paasta-monitoring-vars.yml
+
 ```
 # SERVICE VARIABLE
 inception_os_user_name: "ubuntu"
@@ -170,6 +175,7 @@ monitoring_web_network: "default"	# Monitoring-WEB 네트워크
 ```
 
 #### <div id='8'/>●	deploy-paasta-monitoring.sh
+
 ```
 bosh -e {director_name} -n -d paasta-monitoring deploy paasta-monitoring.yml  \
 	-o use-public-network-openstack.yml \
@@ -192,6 +198,7 @@ bosh -e {director_name} -n -d paasta-monitoring deploy paasta-monitoring.yml  \
 ```
 
 - PaaS-TA Monitoring 설치 Shell Script 파일 실행 (BOSH 로그인 필요)
+
 ```
 $ cd ${HOME}/workspace/paasta-5.1/deployment/monitoring-deployment/paasta-monitoring
 $ sh deploy-paasta-monitoring.sh
@@ -201,6 +208,7 @@ $ sh deploy-paasta-monitoring.sh
 
 
 PaaS-TA Monitoring이 설치 완료 되었음을 확인한다.
+
 ```
 $ bosh –e {director_name} vms
 ```
