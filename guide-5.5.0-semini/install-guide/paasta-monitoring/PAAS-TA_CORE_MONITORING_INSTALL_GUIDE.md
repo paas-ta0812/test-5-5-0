@@ -899,7 +899,7 @@ ex) uaa_login_logout_redirect_parameter_whitelist=["{PaaS-TA PORTAL URI}","{PaaS
 >![](./images/uaa-login.png)  
 
 3. uaa_login_links_signup : UAA 페이지에서 Create Account 버튼 클릭 시 이동하는 링크 주소
->![](./images/uaa-log-2.png)  
+>![](./images/uaa-login-2.png)  
 
 
 ```
