@@ -198,6 +198,7 @@ $ bosh -version
 ### <div id='3.3.3'/>3.3.3.    설치 파일 다운로드
 
 - BOSH를 설치하기 위한 deployment가 존재하지 않는다면 다운로드 받는다
+
 ```
 $ mkdir -p ~/workspace/paasta-5.5.0/deployment
 $ cd ~/workspace/paasta-5.5.0/deployment
@@ -269,8 +270,6 @@ Shell Script 파일을 이용하여 BOSH를 설치한다.
 <td>BOSH를 생성하는 Manifest 파일</td>
 </tr>
 </table>
-
-
 
 
 #### <div id='3.3.4.1'/>3.3.4.1. BOSH 설치 Variable File
@@ -483,6 +482,7 @@ $ chmod +x ~/workspace/paasta-5.5.0/deployment/paasta-deployment/bosh/*.sh
 - 서버 환경에 맞추어 Deploy 스크립트 파일의 설정을 수정한다. 
 
 > $ vi ~/workspace/paasta-5.5.0/deployment/paasta-deployment/bosh/deploy-aws-monitoring.sh
+
 ```                     
 bosh create-env bosh.yml \                         
 	--state=aws/state.json \	
@@ -564,7 +564,6 @@ bosh-stemcell-621.93-azure-hyperv-ubuntu-xenial-go_agent.tgz                    
 bosh-stemcell-621.93-openstack-kvm-ubuntu-xenial-go_agent.tgz                   os-conf-release-22.1.0.tgz
 bosh-stemcell-621.93-vsphere-esxi-ubuntu-xenial-go_agent.tgz                    uaa-74.29.0-ubuntu-xenial-621.93-20201130-224014-789299918-20201130224017.tgz
 bosh-virtualbox-cpi-release-0.2.0.tgz
-
 ```
 
 
@@ -572,7 +571,6 @@ bosh-virtualbox-cpi-release-0.2.0.tgz
 - 서버 환경에 맞추어 Deploy 스크립트 파일의 설정을 수정한다. 
 
 > $ vi ~/workspace/paasta-5.5.0/deployment/paasta-deployment/bosh/deploy-aws-monitoring.sh
-
 
 ```                     
 bosh create-env bosh.yml \                         
@@ -632,9 +630,6 @@ Cleaning up rendered CPI jobs... Finished (00:00:00)
 Succeeded
 ```
 
-
-
-
 ### <div id='3.3.7'/>3.3.7. BOSH 로그인
 BOSH가 설치되면, BOSH 설치 폴더 이하 {iaas}/creds.yml 파일이 생성된다.  
 creds.yml은 BOSH 인증정보를 가지고 있으며, creds.yml을 활용하여 BOSH에 로그인한다.  
@@ -650,7 +645,6 @@ $ export BOSH_CLIENT_SECRET=$(bosh int ./{iaas}/creds.yml --path /admin_password
 $ bosh alias-env {director_name} -e {bosh_url} --ca-cert <(bosh int ./{iaas}/creds.yml --path /director_ssl/ca)
 $ bosh -e {director_name} env
 ```
-
 
 ### <div id='3.3.8'/>3.3.8. CredHub
 CredHub은 인증정보 저장소이다.  
@@ -718,9 +712,6 @@ Last login: Fri Oct 25 07:05:42 2019 from 10.0.0.9
 bosh/0:~$
 ```
 
-
-
-
 ### <div id='3.3.10'/>3.3.10. BOSH 로그인 생성 스크립트
 
 PaaS-TA 5.5부터 BOSH 로그인을 하는 스크립트의 생성을 지원한다.
@@ -753,7 +744,6 @@ export CREDHUB_SECRET=$(bosh int --path /credhub_admin_client_secret $CRED_PATH/
 export CREDHUB_CA_CERT=$(bosh int --path /credhub_tls/ca $CRED_PATH/$CURRENT_IAAS/creds.yml)
 credhub login -s https://'${BOSH_IP}':8844 --skip-tls-validation
 ' > ${BOSH_LOGIN_FILE_PATH}/${BOSH_LOGIN_FILE_NAME}
-
 ```
 
 - BOSH Login 생성 Script 실행
@@ -763,10 +753,8 @@ $ cd ~/workspace/paasta-5.5.0/deployment/paasta-deployment/bosh
 $ source create-bosh-login.sh
 ```
 
-
 - 생성된 Script로 BOSH Login 실행
 
 ```
 $ source {BOSH_LOGIN_FILE_PATH}/{BOSH_LOGIN_FILE_NAME}
 ```
-
