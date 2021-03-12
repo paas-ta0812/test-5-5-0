@@ -35,7 +35,9 @@
 ### <div id="1.3"/> 1.3. 시스템 구성
 
 본 장에서는 라이프사이클 관리 서비스의 시스템 구성에 대해 기술하였다. 라이프사이클 관리 서비스 시스템은 service-broker, mariadb, app-lifecycle(TAIGA)서비스의 최소사항을 구성하였다.  
-![](../images/applifecycle-service/image001.png)
+
+![시스템 구성도](../images/applifecycle-service/image001.png)
+
 
 
 VM명 | 인스턴스 수 | vCPU수 | 메모리(GB) | 디스크(GB)
