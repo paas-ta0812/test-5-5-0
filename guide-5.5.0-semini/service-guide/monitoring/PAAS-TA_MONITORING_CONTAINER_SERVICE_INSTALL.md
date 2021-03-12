@@ -35,6 +35,7 @@ $  /var/vcap/packages/kubernetes/bin/kubectl get pods --all-namespaces -o wide
 
 ```
 $  /var/vcap/packages/kubernetes/bin/kubectl get nodes -o wide
+---
 
 ![](./images/paasta-container-service-nodes.png)
 
