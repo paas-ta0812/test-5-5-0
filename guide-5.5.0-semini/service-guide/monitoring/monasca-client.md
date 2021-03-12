@@ -411,8 +411,10 @@ $ sudo service monasca-statsd restart
 ```
  
 - 서비스 등록이 되지 않을경우<br>
-/etc/systemd/system/monasca-agent.service
+
 ```
+/etc/systemd/system/monasca-agent.service
+
 [Unit]
 Description=Monasca Agent
 [Service]
@@ -424,13 +426,13 @@ ExecStart=/usr/local/bin/supervisord -c /etc/monasca/agent/supervisor.conf -n
         
 [Install]
 WantedBy=multi-user.target
-```
-```    
+    
 $cd /etc/systemd/system/multi-user.target.wants
 sudo ln –s /etc/systemd/system/monasca-agent.service ./monasca-agent.service
 ```        
 
 - cf-mon os user 자동 등록되지 않을경우 사용자 수동 등록
+
 ```
 $ sudo useradd mon-agent
 ```
@@ -439,8 +441,10 @@ $ sudo useradd mon-agent
 ![](images/Monasca/2.8.png)
 
 ## 2.9. 서비스 자동등록 되지 않을경우    <div id='2.9.'/>
+
+```
 /etc/systemd/system/monasca-agent.service
-```    
+   
 [Unit]
 Description=Monasca Agent
 [Service]
@@ -452,18 +456,19 @@ ExecStart=/usr/local/bin/supervisord -c /etc/monasca/agent/supervisor.conf -n
     
 [Install]
 WantedBy=multi-user.target
-```
-```    
+ 
 $cd /etc/systemd/system/multi-user.target.wants
 sudo ln –s /etc/systemd/system/monasca-agent.service /etc/systemd/system/monasca-agent.service
 ```
 
 ## 2.10. Agent 사용자 mon-agent 사용자 자동 등록 되지 않는경우    <div id='2.10.'/>
+
 ```
 $ sudo useradd mon-agent
 ```
     
 ## 2.11.  Compute Node VM메트릭 정보가 수집 되지 않는경우    <div id='2.11.'/>
+
 ```
 $ cd /
 $ sudo chmod 757 /run
@@ -473,26 +478,26 @@ $ sudo chmod 757 /run
 Openstack Compute Node에서 발생한는 Log정보를 수집하기 위해서는 LogAget를 Compute/Controller Node에 설치 해야 한다.
 Elastic Search에서 제공하는 FileBeat를 이용하여 Openstack Node정보를 수집한다.
 ## 3.1.	filebeat repository 등록   <div id='3.1.'/>
+
 ```
 $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 OK
-
-...
 
 $ echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a     /etc/apt/sources.list.d/elastic-5.x.list
 $ sudo apt-get update
 ```
     
 ## 3.2.	filebeat 설치   <div id='3.2.'/>
+
 ```
 $ sudo apt-get install -y filebeat=5.6.16
 ```
 
 ## 3.3.	filebeat configuration 파일 수정   <div id='3.3.'/>
+
 ```
 $ sudo vi /etc/filebeat/filebeat.yml
----
-...
+
 # Add log files 
 paths:
     - /var/log/cinder/*.log                # 수집하고자 하는 로그파일을 지정한다.
@@ -500,12 +505,12 @@ paths:
     - /var/log/neutron/*.log
 # Add document type
 document-type: syslog
-...
+
 #Disable Elasticsearch output
 #output.elasticsearch:
  # Array of hosts to connect to.
  #hosts: ["localhost:9200"] 
-...
+
 # output.logstash:
   # The Logstash hosts
   hosts: ["elasticsearch server ip:5443"]                   #elasticsearch server ip address
@@ -517,25 +522,29 @@ document-type: syslog
 ```
       
 ## 3.4.	Elasticsearch-Logstash Certificate 파일을 Client 환경에 복사한다.   <div id='3.4.'/>
+
 ```
 $ sudo scp ubuntu@”elasticsearch server ip”:/etc/logstash/logstash.crt /etc/filebeat/
 ```
     
 ## 3.5.	/etc/host 파일에 Elasticsearch Server 정보를 등록한다.   <div id='3.5.'/>
+
 ```
 $ sudo vi /etc/hosts
----
+
 “elasticsearch server ip”    “hostname”
     
 ex) 10.10.10.10  elasticsearch-server
 ```
     
 ## 3.6.	filebeat 서비스를 재가동한다.   <div id='3.6.'/>
+
 ```
 $ sudo service filebeat restart
 ```
     
 ## 3.7.	확인.   <div id='3.7.'/>
+
 ```
     $ ps -ef |grep filebeat
 ```    
