@@ -34,7 +34,9 @@ PaaS-TA 3.5 버전부터는 Bosh2.0 기반으로 deploy를 진행하며 기존 B
 
 ### <div id='1.3'/> 1.3. 시스템 구성도
 본 문서의 설치된 시스템 구성도이다. 배포 파이프라인 Server, 형상관리 서비스 브로커로 최소사항을 구성하였다.
-![1-1-3]
+
+![시스템 구성도](../images/pipeline/Delivery_Pipeline_Architecture.jpg)
+
 <table>
   <tr>
     <td>VM 명</td>
