@@ -162,6 +162,7 @@ Succeeded
 - Lifecycle 서비스에서 사용하는 변수는 bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port, bosh_oauth_port이다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
+
 ```
 # BOSH INFO
 bosh_ip: "10.0.1.6"				# BOSH IP
@@ -210,7 +211,6 @@ portal_web_user_url: "http://portal-web-user.52.78.88.252.xip.io"
 
 ### ETC INFO
 abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io")
-
 ```
 
 
@@ -281,6 +281,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d lifecycle-service deploy --no-redact lifecycle
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/lifecycle-service
 $ sh ./deploy.sh  
@@ -289,8 +290,7 @@ $ sh ./deploy.sh
 ### <div id="2.6"/> 2.6. 서비스 설치 - 다운로드 된 PaaS-TA Release 파일 이용 방식  
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
-  
-  - 설치 릴리즈 파일 다운로드 : [paasta-app-lifecycle-service-release.tgz](http://45.248.73.44/index.php/s/KZsLzMKE3kDr9SJ/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-app-lifecycle-service-release.tgz](http://45.248.73.44/index.php/s/KZsLzMKE3kDr9SJ/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -324,6 +324,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d lifecycle-service deploy --no-redact lifecycle
 ```  
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/lifecycle-service
 $ sh ./deploy.sh  
