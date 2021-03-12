@@ -33,8 +33,9 @@
 
 ### <div id="1.3"/> 1.3. 시스템 구성
 
-본 장에서는 Logging 서비스의 시스템 구성에 대해 기술하였다. Logging 서비스 시스템은 Router, Collector, Queue, Parser, Elasticsearch, Visualization의 최소사항을 구성하였다.  
-![001]
+본 장에서는 Logging 서비스의 시스템 구성에 대해 기술하였다. Logging 서비스 시스템은 Router, Collector, Queue, Parser, Elasticsearch, Visualization의 최소사항을 구성하였다.
+
+![시스템 구성도](../images/logging-service/image001.png)
 
 VM명 | 인스턴스 수 | vCPU수 | 메모리(GB) | 디스크(GB)
 :--- | :---: | :---: | :---:| :---
@@ -505,23 +506,23 @@ laasclient
 ## <div id="3.2"/>  3.2. Logging 서비스 활성화 코드 등록
 
 -	PaaS-TA 운영자 포탈에 접속한다.
-![002]
+![](../images/logging-service/image002.png)
 
 -	운영관리의 코드관리 메뉴로 이동하여 다음과 같이 코드를 등록한다.
 
 > ※ Group Table  
 > 코드 ID  : LAAS  
 > 코드 이름 : Logging Service  
-> ![003](../images/logging-service/image003.png)
+> ![](../images/logging-service/image003.png)
 >
 > ※ Detail Table  
 > Key : laas_base_url  
 > Value : http://<Logging Service 접근 IP>/app/laas  
 > 요약 : Logging Service Base URL  
 > 사용 : Y  
-> ![004](../images/logging-service/image004.png)
+> ![](../images/logging-service/image004.png)
 
-![005](../images/logging-service/image005.png)
+![](../images/logging-service/image005.png)
 
 [001]:/service-guide/images/logging-service/image001.png
 [002]:/service-guide/images/logging-service/image002.png
