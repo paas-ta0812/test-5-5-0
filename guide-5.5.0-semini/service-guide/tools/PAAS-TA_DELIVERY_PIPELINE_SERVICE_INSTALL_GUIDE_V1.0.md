@@ -553,9 +553,9 @@ PaaS-TA 운영자 포탈을 통해 배포파이프라인 서비스를 등록 및
 
 ##### 서비스 브로커 목록을 확인한다.
 
->`$ cf service-brokers`  
+> $ cf service-brokers  
+
 ```  
-$ cf service-brokers
 Getting service brokers as admin...
 
 name   url
@@ -563,24 +563,24 @@ No service brokers found
 ```  
 
 ##### 배포 파이프라인 서비스 브로커를 등록한다.
->`$ cf create-service-broker {서비스팩 이름} {서비스팩 사용자ID} {서비스팩 사용자비밀번호} http://{서비스팩 URL}`  
+> $ cf create-service-broker {서비스팩 이름} {서비스팩 사용자ID} {서비스팩 사용자비밀번호} http://{서비스팩 URL} 
 
   **서비스팩 이름** : 서비스 팩 관리를 위해 PaaS-TA에서 보여지는 명칭이다. 서비스 Marketplace에서는 각각의 API 서비스 명이 보여지니 여기서 명칭은 서비스팩 리스트의 명칭이다.<br>
   **서비스팩 사용자ID** / 비밀번호 : 서비스팩에 접근할 수 있는 사용자 ID입니다. 서비스팩도 하나의 API 서버이기 때문에 아무나 접근을 허용할 수 없어 접근이 가능한 ID/비밀번호를 입력한다.<br>
   **서비스팩 URL** : 서비스팩이 제공하는 API를 사용할 수 있는 URL을 입력한다.
 
->`$ cf create-service-broker delivery-pipeline admin cloudfoundry http://10.30.107.64:8080`  
+> $ cf create-service-broker delivery-pipeline admin cloudfoundry http://10.30.107.64:8080
+
 ```  
-$ cf create-service-broker delivery-pipeline-broker admin cloudfoundry http://10.30.107.64:8080
 Creating service broker delivery-pipeline-broker as admin...
 OK
 ```  
 
 ##### 등록된 배포 파이프라인 서비스 브로커를 확인한다.
 
->`$ cf service-brokers`  
+> $ cf service-brokers
+>
 ```  
-$ cf service-brokers
 Getting service brokers as admin...
 
 name                           url
@@ -588,7 +588,7 @@ delivery-pipeline-broker       http://10.30.107.64:8080
 ```  
 
 ##### 접근 가능한 서비스 목록을 확인한다.
->`$ cf service-access`
+>$ cf service-access
 
 ```
 # 서비스 브로커 생성시 디폴트로 접근을 허용하지 않는다.
@@ -598,12 +598,12 @@ broker: delivery-pipeline-broker
    service             plan                          access   orgs
    delivery-pipeline   delivery-pipeline-shared      none
    delivery-pipeline   delivery-pipeline-dedicated   none
-
 ```
 
 ##### 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)  
->`$ cf enable-service-access delivery-pipeline`  
->`$ cf service-access`  
+> $ cf enable-service-access delivery-pipeline
+> $ cf service-access
+
 ```  
 $ cf enable-service-access delivery-pipeline                                         
 Enabling access to all plans of service delivery-pipeline for all orgs as admin...   
@@ -615,7 +615,6 @@ broker: delivery-pipeline-broker
    service             plan                          access   orgs
    delivery-pipeline   delivery-pipeline-shared      all
    delivery-pipeline   delivery-pipeline-dedicated   all
-
 ```
 
 ### <div id='3.2'/> 3.2. UAAC Client 등록
@@ -660,7 +659,7 @@ $ uaac client add pipeclient -s clientsecret --redirect_uri "http://115.68.47.17
 
 ### <div id='3.3'/> 3.3. Java Offline Buildpack 등록
 - 배포 파이프라인 서비스 사용을 위해 Java Offline Buildpack을 등록한다.
-> `$ cf create-buildpack [BUILDPACK] [PATH] [POSITION] `  
+> $ cf create-buildpack [BUILDPACK] [PATH] [POSITION]  
 > **[BUILDPACK]** : java_buildpack_offline (buildpack 명)  
 > **[PATH]** : buildpack zip 파일의 경로     
 > **[POSITION]** : 우선순위  
@@ -670,13 +669,13 @@ $ uaac client add pipeclient -s clientsecret --redirect_uri "http://115.68.47.17
 
 **buildpack 등록**  
 
->`$ cf create-buildpack java_buildpack_offline ..\buildpack\java-buildpack-offline-v4.25.zip 3`  
+> $ cf create-buildpack java_buildpack_offline ..\buildpack\java-buildpack-offline-v4.25.zip 3
 
 **buildpack 등록 확인**  
 
->`$ cf buildpacks`
+> $ cf buildpacks
+
 ```
-$ cf buildpacks
 Getting buildpacks...
 
 buildpack                position   enabled   locked   filename
@@ -693,20 +692,21 @@ nginx_buildpack          10         true      false    nginx_buildpack-cflinuxfs
 r_buildpack              11         true      false    r_buildpack-cflinuxfs3-v1.0.10.zip
 binary_buildpack         12         true      false    binary_buildpack-cflinuxfs3-v1.0.32.zip
 ```
+
 ※ 참고 URL : https://github.com/cloudfoundry/java-buildpack  
 
   
 ### <div id='3.4'/> 3.4. 서비스 신청
-1. PaaS-Ta 운영자 포탈에 접속하여 로그인한다.
+1) PaaS-Ta 운영자 포탈에 접속하여 로그인한다.
 ![](../images/pipeline/adminPortal_login.png)
 
-2. 로그인 후 서비스 관리 > 서비스 브로커 페이지에서 배포 파이프라인 서비스 브로커를 확인한다.
+2) 로그인 후 서비스 관리 > 서비스 브로커 페이지에서 배포 파이프라인 서비스 브로커를 확인한다.
 ![](../images/pipeline/adminPortal_serviceBroker.png)
 
-3. 서비스 관리 > 서비스 제어 페이지에서 배포 파이프라인 서비스 플랜 접근 가능 권한을 확인한다.
+3) 서비스 관리 > 서비스 제어 페이지에서 배포 파이프라인 서비스 플랜 접근 가능 권한을 확인한다.
 ![](../images/pipeline/adminPortal_serviceControl.pn)
 
-4. 운영관리 > 카탈로그 > 앱서비스 페이지를 확인하여 "파이프라인" 서비스 이름을 클릭한다.  
+4) 운영관리 > 카탈로그 > 앱서비스 페이지를 확인하여 "파이프라인" 서비스 이름을 클릭한다.  
 ![](../images/pipeline/adminPortal_catalog.png)
 
 - 아래의 내용을 상세 페이지에 입력한다.
@@ -752,6 +752,7 @@ pipeline        delivery-pipeline        delivery-pipeline-shared               
 ```
 
 - 서비스 상세의 대시보드 URL 정보를 확인하여 서비스에 접근한다.
+
  ```
  ### 서비스 상세 정보의 Dashboard URL을 확인한다.
  $ cf service pipeline
