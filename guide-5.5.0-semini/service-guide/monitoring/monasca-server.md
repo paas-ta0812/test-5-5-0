@@ -80,8 +80,7 @@ $ sudo systemctl status docker
 - Docker 설치 확인
 ``` 
 $ sudo apt install docker-ce
----   
-...
+
 docker.service - Docker Application Container Engine
 Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
 Active: active (running) since Mon 2019-06-17 01:40:41 UTC; 11s ago
@@ -89,33 +88,35 @@ Active: active (running) since Mon 2019-06-17 01:40:41 UTC; 11s ago
 Main PID: 3821 (dockerd)
    Tasks: 10
    CGroup: /system.slice/docker.service
-          └─3821 /usr/bin/dockerd -H fd:/ --containerd=/run/containerd/containerd.sock
-...           
+          └─3821 /usr/bin/dockerd -H fd:/ --containerd=/run/containerd/containerd.sock      
 ```      
     
 - Docker-Compose 설치
+
 ``` 
 $ sudo apt install docker-compose
 ```       
 
 # 4.  Monasca-Docker 설치  <div id='4.'/>
 - Openstack Keyston network route open
+
 ```    
 $ sudo route add -net 172.31.30.0/24 gw 10.0.201.254
 ```    
     
 - Monasa-Docker 설치파일 다운로드
+
 ```  
 $ mkdir workspace & cd workspace
 $ git clone https://github.com/monasca/monasca-docker.git
 ```  
 
 - Monasa-Docker docker-compose.yml 파일 변경 
+
 ```
 $ cd monasca-docker
 $ vi docker-compose.yml
----
-...
+
 version: '3'
 services:
 
@@ -382,45 +383,46 @@ services:
       LOG_LEVEL: WARN
     ports:
       - "8125/udp"
- ...
 ```
     
 - Monasca-Docker Server 설치 및 시작
+
 ```   
 $ sudo docker-compose up -d
 ```
+
 ![](images/Monasca/monasca-docker-ps.png)
 
 # 5. Elasticserarch 서버 설치  <div id='5.'/>
 - dependencies 설치
+
 ```    
 $ sudo apt-get update
 $ sudo apt-get install openjdk-8-jdk
 ```
 
 - Elasticsearch 설치
+
 ```
 $ wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.3.1/elasticsearch-2.3.1.deb
 $ dpkg -i elasticsearch-2.3.1.deb
-
 ```     
     
 - 사용자 그룹 추가 - Elasticsearch
+
 ```
 $ sudo usermod -a -G elasticsearch “사용자 계정”
 ```        
     
 - Elasticsearch configuration 파일 수정
+
 ```    
 $ cd /etc/elasticsearch && sudo vi elasticsearch.yml
----
-...
 
 # Use a descriptive name for your cluster:
 #
 cluster.name: escluster1
 
-...
 
 # Use a descriptive name for the node:
 #
@@ -430,7 +432,7 @@ node.name: node-1
 #
 bootstrap.mlockall: true
 
-...
+
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
 network.host: 0.0.0.0
@@ -438,96 +440,98 @@ network.host: 0.0.0.0
     
 # Set a custom port for HTTP:
 http.port: 9200
-...
+
 
 index.number_of_shards: 1
 index.number_of_replicas: 0
-
 ```
     
 - Elasticsearch service 파일 수정
+
 ```    
 $ sudo vi /usr/lib/systemd/system/elasticsearch.service
-...
+
 # Specifies the maximum number of bytes of memory that may be locked into RAM
 # Set to "infinity" if you use the 'bootstrap.memory_lock: true' option
 # in elasticsearch.yml and 'MAX_LOCKED_MEMORY=unlimited' in /etc/default/elasticsearch
 LimitMEMLOCK=infinity
-...
 ```
 
 - Elasticsearch default 파일 수정
+
 ```
 $ sudo vi /etc/default/elasticsearch
-...
+
 # The maximum number of bytes of memory that may be locked into RAM
 # Set to "unlimited" if you use the 'bootstrap.memory_lock: true' option
 # in elasticsearch.yml.
 # When using Systemd, the LimitMEMLOCK property must be set
 # in /usr/lib/systemd/system/elasticsearch.service
 MAX_LOCKED_MEMORY=unlimited
-...
 ```    
 
 - Elasticsearch 서비스 시작
+
 ```    
 $ sudo service elasticsearch start
 ```
     
 - Elasticserarch 서버 가동 여부 확인
+
 ```    
 $ netstat -plntu | grep 9200
 ```
+
 ![](images/Monasca/monasca-elasticsearch-ps.png)
 
 - mlockall 정보가 “enabled” 되었는지 확인
+
 ```    
 $ curl -XGET 'localhost:9200/_nodes?filter_path=**.mlockall&pretty'
 ```
+
 ![](images/Monasca/monasca-elasticsearch-mlockall.png)
     
 
 # 6.  logstash 설치  <div id='6.'/>
-- logstash repository 추가.
+- logstash repository 추가
+
 ```    
 $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 OK
 $ echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash-2.2.x.list
 deb http://packages.elastic.co/logstash/2.2/debian stable main
-
 ```
 
 - logstash 설치
+
 ```
 $ apt-get update
-...
 $ apt-get install -y logstash
-...
-
 ```
 
 - /etc/hosts 파일 수정
+
 ```    
 $ sudo vi /etc/hosts
----
-...
+
 “private network ip”  “hostname”
 ex) 192.168.0.103   host logstash elasticsearch
-...
 ```
 
 - SSL certificate 파일 생성
+
 ```
 $ cd /etc/logstash
 $ sudo openssl req -subj /CN=”hostaname” -x509 -days 3650 -batch -nodes -newkey rsa:4096 -keyout logstash.key -out logstash.crt
 ```
 
 - filebeat-input.conf 파일 생성
+
 ```
 $ cd /etc/logstash
 $ sudo vi conf.d/filebeat-input.conf
----
-...
+
 input {
    beats {
      port => 5443
@@ -537,15 +541,14 @@ input {
      ssl_key => "/etc/logstash/logstash.key"
    }
 }
-...
 ```
 
 - syslog-filter.conf 파일 생성
+
 ```
 $ cd /etc/logstash
 $ sudo vi conf.d/syslog-filter.conf
----
-...
+
 filter {
  if [type] == "syslog" {
    grok {
@@ -558,16 +561,14 @@ filter {
    }
  }
 }
-
-...
 ```
 
 - output-elasticsearch.conf 파일 생성
+
 ```
 $ cd /etc/logstash
 $ sudo vi conf.d/output-elasticsearch.conf
----
-...
+
 output {
       elasticsearch { hosts => ["”your elastic ip”:9200"]    # 설치된 환경의 IP 정보
         hosts => "”your elastic ip”:9200"                 # 설치된 환경의 IP 정보
@@ -576,24 +577,27 @@ output {
         document_type => "%{[@metadata][type]}"
       }
     }    
-...
 ```
 
 - logstash 서비스 시작
+
 ```
 $ sudo service logstash start
 ```
 
 - logstash 서비스 확인
+
 ```
 $ sudo service logstash start
 ```
+
 ![](images/Monasca/monasca-logstash-ps.png)
 
 # 7. Reference : Cross-Project(Tenant) 사용자 추가 및 권한 부여  <div id='7.'/>
 Openstack 기반으로 생성된 모든 Project(Tenant)의 정보를 하나의 계정으로 수집 및 조회하기 위해서는 Cross-Tenant 사용자를 생성하여, 각각의 Project(Tenant)마다 조회할 수 있도록 멤버로 등록한다.
 Openstack Cli를 이용하여 Cross-Tenant 사용자를 생성한 후, Openstack Horizon 화면으로 통해 각각의 프로젝트 사용자 정보에 생성한 Cross-Tenant 사용자 및 권한을 부여한다.
 1. Cross-Tenant 사용자 생성
+
 ```    
     $ openstack user create --domain default --password-prompt monasca-agent
     $ openstack role create monitoring-delegate
