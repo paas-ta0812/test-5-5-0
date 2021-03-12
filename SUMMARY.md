@@ -40,6 +40,8 @@
       * [Container 설치 가이드](guide-5.5.0-semini/service-guide/monitoring/PAAS-TA_MONITORING_CONTAINER_SERVICE_INSTALL.md)
       * [Logsearch 설치 가이드](guide-5.5.0-semini/service-guide/monitoring/PAAS-TA_MONITORING_LOGSEARCH_INSTALL.md)
       * [Monasca 설치 가이드](guide-5.5.0-semini/service-guide/monitoring/PAAS-TA_MONITORING_MONASCA_INSTALL.md)
+        * [Monasca Server 가이드](guide-5.5.0-semini/service-guide/monitoring/monasca-server.md)
+        * [Monasca Client 가이드](guide-5.5.0-semini/service-guide/monitoring/monasca-client.md)
     * [Storage](guide-5.5.0-semini/service-guide/storage/README.md)
       * [GlusterFS 설치 가이드](guide-5.5.0-semini/service-guide/storage/PAAS-TA_GLUSTERFS_SERVICE_INSTALL_GUIDE_V1.0.md)
     * [MessageQueue](guide-5.5.0-semini/service-guide/messagequeue/README.md)
