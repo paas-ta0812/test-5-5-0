@@ -1,11 +1,11 @@
 ## Table of Contents
 
 1. [개요](#1)  
-　● [목적](#1.1)  
-　● [범위](#1.2)  
-　● [참고 자료](#1.3)  
+　- [목적](#1.1)  
+　- [범위](#1.2)  
+　- [참고 자료](#1.3)  
 2. [BOSH](#2)  
-　● [BOSH 컴포넌트 구성](#2.1)  
+　- [BOSH 컴포넌트 구성](#2.1)  
 3. [BOSH 설치 환경 구성 및 설치](#3)  
 　3.1. [BOSH 설치 절차](#3.1)  
 　3.2. [Inception 서버 구성](#3.2)  
@@ -37,13 +37,13 @@
 
 # <div id='1'/>1. 문서 개요 
 
-## <div id='1.1'/>* 목적
+## <div id='1.1'/>1.1 목적
 클라우드 환경에 서비스 시스템을 배포할 수 있는 BOSH는 릴리즈 엔지니어링, 개발, 소프트웨어 라이프사이클 관리를 통합한 오픈소스 프로젝트로 본 문서에서는 Inception 환경(설치환경)에서 BOSH를 설치하는 데 그 목적이 있다. 
 
-## <div id='1.2'/>● 범위
+## <div id='1.2'/>1.2 범위
 본 문서는 Linux 환경(Ubuntu 18.04)을 기준으로 BOSH 설치를 위한 패키지와 라이브러리를 설치 및 구성하고, 이를 이용하여 BOSH를 설치하는 것을 기준으로 작성하였다.
 
-## <div id='1.3'/>● 참고 자료
+## <div id='1.3'/>1.3 참고 자료
 
 본 문서는 Cloud Foundry의 BOSH Document와 Cloud Foundry Document를 참고로 작성하였다.
 
@@ -71,7 +71,7 @@ PaaS-TA 3.1 버전까지는 PaaS-TA Container, Controller를 별도의 deploymen
 
 ![PaaSTa_BOSH_Use_Guide_Image2](./images/bosh2.png)
 
-## <div id='2.1'/>● BOSH 컴포넌트 구성
+## <div id='2.1'/>2.1 BOSH 컴포넌트 구성
 
 BOSH의 컴포넌트 구성은 다음과 같다.
 
