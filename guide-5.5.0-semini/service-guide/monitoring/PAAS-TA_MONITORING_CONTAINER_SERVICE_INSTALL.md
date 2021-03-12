@@ -16,37 +16,43 @@
 
 ## <div id='2'/>2.	PaaS-TA Container service 설치
 
-[PaaS-TA Container service 설치 가이드](/service-guide/tools/PAAS-TA_CONTAINER_SERVICE_INSTALL_GUIDE_V2.0.md)
+[PaaS-TA Container service 설치 가이드](../tools/PAAS-TA_CONTAINER_SERVICE_INSTALL_GUIDE_V2.0.md)
 
 ## <div id='3'/>3.	PaaS-TA Container service 설치 완료 확인 
-![PaaSTa_paasta_container_service_vms]
+![](./images/paasta-container-service-vms.png)
 
 
-## <div id='4'/>4.	Kubernetes Prometheus Pods 정보 확인  
+## <div id='4'/>4.	Kubernetes Prometheus Pods 정보 확인 
+
 ```
 $  bosh -e {director_name} ssh -d paasta-container-service master
 $  /var/vcap/packages/kubernetes/bin/kubectl get pods --all-namespaces -o wide
 ```
-![PaaSTa_paasta_container_service_pods]
+
+![](./images/paasta-container-service-pods.png)
 
 ## <div id='5'/>5.	prometheus-prometheus-prometheus-oper-prometheus-0 POD Node IP 확인
+
 ```
 $  /var/vcap/packages/kubernetes/bin/kubectl get nodes -o wide
-```
-![PaaSTa_paasta_container_service_nodes]
+
+![](./images/paasta-container-service-nodes.png)
 
 ### <div id='6'/>6.	Kubernetes API URL(serverAddress) 확인
+
 ```
 $  curl localhost:8080/api
 ```
-![PaaSTa_paasta_container_service_kubernetes_api]
+
+![](./images/paasta-container-service-kubernetes-api.png)
 
 ## <div id='7'/>7.	Kubernetes API Request 호출시 Header(Authorization) 인증을 위한 Token값 확인
+
 ```
 $  /var/vcap/packages/kubernetes/bin/kubectl -n kube-system describe secret $(/var/vcap/packages/kubernetes/bin/kubectl -n kube-system get secret | grep monitoring-admin | awk '{print $1}')
 ```
-![PaaSTa_paasta_container_service_kubernetes_token]
 
+![](./images/paasta-container-service-kubernetes-token.png)
 
 
 
