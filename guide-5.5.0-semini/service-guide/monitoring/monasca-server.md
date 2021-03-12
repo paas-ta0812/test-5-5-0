@@ -78,6 +78,7 @@ $ sudo systemctl status docker
 ``` 
 
 - Docker 설치 확인
+
 ``` 
 $ sudo apt install docker-ce
 
