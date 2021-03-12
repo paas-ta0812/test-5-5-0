@@ -1,11 +1,11 @@
 ## Table of Contents
 
 1. [개요](#1)  
-　● [목적](#1.1)  
-　● [범위](#1.2)  
-　● [참고 자료](#1.3)  
+　· [목적](#1.1)  
+　· [범위](#1.2)  
+　· [참고 자료](#1.3)  
 2. [BOSH](#2)  
-　● [BOSH 컴포넌트 구성](#2.1)  
+　· [BOSH 컴포넌트 구성](#2.1)  
 3. [BOSH 설치 환경 구성 및 설치](#3)  
 　3.1. [BOSH 설치 절차](#3.1)  
 　3.2. [Inception 서버 구성](#3.2)  
@@ -15,13 +15,13 @@
 　　3.3.3. [설치 파일 다운로드](#3.3.3)  
 　　3.3.4. [BOSH 설치](#3.3.4)  
 　　　3.3.4.1. [BOSH 설치 Variable 파일](#3.3.4.1)  
-　　　　● [aws-vars.yml](#3.3.4.1.1)  
-　　　　● [openstack-vars.yml](#3.3.4.1.2)  
+　　　　∙ [aws-vars.yml](#3.3.4.1.1)  
+　　　　∙ [openstack-vars.yml](#3.3.4.1.2)  
 　　　3.3.4.2. [BOSH 설치 Option 파일](#3.3.4.2)  
-　　　　● [BOSH Optional 파일](#3.3.4.2.1)  
+　　　　· [BOSH Optional 파일](#3.3.4.2.1)  
 　　　3.3.4.3. [BOSH 설치 Shell Script](#3.3.4.3)  
-　　　　● [deploy-aws-monitoring.sh](#3.3.4.3.1)  
-　　　　● [deploy-openstack-monitoring.sh](#3.3.4.3.2)  
+　　　　· [deploy-aws-monitoring.sh](#3.3.4.3.1)  
+　　　　· [deploy-openstack-monitoring.sh](#3.3.4.3.2)  
 　　3.3.5. [BOSH 설치](#3.3.5)  
 　　3.3.6. [BOSH 설치 - 다운로드 된 Release 파일 이용 방식](#3.3.6)  
 　　3.3.7. [BOSH 로그인](#3.3.7)  
@@ -37,13 +37,13 @@
 
 # <div id='1'/>1. 문서 개요 
 
-## <div id='1.1'/>● 목적
+## <div id='1.1'/>1.1 목적
 클라우드 환경에 서비스 시스템을 배포할 수 있는 BOSH는 릴리즈 엔지니어링, 개발, 소프트웨어 라이프사이클 관리를 통합한 오픈소스 프로젝트로 본 문서에서는 Inception 환경(설치환경)에서 BOSH를 설치하는 데 그 목적이 있다. 
 
-## <div id='1.2'/>● 범위
+## <div id='1.2'/>1.2 범위
 본 문서는 Linux 환경(Ubuntu 18.04)을 기준으로 BOSH 설치를 위한 패키지와 라이브러리를 설치 및 구성하고, 이를 이용하여 BOSH를 설치하는 것을 기준으로 작성하였다.
 
-## <div id='1.3'/>● 참고 자료
+## <div id='1.3'/>1.3 참고 자료
 
 본 문서는 Cloud Foundry의 BOSH Document와 Cloud Foundry Document를 참고로 작성하였다.
 
@@ -69,13 +69,13 @@ BOSH2는 BOSH2 CLI를 통하여 BOSH와 PaaS-TA를 모두 생성한다.
 bosh-deployment를 이용하여 BOSH를 생성한 후, paasta-deployment로 PaaS-TA를 설치한다.  
 PaaS-TA 3.1 버전까지는 PaaS-TA Container, Controller를 별도의 deployment로 설치했지만, PaaS-TA 3.5 버전부터는 paasta-deployment 하나로 통합되어 한 번에 PaaS-TA를 설치한다.
 
-![PaaSTa_BOSH_Use_Guide_Image2](https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/bosh/images/bosh2.png)
+![](./images/bosh2.png)
 
 ## <div id='2.1'/>● BOSH 컴포넌트 구성
 
 BOSH의 컴포넌트 구성은 다음과 같다.
 
-![PaaSTa_BOSH_Use_Guide_Image3](https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/bosh/images/bosh3.png)
+![](./images/bosh3.png)
 
 - Director: Director는 VM 생성 또는 수정 시 설정 정보를 레지스트리에 저장한다.  
 저장된 레지스트리 정보는 VM의 Bootstrapping Stage에서 이용된다.
@@ -130,7 +130,7 @@ BOSH 및 PaaS-TA 설치를 위해 Inception 서버에 구성해야 할 컴포넌
 - IaaS Security Group의 inbound 의 ICMP types 13 (timestamp request), types 14 (timestamp response) Rule을 비활성화 한다. (CVE-1999-0524 ICMP timestamp response 보안 이슈 적용)  
 
   예 - AWS security group config)  
-  ![Security_Group_ICMP_Image1](./images/security-group-icmp-01.png)  
+![](./images/security-group-icmp-01.png)
 
 
 ### <div id='3.3.2'/>3.3.2.    BOSH CLI 및 Dependency 설치
