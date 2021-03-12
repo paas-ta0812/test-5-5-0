@@ -208,6 +208,7 @@ Succeeded
 - Logging 서비스에서 사용하는 변수는 system_domain, uaa_client_admin_id, uaa_client_admin_secret 이다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
+
 ```
 # BOSH INFO
 bosh_ip: "10.0.1.6"				# BOSH IP
@@ -256,7 +257,6 @@ portal_web_user_url: "http://portal-web-user.52.78.88.252.xip.io"
 
 ### ETC INFO
 abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io")
-
 ```
 
 
@@ -363,6 +363,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d logging-service deploy --no-redact logging-ser
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/logging-service
 $ sh ./deploy.sh  
@@ -372,7 +373,7 @@ $ sh ./deploy.sh
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
   
-  - 설치 릴리즈 파일 다운로드 : [paasta-logging-service-release.tgz](http://45.248.73.44/index.php/s/eoCBY5QSFjJr3AS/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-logging-service-release.tgz](http://45.248.73.44/index.php/s/eoCBY5QSFjJr3AS/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -403,10 +404,10 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d logging-service deploy --no-redact logging-ser
     -l ${COMMON_VARS_PATH} \
     -l vars.yml \
     -v releases_dir="/home/ubuntu/workspace/paasta-5.5.1/release"  
-
 ```  
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/logging-service
 $ sh ./deploy.sh  
@@ -417,6 +418,7 @@ $ sh ./deploy.sh
 설치 완료된 서비스를 확인한다.  
 
 > $ bosh -e micro-bosh -d logging-service vms
+
 ```
 Using environment '10.30.40.111' as client 'admin'
 
@@ -436,7 +438,6 @@ queue/cc986003-b6c1-4570-b2d7-32ecfd40eedf                 running        z5  10
 router/c64e9519-713c-4f24-9b04-4bbf2d0ac457                running        z5  10.30.107.140  vm-32ebc53c-6bef-48d7-854e-4b09a4dd9d01  minimal  true  
                                                                               115.68.47.181                                                      
 visualization/d1ac0c78-aa4c-465d-9193-64f2e2de269a         running        z5  10.30.107.143  vm-75fdb6a6-e77f-4adb-8336-ec77254c82fa  default  true
-
 ```
 
 ## <div id="3"/>3.  Logging 서비스 관리
@@ -456,7 +457,6 @@ $ uaac target https://uaa.<DOMAIN> --skip-ssl-validation
 $ uaac target
 Target: https://uaa.<DOMAIN>
 Context: uaa_admin, from client uaa_admin
-
 ```
 
 -	uaac 로그인을 한다.
@@ -466,7 +466,6 @@ $ uaac token client get <UAA_ADMIN_CLIENT_ID> -s <UAA_ADMIN_CLIENT_SECRET>
 Successfully fetched token via client credentials grant.
 Target: https://uaa.<DOMAIN>
 Context: admin, from client admin
-
 ```
 
 -	Logging 서비스 계정을 생성 한다.  
@@ -500,12 +499,11 @@ laasclient
     authorities: uaa.resource
     name: laasclient
     lastmodified: 1542894096080
-
 ```  
 
 ## <div id="3.2"/>  3.2. Logging 서비스 활성화 코드 등록
 
--	PaaS-TA 운영자 포탈에 접속한다.
+-	PaaS-TA 운영자 포탈에 접속한다. 
 ![](../images/logging-service/image002.png)
 
 -	운영관리의 코드관리 메뉴로 이동하여 다음과 같이 코드를 등록한다.
