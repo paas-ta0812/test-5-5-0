@@ -251,11 +251,11 @@ vm_types:
 
 Succeeded
 ```
-
-- common_vars.yml을 서버 환경에 맞게 수정한다. 
+- common_vars.yml을 서버 환경에 맞게 수정한다.
 - 배포 파이프라인에서 사용하는 변수는 system_domain 이다.
 
-> $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
+> $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml   
+
 ```
 # BOSH INFO
 bosh_ip: "10.0.1.6"				# BOSH IP
@@ -304,7 +304,6 @@ portal_web_user_url: "http://portal-web-user.52.78.88.252.xip.io"
 
 ### ETC INFO
 abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io")
-
 ```
 
 
