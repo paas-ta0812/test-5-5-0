@@ -634,7 +634,7 @@ PaaS-TA를 설치하는 환경에 따라 다르게 설정해도 된다.
 VM Type은 IaaS에서 정의된 VM Type이다.  
 
 ※ 다음은 AWS에서 정의한 Instance Type이다.
-![](../images/paasta/images/aws-vmtype.PNG)
+![](../../images/paasta/images/aws-vmtype.PNG)
 
 ### <div id='3.5.3'/>3.5.3 Compilation
 PaaS-TA 및 서비스 설치 시, PaaS-TA는 Compile VM을 생성하여 소스를 컴파일하고, PaaS-TA VM을 생성하여 컴파일된 파일을 대상 VM에 설치한다.  
@@ -896,11 +896,11 @@ ex) uaa_login_logout_redirect_parameter_whitelist=["{PaaS-TA PORTAL URI}","{PaaS
 
 2. uaa_login_links_passwd : UAA 페이지에서 Reset Password 버튼 클릭 시 이동하는 링크 주소
 
-<img src="https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/paasta/images/uaa-login.png" width="663px">
+![](./images/uaa-login.png)  
 
 3. uaa_login_links_signup : UAA 페이지에서 Create Account 버튼 클릭 시 이동하는 링크 주소
+![](./images/uaa-log-2.png)  
 
-<img src="https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/paasta/images/uaa-login-2.png">
 
 ```
 ex) uaa_login_links_signup="{PaaS-TA PORTAL URI}/createuser"
