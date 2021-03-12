@@ -34,8 +34,9 @@
 
 ### <div id="1.3"/> 1.3. 시스템 구성
 
-본 장에서는 애플리케이션 Gateway 서비스의 시스템 구성에 대해 기술하였다. 애플리케이션 Gateway 서비스 시스템은 service-broker, mariadb, api-gateway(WSO2)서비스의 최소사항을 구성하였다.  
-![](../images/apigateway-service/image001.png)
+본 장에서는 애플리케이션 Gateway 서비스의 시스템 구성에 대해 기술하였다. 애플리케이션 Gateway 서비스 시스템은 service-broker, mariadb, api-gateway(WSO2)서비스의 최소사항을 구성하였다.
+
+![시스템 구성도](../images/apigateway-service/image001.png)
 
 VM명 | 인스턴스 수 | vCPU수 | 메모리(GB) | 디스크(GB)
 :--- | :---: | :---: | :---:| :---
@@ -157,12 +158,11 @@ vm_types:
 Succeeded
 ```
 
-
-
 - common_vars.yml을 서버 환경에 맞게 수정한다. 
 - redis에서 사용하는 변수는 bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port, bosh_oauth_port이다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
+
 ```
 # BOSH INFO
 bosh_ip: "10.0.1.6"				# BOSH IP
@@ -211,7 +211,6 @@ portal_web_user_url: "http://portal-web-user.52.78.88.252.xip.io"
 
 ### ETC INFO
 abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io")
-
 ```
 
 - Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
@@ -277,10 +276,10 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d gateway-service deploy --no-redact gateway-ser
     -o operations/${CURRENT_IAAS}-network.yml \
     -l ${COMMON_VARS_PATH} \
     -l vars.yml
-
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/gateway-service  
 $ sh ./deploy.sh  
@@ -289,8 +288,7 @@ $ sh ./deploy.sh
 ### <div id="2.6"/> 2.6. 서비스 설치 - 다운로드 된 PaaS-TA Release 파일 이용 방식
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
-  
-  - 설치 릴리즈 파일 다운로드 : [paasta-api-gateway-service-release.tgz](http://45.248.73.44/index.php/s/9q5gyTL5txPdLS3/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-api-gateway-service-release.tgz](http://45.248.73.44/index.php/s/9q5gyTL5txPdLS3/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -324,6 +322,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d gateway-service deploy --no-redact gateway-ser
 ```  
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/gateway-service  
 $ sh ./deploy.sh  
@@ -456,7 +455,7 @@ PaaS-TA 운영자 포탈에 접속하여 서비스를 등록한다.
 ![](../images/apigateway-service/image004.png))  
 
 > 애플리케이션 Gateway 서비스 대시보드
->
+
 ![](../images/apigateway-service/image005.png)
 ![](../images/apigateway-service/image006.png)
 ![](../images/apigateway-service/image007.png)
