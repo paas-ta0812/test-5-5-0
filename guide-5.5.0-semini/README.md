@@ -6,7 +6,7 @@
 
 
 ## 플랫폼 설치 가이드
-- [설치 파일 다운로드 받기](https://paas-ta.kr/download/package)
+- [설치 파일 다운로드 받기](https://paas-ta.kr/download/preVersion)
 - 운영 환경 설치
   - PaaS-TA 플랫폼 수동 설치
     - [BOSH 설치(AWS, OpenStack)](./install-guide/bosh/PAAS-TA_BOSH2_INSTALL_GUIDE_V5.0.md)
