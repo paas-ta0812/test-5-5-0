@@ -699,16 +699,16 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
   
 ### <div id='3.4'/> 3.4. 서비스 신청
 1. PaaS-Ta 운영자 포탈에 접속하여 로그인한다.
-![3-1-1]
+![](../images/pipeline/adminPortal_login.png)
 
 2. 로그인 후 서비스 관리 > 서비스 브로커 페이지에서 배포 파이프라인 서비스 브로커를 확인한다.
-![3-1-2]
+![](../images/pipeline/adminPortal_serviceBroker.png)
 
 3. 서비스 관리 > 서비스 제어 페이지에서 배포 파이프라인 서비스 플랜 접근 가능 권한을 확인한다.
-![3-1-3]
+![](../images/pipeline/adminPortal_serviceControl.pn)
 
 4. 운영관리 > 카탈로그 > 앱서비스 페이지를 확인하여 "파이프라인" 서비스 이름을 클릭한다.  
-![3-2-1]
+![](../images/pipeline/adminPortal_catalog.png)
 
 - 아래의 내용을 상세 페이지에 입력한다.
 
@@ -729,7 +729,7 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 > 개발용으로 만들어진 파이프라인
 > 배포 파이프라인 Server, 배포 파이프라인 서비스 브로커로 최소사항을 구성하였다.
 >  
-> ![3-2-2]
+![](../images/pipeline/adminPortal_catalogDetail.png)
 
 
 ### <div id='3.5'/> 3.5. 서비스 신청 - CF CLI
