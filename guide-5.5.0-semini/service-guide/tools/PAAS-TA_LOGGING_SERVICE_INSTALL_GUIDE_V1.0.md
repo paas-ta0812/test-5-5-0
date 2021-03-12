@@ -503,8 +503,8 @@ laasclient
 
 ## <div id="3.2"/>  3.2. Logging 서비스 활성화 코드 등록
 
--	PaaS-TA 운영자 포탈에 접속한다. 
-![](../images/logging-service/image002.png)
+-	PaaS-TA 운영자 포탈에 접속한다.
+>![](../images/logging-service/image002.png)
 
 -	운영관리의 코드관리 메뉴로 이동하여 다음과 같이 코드를 등록한다.
 
