@@ -112,8 +112,7 @@ $ docker info
 
 ## 다음과 같이 동작시 정상설치됨
 ```
-![METERING_1]  
-
+![](./images/IMAGE1.png)
 
 
 ```
@@ -124,7 +123,7 @@ $ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 $ docker-compose --version  
 ## 다음과 같이 동작시 정상설치됨
 ```
-![METERING_2]  
+![](./images/IMAGE2.png)
 
 MongoDB , RabbitMQ 실행
 ```
@@ -134,7 +133,7 @@ $ cd cf-abacus-1.1.5
 $ docker-compose up 
 ## 다음과 같이 실행 될 경우 정상 동작됨
 ```  
-![METERING_3]  
+![](./images/IMAGE3.png)
  
 ## <div id='7'/>2.4 UAA 계정 등록
 CF 설치한 abacus에서 CF의 앱 사용량 정보를 수집하기 위해서 CF 접근을 위한 계정 및 토큰을발급 받아야 한다.  
