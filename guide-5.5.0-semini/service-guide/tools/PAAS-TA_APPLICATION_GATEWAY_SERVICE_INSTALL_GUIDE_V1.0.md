@@ -35,7 +35,7 @@
 ### <div id="1.3"/> 1.3. 시스템 구성
 
 본 장에서는 애플리케이션 Gateway 서비스의 시스템 구성에 대해 기술하였다. 애플리케이션 Gateway 서비스 시스템은 service-broker, mariadb, api-gateway(WSO2)서비스의 최소사항을 구성하였다.  
-![001]
+![](./images/apigateway-service/image001.png)
 
 VM명 | 인스턴스 수 | vCPU수 | 메모리(GB) | 디스크(GB)
 :--- | :---: | :---: | :---:| :---
@@ -444,22 +444,22 @@ PaaS-TA 운영자 포탈에 접속하여 서비스를 등록한다.
 > API 등록 및 API 라이프 사이클 관리등의 기능을 제공하는 애플리케이션 Gateway 서비스인 WSO2 서비스를 dedicated 방식으로 제공합니다.  
 > 서비스 관리자 계정은 serviceadmin/<서비스 신청 시 입력한 Password> 입니다.
 >  
-> ![002](../images/apigateway-service/image002.png)
+![](./images/apigateway-service/image002.png)
 
 ### <div id="3.3"/>  3.3. PaaS-TA 사용자 포탈 - 서비스 신청
 -	PaaS-TA 사용자  포탈에 접속하여, 카탈로그를 통해 서비스를 신청한다.   
 
-![003](../images/apigateway-service/image003.png)
+![](./images/apigateway-service/image003.png)
 
 -	대시보드 URL을 통해 서비스에 접근한다.  (서비스의 관리자 계정은 serviceadmin/[서비스 신청시 입력받은 패스워드])  
 
-![004](../images/apigateway-service/image004.png)  
+![](./images/apigateway-service/image004.png))  
 
 > 애플리케이션 Gateway 서비스 대시보드
 >
-> ![005](../images/apigateway-service/image005.png)
-> ![006](../images/apigateway-service/image006.png)
-> ![007](../images/apigateway-service/image007.png)
+![](./images/apigateway-service/image005.png)
+![](./images/apigateway-service/image006.png)
+![](./images/apigateway-service/image007.png)
 
 
 - 애플리케이션 Gateway 서비스(WSO2) 참고 자료  
