@@ -579,7 +579,7 @@ OK
 ##### 등록된 배포 파이프라인 서비스 브로커를 확인한다.
 
 > $ cf service-brokers
->
+
 ```  
 Getting service brokers as admin...
 
@@ -588,7 +588,7 @@ delivery-pipeline-broker       http://10.30.107.64:8080
 ```  
 
 ##### 접근 가능한 서비스 목록을 확인한다.
->$ cf service-access
+> $ cf service-access
 
 ```
 # 서비스 브로커 생성시 디폴트로 접근을 허용하지 않는다.
