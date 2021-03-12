@@ -63,13 +63,11 @@ $ sudo apt-get install python-pip3
 ```    
     
 ## 2.2.	monasca agent 설치   <div id='2.2.'/>
+
 ```
 $ sudo pip3 install monasca-agent==2.11.0
-...
 
 $ sudo pip3 install monasca-agent[libvirt]==2.11.0
-...
-
 ```
     
 ## 2.3.	설치확인   <div id='2.3.'/>
