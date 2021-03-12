@@ -7,7 +7,7 @@
       * [Metering 설치 가이드](guide-5.5.0-semini/install-guide/metering/PAAS-TA_METERING_INSTALL_GUIDE.md)
     * [paasta](guide-5.5.0-semini/install-guide/paasta/README.md)
       * [PaaS-TA 설치 가이드](guide-5.5.0-semini/install-guide/paasta/PAAS-TA_CORE_INSTALL_GUIDE_V5.0.md)
-      * [PaaS-TA 설치 가이드](guide-5.5.0-semini/install-guide/paasta/PAAS-TA_MIN_INSTALL_GUIDE.md)
+      * [PaaS-TA-min 설치 가이드](guide-5.5.0-semini/install-guide/paasta/PAAS-TA_MIN_INSTALL_GUIDE.md)
     * [BOSH-monitoring](guide-5.5.0-semini/install-guide/bosh-monitoring/README.md)
       * [BOSH Monitoring 설치 가이드](guide-5.5.0-semini/install-guide/bosh-monitoring/PAAS-TA_BOSH2_MONITORING_INSTALL_GUIDE.md)
     * [paasta-monitoring](guide-5.5.0-semini/install-guide/paasta-monitoring/README.md)
