@@ -701,13 +701,13 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 >![](../images/pipeline/adminPortal_login.png)
 
 2) 로그인 후 서비스 관리 > 서비스 브로커 페이지에서 배포 파이프라인 서비스 브로커를 확인한다.
-![](../images/pipeline/adminPortal_serviceBroker.png)
+>![](../images/pipeline/adminPortal_serviceBroker.png)
 
 3) 서비스 관리 > 서비스 제어 페이지에서 배포 파이프라인 서비스 플랜 접근 가능 권한을 확인한다.
-![](../images/pipeline/adminPortal_serviceControl.png)
+>![](../images/pipeline/adminPortal_serviceControl.png)
 
 4) 운영관리 > 카탈로그 > 앱서비스 페이지를 확인하여 "파이프라인" 서비스 이름을 클릭한다. 
-![](../images/pipeline/adminPortal_catalog.png)
+>![](../images/pipeline/adminPortal_catalog.png)
 
 
 - 아래의 내용을 상세 페이지에 입력한다.
