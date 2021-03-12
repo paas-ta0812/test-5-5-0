@@ -27,4 +27,4 @@ Monasca-Server는 Openstack에서 VM을 수동 생성하여 설치를 진행한�
 
 #### <div id='1-2-2'/>1.2.2.	Monasca Client(agent) 설치
 
- - [Monasca-Client](./monasca-client.md)
+ - [Monasca-Client](/guide-5.5.0-semini/service-guide/monitoring/monasca-client.md)
