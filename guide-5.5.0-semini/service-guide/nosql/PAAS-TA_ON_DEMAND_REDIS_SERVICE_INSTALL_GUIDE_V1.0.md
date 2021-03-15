@@ -178,6 +178,7 @@ Succeeded
 - redis에서 사용하는 변수는 bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port, bosh_oauth_port, system_domain, paasta_admin_username, paasta_admin_password, bosh_version 이다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
+
 ```
 # BOSH INFO
 bosh_ip: "10.0.1.6"				# BOSH IP
@@ -226,13 +227,13 @@ portal_web_user_url: "http://portal-web-user.52.78.88.252.xip.io"
 
 ### ETC INFO
 abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io")
-
 ```
 
 
 - Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/service-deployment/redis/vars.yml
+
 ```
 # STEMCELL
 stemcell_os: "ubuntu-xenial"                                      # Deployment Main Stemcell OS
@@ -295,6 +296,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d redis deploy --no-redact redis.yml \
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/redis  
 $ sh ./deploy.sh  
@@ -303,8 +305,7 @@ $ sh ./deploy.sh
 ### <div id="2.6"/> 2.6. 서비스 설치 - 다운로드 된 PaaS-TA Release 파일 이용 방식
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
-  
-  - 설치 릴리즈 파일 다운로드 : [paasta-on-demand-redis-release.tgz](http://45.248.73.44/index.php/s/R6y32CAMEmBiaSx/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-on-demand-redis-release.tgz](http://45.248.73.44/index.php/s/R6y32CAMEmBiaSx/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -336,6 +337,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d redis deploy --no-redact redis.yml \
 ```  
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/redis  
 $ sh ./deploy.sh  
@@ -372,6 +374,7 @@ Redis 서비스팩 배포가 완료 되었으면 Application에서 서비스 팩
 ##### 서비스 브로커 목록을 확인한다.
 
 >`$ cf service-brokers`
+
 ```
 Getting service brokers as admin...
 
@@ -397,6 +400,7 @@ paasta-pinpoint-broker  http://10.30.70.82:8080
 ##### 등록된 On-Demand-Redis 서비스 브로커를 확인한다.
 
 >`$ cf service-brokers`
+
 ```
 Getting service brokers as admin...
 
@@ -409,13 +413,14 @@ on-demand-redis-service   http://10.30.255.26:8080
 ##### 접근 가능한 서비스 목록을 확인한다.
 
 >`$ cf service-access`
+
 ```
 Getting service access as admin...
 broker: on-demand-redis-service
   service   plan           access   orgs
   redis     dedicated-vm   none
-
 ```
+
 서비스 브로커 등록시 최초에는 접근을 허용하지 않는다. 따라서 access는 none으로 설정된다.
 
 
@@ -423,6 +428,7 @@ broker: on-demand-redis-service
 
 >`$ cf enable-service-access redis` <br>
 >`$ cf service-access`
+
 ```
 Getting service access as admin...
 broker: paasta-redis-broker
@@ -491,7 +497,9 @@ updated:   2019-07-05T05:58:16Z
 
 There are no bound apps for this service.
 ```
+
 ##### 생성된 Redis 서비스 인스턴스의 status가 create succeeded가 된것을 확인한다.
+
 ```
 Showing info of service redis in org system / space dev as admin...
 
@@ -519,14 +527,15 @@ There are no bound apps for this service.
 
 ### Secuirty-group에 redis_[서비스 할당된 space guid] 가 생성된것을 확인한다.
 >`$ cf space [space] --guid`
+
 ```
 $ cf space dev --guid
 20bc9b52-c3d5-4cd2-94d9-7f444f9ab464
 ```
 
 >`$ cf security-groups`
-```
 
+```
 Getting security groups as admin...
 OK
 
@@ -537,7 +546,6 @@ OK
 #2   public_networks                              <all>          <all>   running
      public_networks                              <all>          <all>   staging
 #3   redis_20bc9b52-c3d5-4cd2-94d9-7f444f9ab464   system         dev     running
-
 ```
 
 
@@ -586,8 +594,6 @@ instances:      0/1
 memory usage:   256M
      state   since                  cpu    memory   disk     details
 #0   down    2019-11-20T01:02:06Z   0.0%   0 of 0   0 of 0   
-
-
 ```
 
 <br>
@@ -605,6 +611,7 @@ TIP: Use 'cf restage redis-sample' to ensure your env variable changes take effe
 ##### 바인드를 적용하기 위해서 App을 재기동한다.
 
 >`$ cf restart redis-example-app`
+
 ```
 Waiting for app to start...
 
@@ -621,7 +628,6 @@ memory usage:    256M
 start command:   bundle exec rackup config.ru -p $PORT
      state     since                  cpu    memory         disk           details
 #0   running   2019-11-20T01:13:03Z   0.0%   9.5M of 256M   100.3M of 1G   
- 
 ```
 
 
@@ -634,14 +640,19 @@ start command:   bundle exec rackup config.ru -p $PORT
 >`$  export APP=redis-example-app.[CF Domain]`
 
 >`$ curl -X PUT $APP/foo -d 'data=bar' `
+
 ```
 success
 ```
+
 >`$ curl -X GET $APP/foo `
+
 ```
 bar
 ```
+
 >`$ curl -X DELETE $APP/foo `
+
 ```
 success
 ```
