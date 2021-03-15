@@ -101,6 +101,7 @@ BOSH_ENVIRONMENT는 BOSH 설치 시 사용한 Director 명이고, CURRENT_IAAS�
 - Stemcell 업로드 Script의 설정 수정 (BOSH_ENVIRONMENT 수정)
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/paasta-deployment/bosh/upload-stemcell.sh
+
 ```                     
 #!/bin/bash
 STEMCELL_VERSION=621.94
