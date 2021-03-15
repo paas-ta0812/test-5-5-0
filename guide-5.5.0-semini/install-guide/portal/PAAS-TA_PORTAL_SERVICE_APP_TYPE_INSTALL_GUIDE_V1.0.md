@@ -210,6 +210,7 @@ binary_storage_email: "<BINARY_STORAGE_EMAIL>"                  # binary storage
      (선택) -o operations/use-compiled-releases.yml (ubuntu-xenial/621.94로 컴파일 된 릴리즈 사용)  
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/portal-deployment/portal-container-infra/deploy.sh
+
 ```
 #!/bin/bash
 
@@ -224,6 +225,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d portal-container-infra deploy --no-redact port
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/portal-deployment/portal-container-infra    
 $ sh ./deploy.sh  
@@ -232,8 +234,7 @@ $ sh ./deploy.sh
 ### <div id="2.6"/> 2.6. 서비스 설치 - 다운로드 된 PaaS-TA Release 파일 이용 방식  
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
-  
-  - 설치 릴리즈 파일 다운로드 : [paasta-portal-api-release-2.3.0-ctn.tgz](https://nextcloud.paas-ta.org/index.php/s/eKf8XWwt8Wy9HrA/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-portal-api-release-2.3.0-ctn.tgz](https://nextcloud.paas-ta.org/index.php/s/eKf8XWwt8Wy9HrA/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -266,6 +267,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d portal-container-infra deploy --no-redact port
 ```  
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/portal-deployment/portal-container-infra   
 $ sh ./deploy.sh  
@@ -379,6 +381,7 @@ abacus_url: "http://abacus.61.252.53.248.xip.io"        # abacus url (e.g. "http
 Portal을 PaaS-TA에 App으로 배포하기 전에 Portal App의 Manifest의 변수를 일괄 변경해주는 Script 동작을 위해 Portal 설치에 필요한 PaaS-TA 및 infra 정보를 확인하여 Script의 변수를 설정한다.
 
 > $ vi ~/workspace/paasta-5.5.1/release/portal/portal-app/1.applyChangeVariable.sh
+
 ```
 #!/bin/bash
 
@@ -429,9 +432,6 @@ OBJECTSTORAGE_PORT="15001"                # portal-container-infra Binary Storag
 UAAC_PORTAL_CLIENT_ID="portalclient"      # UAAC Portal Client ID
 UAAC_PORTAL_CLIENT_SECRET="clientsecret"  # UAAC Poral Client Secret
 USER_APP_SIZE_MB=0                        # USER My App size(MB), if value==0 -> unlimited
-
-......
-
 ```
 
 
@@ -470,9 +470,6 @@ applications:
       eureka_server_maxThreadsForPeerReplication: 0
       eureka_client_server_waitTimeInMsWhenSyncEmpty: 0
       eureka_client_serviceUrl_defaultZone: http://${vcap.application.uris[0]}/eureka/
-
-
-
 ```
 
 
@@ -481,6 +478,7 @@ applications:
 Portal을 PaaS-TA에 App으로 배포해주는 Script 동작을 위해 Script의 접속정보 변수를 설정한다.
 
 > $ vi ~/workspace/paasta-5.5.1/release/portal/portal-app/2.portalContainerPush.sh
+
 ```
 #!/bin/bash
 
@@ -492,9 +490,6 @@ PORTAL_QUOTA_NAME="portal_quota"        # PaaS-TA Portal Quota Name
 PORTAL_ORG_NAME="portal"                # PaaS-TA Portal Org Name
 PORTAL_SPACE_NAME="system"              # PaaS-TA Portal Space Name
 PORTAL_SECURITY_GROUP_NAME="portal"     # PaaS-TA Portal Space Name
-
-......
-
 ```
 
 ### <div id="3.1.5"/> 3.1.5. Portal App 배포 Script 실행
@@ -503,8 +498,6 @@ Portal을 PaaS-TA에 App으로 배포해주는 Script를 실행한다.
 ```
 $ cd ~/workspace/paasta-5.5.1/release/portal/portal-app
 $ source 2.portalContainerPush.sh
-
-.....
 
 name                  requested state   processes           routes
 portal-api            started           web:1/1, task:0/0   portal-api.61.252.53.246.xip.io
@@ -515,7 +508,6 @@ portal-registration   started           web:1/1, task:0/0   portal-registration.
 portal-storage-api    started           web:1/1, task:0/0   portal-storage-api.61.252.53.246.xip.io
 portal-web-admin      started           web:1/1, task:0/0   portal-web-admin.61.252.53.246.xip.io
 portal-web-user       started           web:1/1             portal-web-user.61.252.53.246.xip.io
-
 ```
 
 ### <div id="3.1.6"/> 3.1.6. Portal SSH 설치
@@ -526,6 +518,7 @@ Portal 5.1.0 버전 이상부터는 배포된 어플리케이션의 SSH 접속�
 
 
 - Portal SSH 다운로드 및 배포
+
 ```
 $ wget --content-disposition https://nextcloud.paas-ta.org/index.php/s/awPjYDYCMiHY7yF/download
 $ unzip portal-ssh.zip
@@ -534,16 +527,14 @@ $ cf push
 ```
 
 
-
 ## <div id="4"/>4. PaaS-TA Portal 운영
 
 ### <div id="4.1"/> 4.1. 사용자의 조직 생성 Flag 활성화
 
 PaaS-TA는 기본적으로 일반 사용자는 조직을 생성할 수 없도록 설정되어 있다. 포털 배포를 위해 조직 및 공간을 생성해야 하고 또 테스트를 구동하기 위해서도 필요하므로 사용자가 조직을 생성할 수 있도록 user_org_creation FLAG를 활성화 한다. FLAG 활성화를 위해서는 PaaS-TA 운영자 계정으로 로그인이 필요하다.
 
-```
 $ cf enable-feature-flag user_org_creation
-```
+
 ```
 Setting status of user_org_creation as admin...
 OK
@@ -554,6 +545,7 @@ Feature user_org_creation Enabled.
 ### <div id="4.2"/> 4.2. 사용자포탈 UAA페이지 오류  
 
 - uaac의 endpoint를 설정하고 uaac 로그인을 실행한다.
+
 ```
 # endpoint 설정
 $ uaac target https://uaa.<DOMAIN> --skip-ssl-validation
@@ -569,8 +561,13 @@ Successfully fetched token via client credentials grant.
 Target: https://uaa.<DOMAIN>
 Context: admin, from client admin
 ```
+
 - redirect오류 - portalclient 미등록  
-![paas-ta-portal-31]  
+
+
+![](./images/Paas-TA-Portal_27.png)  
+
+
 1. uaac portalclient가 등록이 되어있지 않다면 해당 화면과 같이 redirect오류가 발생한다.  
 2. uaac client add를 통해 potalclient를 추가시켜주어야 한다.   
 > $ uaac client add <PORTAL_UAA_CLIENT_ID> -s <PORTAL_UAA_CLIENT_SECRET> --redirect_uri <PORTAL_WEB_USER_URI>, <PORTAL_WEB_USER_URI>/callback --scope   "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" --authorized_grant_types "authorization_code , client_credentials , refresh_token" --authorities="uaa.resource" --autoapprove="openid , cloud_controller_service_permissions.read"  
@@ -586,7 +583,11 @@ $ uaac client add portalclient -s clientsecret --redirect_uri "http://portal-web
 ```
 
 - redirect오류 - portalclient의 redirect_uri 등록 오류  
-![paas-ta-portal-32]  
+
+
+![](./images/Paas-TA-Portal_28.png)  
+
+
 1. uaac portalclient가 uri가 잘못 등록되어있다면 해당 화면과 같이 redirect오류가 발생한다.   
 2. uaac client update를 통해 uri를 수정해야한다.  
 > $ uaac client update portalclient --redirect_uri "<PORTAL_WEB_USER_URI>, <PORTAL_WEB_USER_URI>/callback"   
@@ -600,16 +601,36 @@ $ uaac client update portalclient --redirect_uri "http://portal-web-user.<DOMAIN
 ##### 1. Catalog 빌드팩, 서비스팩 추가  
 Paas-TA Portal 설치 후에 관리자 포탈에서 빌드팩, 서비스팩을 등록해야 사용자 포탈에서 사용이 가능하다.  
  
-1. 관리자 포탈에 접속한다.(portal-web-admin.\<DOMAIN\>)  
-![paas-ta-portal-15]  
-2. 운영관리를 누른다.  
-![paas-ta-portal-16]  
-3. 카탈로그 페이지에 들어간다.  
-![paas-ta-portal-17]  
-4. 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.  
-![paas-ta-portal-18]  
-5. 사용자포탈에서 변경된값이 적용되어있는지 확인한다.  
-![paas-ta-portal-19]   
+1. 관리자 포탈에 접속한다.(portal-web-admin.\<DOMAIN\>)
+
+
+![](./images/Paas-TA-Portal_15.png)
+
+
+2. 운영관리를 누른다.
+
+
+![](./images/Paas-TA-Portal_16.png)
+
+
+3. 카탈로그 페이지에 들어간다.
+
+
+![](./images/Paas-TA-Portal_17.png)
+
+
+4. 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.
+
+
+![](./images/Paas-TA-Portal_18.png)
+
+
+5. 사용자포탈에서 변경된값이 적용되어있는지 확인한다.
+
+
+![](./images/Paas-TA-Portal_19.png)
+
+
     
 [paas-ta-portal-01]:../../install-guide/portal/images/Paas-TA-Portal_App_01.png
 [paas-ta-portal-15]:../../install-guide/portal/images/Paas-TA-Portal_15.png
