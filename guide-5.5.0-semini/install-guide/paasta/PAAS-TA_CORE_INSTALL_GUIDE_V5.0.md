@@ -885,7 +885,7 @@ haproxy_network: "default"		# HAProxy 네트워크
 
 #### <div id='3.6.1.3'/>● PaaS-TA 그외 Variable List
 
-1. uaa_login_logout_redirect_parameter_whitelist : 포탈 페이지 이동을 위한 UAA Redirect Whitelist 등록 변수
+1) uaa_login_logout_redirect_parameter_whitelist : 포탈 페이지 이동을 위한 UAA Redirect Whitelist 등록 변수
 
 ```
 ex) uaa_login_logout_redirect_parameter_whitelist=["{PaaS-TA PORTAL URI}","{PaaS-TA PORTAL URI}/callback","{PaaS-TA PORTAL URI}/login"]
@@ -893,15 +893,14 @@ ex) uaa_login_logout_redirect_parameter_whitelist=["{PaaS-TA PORTAL URI}","{PaaS
 
 > xip.io : 임시 도메인, 기본 DNS 서버가 8.8.8.8로 설정되어야 한다.  
 > xip.io를 사용하지 않고 DNS를 사용할 경우, Whitelist에 포탈 DNS, 포탈 DNS/callback, 포탈 DNS/login 세 개의 항목을 등록해야 한다.
-> 
 
-2. uaa_login_links_passwd : UAA 페이지에서 Reset Password 버튼 클릭 시 이동하는 링크 주소
+2) uaa_login_links_passwd : UAA 페이지에서 Reset Password 버튼 클릭 시 이동하는 링크 주소
 
 
 >![](./images/uaa-login.png)
 
 
-3. uaa_login_links_signup : UAA 페이지에서 Create Account 버튼 클릭 시 이동하는 링크 주소
+3) uaa_login_links_signup : UAA 페이지에서 Create Account 버튼 클릭 시 이동하는 링크 주소
 
 
 >![](./images/uaa-login-2.png)
@@ -911,13 +910,13 @@ ex) uaa_login_logout_redirect_parameter_whitelist=["{PaaS-TA PORTAL URI}","{PaaS
 ex) uaa_login_links_signup="{PaaS-TA PORTAL URI}/createuser"
 ```
 
-4. uaa_client_portal_redirect_uri : UAAC Portal Client의 Redirect URI 지정 변수, 포탈에서 로그인 버튼 클릭 후 UAA 페이지에서 로그인 성공 시 이동하는 URI
+4) uaa_client_portal_redirect_uri : UAAC Portal Client의 Redirect URI 지정 변수, 포탈에서 로그인 버튼 클릭 후 UAA 페이지에서 로그인 성공 시 이동하는 URI
 
 ```
 ex) uaa_client_portal_redirect_uri="{PaaS-TA PORTAL URI}, {PaaS-TA PORTAL URI}/callback"
 ```
 
-5. uaa_client_portal_secret : UAAC Portal Client에 접근하기 위한 Secret 변수
+5) uaa_client_portal_secret : UAAC Portal Client에 접근하기 위한 Secret 변수
 
 ```
 ex) uaa_client_portal_secret="portalclient"
@@ -927,7 +926,7 @@ ex) uaa_client_portal_secret="portalclient"
 
 ![PaaSTa_VALUE_Image]
 
-6. uaa_client_admin_secret : UAAC Admin Client에 접근하기 위한 Secret 변수
+6) uaa_client_admin_secret : UAAC Admin Client에 접근하기 위한 Secret 변수
 
 ```
 ex) uaa_client_admin_secret="admin-secret"
