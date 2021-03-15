@@ -628,7 +628,12 @@ PaaS-TA를 설치하는 환경에 따라 다르게 설정해도 된다.
 VM Type은 IaaS에서 정의된 VM Type이다.  
 
 ※ 다음은 AWS에서 정의한 Instance Type이다.
+
+
+
 ![PaaSTa_FLAVOR_Image]
+
+
 
 ### <div id='3.5.3'/>● Compilation
 PaaS-TA 및 서비스 설치 시, PaaS-TA는 Compile VM을 생성하여 소스를 컴파일하고, PaaS-TA VM을 생성하여 컴파일된 파일을 대상 VM에 설치한다.  
@@ -874,7 +879,7 @@ ex) uaa_client_portal_secret="portalclient"
   paasta-portal deploy 파일 안의 portal_client_secret의 값과 일치해야 한다.
 ```
 
-![PaaSTa_VALUE_Image]
+>![](./images/uaa-login-2.png)
 
 (6) uaa_client_admin_secret : UAAC Admin Client에 접근하기 위한 Secret 변수
 
