@@ -182,6 +182,7 @@ Succeeded
 - Portal-API에서 사용하는 변수는 system_domain, paasta_admin_username, paasta_admin_password, paasta_database_ips, paasta_database_port, paasta_database_type, paasta_database_driver_class, paasta_cc_db_id, paasta_cc_db_password, paasta_uaa_db_id, paasta_uaa_db_password, uaa_client_admin_id, uaa_client_admin_secret, monitoring_api_url, portal_web_user_url이다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
+
 ```
 # BOSH INFO
 bosh_ip: "10.0.1.6"				# BOSH IP
@@ -230,7 +231,6 @@ portal_web_user_url: "http://portal-web-user.52.78.88.252.xip.io"
 
 ### ETC INFO
 abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io")
-
 ```
 
 
@@ -327,6 +327,7 @@ mail_smtp_properties_subject: "<MAIL_SMTP_PROPERTIES_SUBJECT>"  # mail-smtp : pr
      (선택) -o operations/use-compiled-releases.yml (ubuntu-xenial/621.94로 컴파일 된 릴리즈 사용) 
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/portal-deployment/portal-api/deploy.sh
+
 ```
 #!/bin/bash
 
@@ -342,7 +343,8 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d portal-api deploy --no-redact portal-api.yml \
    -l vars.yml
 ```
 
-- 서비스를 설치한다.  
+- 서비스를 설치한다.
+  
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/portal-deployment/portal-api   
 $ sh ./deploy.sh  
@@ -352,7 +354,7 @@ $ sh ./deploy.sh
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
   
-  - 설치 릴리즈 파일 다운로드 : [paasta-portal-api-release-2.4.0.tgz](https://nextcloud.paas-ta.org/index.php/s/im9LWHZGs9aaP2d/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-portal-api-release-2.4.0.tgz](https://nextcloud.paas-ta.org/index.php/s/im9LWHZGs9aaP2d/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -387,6 +389,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d portal-api deploy --no-redact portal-api.yml \
 ```  
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/portal-deployment/portal-api  
 $ sh ./deploy.sh  
@@ -428,9 +431,8 @@ Succeeded
 
 PaaS-TA는 기본적으로 일반 사용자는 조직을 생성할 수 없도록 설정되어 있다. 포털 배포를 위해 조직 및 공간을 생성해야 하고 또 테스트를 구동하기 위해서도 필요하므로 사용자가 조직을 생성할 수 있도록 user_org_creation FLAG를 활성화 한다. FLAG 활성화를 위해서는 PaaS-TA 운영자 계정으로 로그인이 필요하다.
 
-```
 $ cf enable-feature-flag user_org_creation
-```
+
 ```
 Setting status of user_org_creation as admin...
 OK
@@ -440,15 +442,19 @@ Feature user_org_creation Enabled.
 
 ### <div id="3.2"/> 3.2. 사용자포탈 UAA페이지 오류  
 
+
 >![paas-ta-portal-31]
-1. uaac portalclient가 등록이 되어있지 않다면 해당 화면과 같이 redirect오류가 발생한다.
-2. uaac client add를 통해 potalclient를 추가시켜주어야 한다.
+
+
+(1) uaac portalclient가 등록이 되어있지 않다면 해당 화면과 같이 redirect오류가 발생한다.
+
+(2) uaac client add를 통해 potalclient를 추가시켜주어야 한다.
     > $ uaac target\
     $ uaac token client get\
         Client ID:  admin\
         Client secret:  *****
         
-3. uaac client add portalclient –s “portalclient Secret” 
+(3) uaac client add portalclient –s “portalclient Secret” 
 >--redirect_uri "사용자포탈 Url, 사용자포탈 Url/callback"\
 $ uaac client add portalclient -s xxxxx --redirect_uri "http://portal-web-user.xxxx.xip.io, http://portal-web-user.xxxx.xip.io/callback" \
 --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \
@@ -456,44 +462,82 @@ $ uaac client add portalclient -s xxxxx --redirect_uri "http://portal-web-user.x
 --authorities="uaa.resource" \
 --autoapprove="openid , cloud_controller_service_permissions.read"
 
+
  >![paas-ta-portal-32]
-1. uaac portalclient가 url이 잘못 등록되어있다면 해당 화면과 같이 redirect오류가 발생한다. 
-2. uaac client update를 통해 url을 수정해야한다.
+ 
+ 
+(1) uaac portalclient가 url이 잘못 등록되어있다면 해당 화면과 같이 redirect오류가 발생한다. 
+
+(2) uaac client update를 통해 url을 수정해야한다.
+
    > $ uaac target\
     $ uaac token client get\
    Client ID:  admin\
    Client secret:  *****
-3. uaac client update portalclient --redirect_uri "사용자포탈 Url, 사용자포탈 Url/callback"
+   
+(3) uaac client update portalclient --redirect_uri "사용자포탈 Url, 사용자포탈 Url/callback"
     >$ uaac client update portalclient --redirect_uri "http://portal-web-user.xxxx.xip.io, http://portal-web-user.xxxx.xip.io/callback"
 
 ### <div id="3.3"/> 3.3. 운영자 포탈 유저 페이지 조회 오류
-1. 페이지 이동시 정보를 가져오지 못하고 오류가 났을 경우 common-api VM으로 이동후에 DB 정보 config를 수정후 재시작을 해 주어야 한다.
+페이지 이동시 정보를 가져오지 못하고 오류가 났을 경우 common-api VM으로 이동후에 DB 정보 config를 수정후 재시작을 해 주어야 한다.
 
 ### <div id="3.4"/> 3.4. DB Migration
 이전버전에서 사용한 Portal DB를 PaaS-TA 3.5 Portal DB에 마이그레이션 하는 방법을 설명한다.
-##### 1. DB tool을 이용해 기존에 사용한 DB와 Paas-TA 3.5 Portal DB를 연결한다. 
+
+##### (1) DB tool을 이용해 기존에 사용한 DB와 Paas-TA 3.5 Portal DB를 연결한다. 
  * 가이드의 DB tool을 이용한 마이그레이션 설명은 navicat을 기준으로 한다.
-##### 2. 마이그레이션할 table의 레코드 데이터를 전부 삭제한다.
+##### (2) 마이그레이션할 table의 레코드 데이터를 전부 삭제한다.
+
+
 >![paas-ta-portal-25]
-##### 3. Tools - Data Transfer를 클릭해서 마이그레이션 설정창을 띄운다.
+
+
+##### (3) Tools - Data Transfer를 클릭해서 마이그레이션 설정창을 띄운다.
+
+
 >![paas-ta-portal-21]
-##### 4. 마이그레이션할 source DB(기존 DB), target DB(Paas-TA 3.5 Portal DB)를 설정한다.
+
+
+##### (4) 마이그레이션할 source DB(기존 DB), target DB(Paas-TA 3.5 Portal DB)를 설정한다.
+
+
 >![paas-ta-portal-20]
-##### 5. Option에 들어가 Table Options의 Create tables 옵션에 체크를 해제, Orther Options의 Contiune on error를 체크한 후 next를 누른다.
+
+
+##### (5) Option에 들어가 Table Options의 Create tables 옵션에 체크를 해제, Orther Options의 Contiune on error를 체크한 후 next를 누른다.
+
+
 >![paas-ta-portal-24]
-##### 6. 데이터를 이동할 테이블을 설정 후 next를 누른다.
+
+
+##### (6) 데이터를 이동할 테이블을 설정 후 next를 누른다.
+
+
 >![paas-ta-portal-22]
-##### 7-1. 마이그레이션이 정상적으로 완료된 모습
+
+
+##### (7). 마이그레이션이 정상적으로 완료된 모습
+
+
 >![paas-ta-portal-23]
-##### 7-2. 마이그레이션 오류난 모습
+
+
+##### (8) 마이그레이션 오류난 모습
+
+
 >![paas-ta-portal-26]
-##### 7-3. 기존 DB에 오류난 Paas-TA Portal table의 Design에 맞춰 수정후에 다시 마이그레이션을 진행한다.
+
+
+##### (9) 기존 DB에 오류난 Paas-TA Portal table의 Design에 맞춰 수정후에 다시 마이그레이션을 진행한다.
   
 ### <div id="3.5"/> 3.5. Log
 Paas-TA Portal 각각 Instance의 log를 확인 할 수 있다.
-1. 로그를 확인할 Instance에 접근한다.
+
+(1) 로그를 확인할 Instance에 접근한다.
+
     > bosh ssh -d [deployment name] [instance name]
        
+       ```
        Instance                                                          Process State  AZ  IPs            VM CID                                   VM Type        Active  
        binary_storage/9f58a9b7-2a3d-4ee9-8975-7b04b99c0a21               running        z5  10.30.107.212  vm-e65ad396-ce65-4ef0-962d-5c54fa411769  portal_large   true  
        haproxy/8cc2d633-2b43-4f3d-a2e8-72f5279c11d5                      running        z5  10.30.107.213  vm-315bfa1b-9829-46de-a19d-3bd65e9f9ad4  portal_large   true  
@@ -535,17 +579,22 @@ Paas-TA Portal 각각 Instance의 log를 확인 할 수 있다.
        See "man sudo_root" for details.
        
        paas-ta-portal-api/48fa0c5a-52eb-4ae8-a7b9-91275615318c:~$ 
+       ```
 
-2. 로그파일이 있는 폴더로 이동한다.
+(2) 로그파일이 있는 폴더로 이동한다.
+
     > 위치 : /var/vcap/sys/log/[job name]/
     
+         ```
          paas-ta-portal-api/48fa0c5a-52eb-4ae8-a7b9-91275615318c:~$ cd /var/vcap/sys/log/paas-ta-portal-api/
          paas-ta-portal-api/48fa0c5a-52eb-4ae8-a7b9-91275615318c:/var/vcap/sys/log/paas-ta-portal-api$ ls
          paas-ta-portal-api.stderr.log  paas-ta-portal-api.stdout.log
+         ```
 
-3. 로그파일을 열어 내용을 확인한다.
+(3) 로그파일을 열어 내용을 확인한다.
     > vim [job name].stdout.log
-        
+    
+        ```
         예)
         vim paas-ta-portal-api.stdout.log
         2018-09-04 02:08:42.447 ERROR 7268 --- [nio-2222-exec-1] p.p.a.e.GlobalControllerExceptionHandler : Error message : Response : org.springframework.security.web.firewall.FirewalledResponse@298a1dc2
@@ -583,21 +632,41 @@ Paas-TA Portal 각각 Instance의 log를 확인 할 수 있다.
                 at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
                 at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
                 at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	```
 
 ### <div id="3.6"/> 3.6. 카탈로그 적용
-##### 1. Catalog 빌드팩, 서비스팩 추가
+##### (1) Catalog 빌드팩, 서비스팩 추가
 Paas-TA Portal 설치 후에 관리자 포탈에서 빌드팩, 서비스팩을 등록해야 사용자 포탈에서 사용이 가능하다.
  
- 1. 관리자 포탈에 접속한다.(portal-web-admin.[public ip].xip.io)
+1) 관리자 포탈에 접속한다.(portal-web-admin.[public ip].xip.io)
+
+
     >![paas-ta-portal-15]
- 2. 운영관리를 누른다.
+    
+
+2) 운영관리를 누른다.
+
+
     >![paas-ta-portal-16]
- 2. 카탈로그 페이지에 들어간다.
+    
+    
+3) 카탈로그 페이지에 들어간다.
+
+
     >![paas-ta-portal-17]
- 3. 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.
+    
+
+4) 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.
+
+
     >![paas-ta-portal-18]
- 4. 사용자포탈에서 변경된값이 적용되어있는지 확인한다.
+    
+
+5) 사용자포탈에서 변경된값이 적용되어있는지 확인한다.
+
+
     >![paas-ta-portal-19] 
+    
     
 [paas-ta-portal-01]:../../install-guide/portal/images/Paas-TA-Portal_01.png
 [paas-ta-portal-02]:../../install-guide/portal/images/Paas-TA-Portal_02.png
