@@ -632,6 +632,7 @@ VM Type은 IaaS에서 정의된 VM Type이다.
 ※ 다음은 AWS에서 정의한 Instance Type이다.
 
 
+
 ![PaaSTa_FLAVOR_Image]
 
 
@@ -654,6 +655,7 @@ Networks는 AZ 별 Subnet Network, DNS, Security Groups, Network ID를 정의한
 
 common_vars.yml파일과 vars.yml을 수정하여 PaaS-TA 설치시 적용하는 변수를 설정할 수 있다.
 
+```
 <table>
 <tr>
 <td>common_vars.yml</td>
@@ -676,7 +678,7 @@ common_vars.yml파일과 vars.yml을 수정하여 PaaS-TA 설치시 적용하는
 <td>PaaS-TA을 배포하는 Manifest 파일</td>
 </tr>
 </table>
-
+```
 
 
 ### <div id='3.6.1'/>3.6.1. PaaS-TA 설치 Variable File
@@ -924,7 +926,7 @@ ex) uaa_client_portal_secret="portalclient"
   paasta-portal deploy 파일 안의 portal_client_secret의 값과 일치해야 한다.
 ```
 
-![PaaSTa_VALUE_Image]
+>![](./images/paasta-value.png)
 
 (6) uaa_client_admin_secret : UAAC Admin Client에 접근하기 위한 Secret 변수
 
