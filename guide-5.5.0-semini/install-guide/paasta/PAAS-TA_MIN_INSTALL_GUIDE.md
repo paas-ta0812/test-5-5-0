@@ -79,6 +79,7 @@ PaaS-TA 3.1 버전까지는 PaaS-TA Container, Controller를 각각의 deploymen
 
 ## <div id='3.2'/>3.2. 설치 파일 다운로드
 - PaaS-TA를 설치하기 위한 deployment가 존재하지 않는다면 다운로드 받는다
+
 ```
 $ mkdir -p ~/workspace/paasta-5.5.1/deployment
 $ cd ~/workspace/paasta-5.5.1/deployment
@@ -89,7 +90,8 @@ $ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.5.1-min
 
 ## <div id='3.3'/>3.3. Stemcell 업로드
 Stemcell은 배포 시 생성되는 PaaS-TA VM Base OS Image이며, PaaS-TA 5.5.1은 Ubuntu xenial stemcell 621.94를 기반으로 한다.  
-기본적인 Stemcell 업로드 명령어는 다음과 같다.  
+기본적인 Stemcell 업로드 명령어는 다음과 같다. 
+
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
 ```
@@ -101,6 +103,7 @@ BOSH_ENVIRONMENT는 BOSH 설치 시 사용한 Director 명이고, CURRENT_IAAS�
 - Stemcell 업로드 Script의 설정 수정 (BOSH_ENVIRONMENT 수정)
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/paasta-deployment/bosh/upload-stemcell.sh
+
 ```                     
 #!/bin/bash
 STEMCELL_VERSION=621.94
@@ -120,7 +123,6 @@ elif [[ ${CURRENT_IAAS} = "vsphere" ]]; then
 else
         bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://s3.amazonaws.com/bosh-core-stemcells/${STEMCELL_VERSION}/bosh-stemcell-${STEMCELL_VERSION}-warden-boshlite-ubuntu-xenial-go_agent.tgz -n
 fi
-
 ```
 
 - Stemcell 업로드 Script 실행
@@ -162,12 +164,12 @@ $ wget https://s3.amazonaws.com/bosh-core-stemcells/621.94/bosh-stemcell-621.94-
 $ cd ~/workspace/paasta-5.5.1
 $ wget https://nextcloud.paas-ta.org/index.php/s/RLgPANn7LNmGrqP/download  --content-disposition
 $ unzip stemcell.zip
-
 ```
 
 - 오프라인 Stemcell 업로드 Script의 설정 수정 (BOSH_ENVIRONMENT, STEMCELL_DIR 수정)
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/paasta-deployment/bosh/offline-upload-stemcell.sh
+
 ```                     
 #!/bin/bash
 STEMCELL_VERSION=621.94
@@ -200,6 +202,7 @@ $ source offline-upload-stemcell.sh
 ## <div id='3.4'/>3.4. Runtime Config 설정  
 Runtime config는 BOSH로 배포되는 VM에 적용되는 설정이다.  
 기본적인 Runtime Config 설정 명령어는 다음과 같다.  
+
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} update-runtime-config {PATH} --name={NAME}
 ```
@@ -217,6 +220,7 @@ PaaS-TA 5.5.1은 Runtime Config 설정 스크립트를 지원하며, BOSH 로그
 
   - Runtime Config 업데이트 Script 수정 (BOSH_ENVIRONMENT 수정)
 > $ vi ~/workspace/paasta-5.5.1/deployment/paasta-deployment/bosh/update-runtime-config.sh
+
 ```                     
 #!/bin/bash
 
@@ -224,15 +228,17 @@ BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (PaaS-TA에
 
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n runtime-configs/dns.yml
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n --name=os-conf runtime-configs/os-conf.yml
-
 ```
+
 - Runtime Config 업데이트 Script 실행
+
 ```                     
 $ cd ~/workspace/paasta-5.5.1/deployment/paasta-deployment/bosh
 $ source update-runtime-config.sh
 ```
 
   - Runtime Config 확인  
+  
   ```  
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config --name=os-conf
@@ -252,12 +258,12 @@ $ wget https://nextcloud.paas-ta.org/index.php/s/8wf2Fjn2ytxsnR7/download --cont
 
 # os-conf 22.1.0 다운로드 
 $ wget https://nextcloud.paas-ta.org/index.php/s/G7ossXeZZHeMPTQ/download --content-disposition
-
 ```
 
 - 오프라인 Runtime Config 업데이트 Script 수정 (BOSH_ENVIRONMENT, RELEASE_DIR 수정)
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/paasta-deployment/bosh/offline-update-runtime-config.sh
+
 ```                     
 #!/bin/bash
   
@@ -642,6 +648,7 @@ Networks는 AZ 별 Subnet Network, DNS, Security Groups, Network ID를 정의한
 
 common_vars.yml파일과 vars.yml을 수정하여 PaaS-TA 설치시 적용하는 변수를 설정할 수 있다.
 
+```
 <table>
 <tr>
 <td>common_vars.yml</td>
@@ -665,7 +672,7 @@ common_vars.yml파일과 vars.yml을 수정하여 PaaS-TA 설치시 적용하는
 </td>
 </tr>
 </table>
-
+```
 
 
 ### <div id='3.6.1'/>3.6.1. PaaS-TA 설치 Variable File
@@ -676,7 +683,6 @@ common_vars.yml파일과 vars.yml을 수정하여 PaaS-TA 설치시 적용하는
 PaaS-TA 5.5.1을 설치할 때는 system_domain, paasta_admin_username, paasta_admin_password, uaa_client_admin_secret, uaa_client_portal_secret, paasta_database_port의 값을 변경 하여 설치 할 수 있다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
-
 
 ```
 # BOSH INFO
@@ -732,6 +738,7 @@ abacus_url: "http://abacus.xx.xx.xxx.xxx.xip.io"	# Abacus URL (e.g. "http://abac
 PaaS-TA를 설치 할 때 적용되는 각종 변수값이나 배포 될 VM의 설정을 변경할 수 있다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/paasta-deployment/paasta/min-vars.yml
+
 ```
 # SERVICE VARIABLE
 deployment_name: "paasta"					# Deployment Name
@@ -832,52 +839,60 @@ haproxy_network: "default"		# HAProxy 네트워크
 
 #### <div id='3.6.1.3'/>● PaaS-TA 그외 Variable List
 
-1. uaa_login_logout_redirect_parameter_whitelist : 포탈 페이지 이동을 위한 UAA Redirect Whitelist 등록 변수
+(1) uaa_login_logout_redirect_parameter_whitelist : 포탈 페이지 이동을 위한 UAA Redirect Whitelist 등록 변수
+
 ```
 ex) uaa_login_logout_redirect_parameter_whitelist=["{PaaS-TA PORTAL URI}","{PaaS-TA PORTAL URI}/callback","{PaaS-TA PORTAL URI}/login"]
 ```
+
 > xip.io : 임시 도메인, 기본 DNS 서버가 8.8.8.8로 설정되어야 한다.  
 > xip.io를 사용하지 않고 DNS를 사용할 경우, Whitelist에 포탈 DNS, 포탈 DNS/callback, 포탈 DNS/login 세 개의 항목을 등록해야 한다.
 
-2. uaa_login_links_passwd : UAA 페이지에서 Reset Password 버튼 클릭 시 이동하는 링크 주소
+(2) uaa_login_links_passwd : UAA 페이지에서 Reset Password 버튼 클릭 시 이동하는 링크 주소
 
-<img src="https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/paasta/images/uaa-login.png" width="663px">
+>![](./images/uaa-login.png)
 
-3. uaa_login_links_signup : UAA 페이지에서 Create Account 버튼 클릭 시 이동하는 링크 주소
+(3) uaa_login_links_signup : UAA 페이지에서 Create Account 버튼 클릭 시 이동하는 링크 주소
 
-<img src="https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/paasta/images/uaa-login-2.png">
+>![](./images/uaa-login-2.png)
 
 ```
 ex) uaa_login_links_signup="{PaaS-TA PORTAL URI}/createuser"
 ```
 
-4. uaa_client_portal_redirect_uri : UAAC Portal Client의 Redirect URI 지정 변수, 포탈에서 로그인 버튼 클릭 후 UAA 페이지에서 로그인 성공 시 이동하는 URI
+(4) uaa_client_portal_redirect_uri : UAAC Portal Client의 Redirect URI 지정 변수, 포탈에서 로그인 버튼 클릭 후 UAA 페이지에서 로그인 성공 시 이동하는 URI
+
 ```
 ex) uaa_client_portal_redirect_uri="{PaaS-TA PORTAL URI}, {PaaS-TA PORTAL URI}/callback"
 ```
 
-5. uaa_client_portal_secret : UAAC Portal Client에 접근하기 위한 Secret 변수
+(5) uaa_client_portal_secret : UAAC Portal Client에 접근하기 위한 Secret 변수
+
 ```
 ex) uaa_client_portal_secret="portalclient"
 
   paasta-portal deploy 파일 안의 portal_client_secret의 값과 일치해야 한다.
 ```
+
 ![PaaSTa_VALUE_Image]
 
-6. uaa_client_admin_secret : UAAC Admin Client에 접근하기 위한 Secret 변수
+(6) uaa_client_admin_secret : UAAC Admin Client에 접근하기 위한 Secret 변수
+
 ```
 ex) uaa_client_admin_secret="admin-secret"
 ```
 
 - uaa_client_admin_secret 적용 확인 방법
   
-    (1) PaaS-TA 설치 후 아래 명령어 실행한다.
+    1) PaaS-TA 설치 후 아래 명령어 실행한다.
+    
     ```
     $ uaac target
     $ uaac token client get
     ```
 
-    (2) 설정한 secret 값으로 admin token을 얻을 경우 아래와 같은 결과가 출력된다.
+    2) 설정한 secret 값으로 admin token을 얻을 경우 아래와 같은 결과가 출력된다.
+    
     ```
     ubuntu@inception:~$ uaac target
     
@@ -897,6 +912,7 @@ ex) uaa_client_admin_secret="admin-secret"
 
 ### <div id='3.6.2'/>3.6.2. PaaS-TA Operation 파일
 
+```
 <table>
 <tr>
 <td>파일명</td>
@@ -981,6 +997,7 @@ ex) uaa_client_admin_secret="admin-secret"
 <td>7VMs 배포시 사용</td>
 </tr>
 </table>
+```
 
 ### <div id='3.6.3'/>3.6.3.   PaaS-TA 설치 Shell Scripts
 
@@ -999,6 +1016,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} -d paasta deploy min-paasta-deployment.yml
 
 PaaS-TA 배포 시, 설치 Option을 추가해야 한다. 설치 Option에 대한 설명은 아래와 같다.
 
+```
 <table>
 <tr>
 <td>-e</td>
@@ -1022,11 +1040,11 @@ PaaS-TA 배포 시, 설치 Option을 추가해야 한다. 설치 Option에 대�
 <td>YAML파일에 작성한 변수를 읽어올때 사용한다.</td>
 </tr>
 </table>
+```
 
-
-### 
 
 #### <div id='3.6.3.1'/>● deploy-aws-4vms.sh
+
 ```
 BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
 
@@ -1041,6 +1059,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# Pa
 ```
 
 #### <div id='3.6.3.2'/>● deploy-aws-7vms.sh
+
 ```
 BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
 
@@ -1057,6 +1076,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# Pa
         -l min-vars.yml \						# PaaS-TA-min 설치시 적용하는 변수 설정 파일
         -l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
 ```
+
 - Shell script 파일에 실행 권한 부여
 
 ```
@@ -1134,11 +1154,8 @@ router/c01b1aa4-43c9-42f6-9003-cf8f8664d142    running        z7  10.0.30.204  i
 4 vms
 
 Succeeded
-```
 
 
-
-```
 ubuntu@inception:~$ bosh -e micro-bosh vms -d paasta
 Using environment '10.0.1.6' as client 'admin'
 
@@ -1272,11 +1289,8 @@ router/c01b1aa4-43c9-42f6-9003-cf8f8664d142    running        z7  10.0.30.204  i
 4 vms
 
 Succeeded
-```
 
 
-
-```
 ubuntu@inception:~$ bosh -e micro-bosh vms -d paasta
 Using environment '10.0.1.6' as client 'admin'
 
