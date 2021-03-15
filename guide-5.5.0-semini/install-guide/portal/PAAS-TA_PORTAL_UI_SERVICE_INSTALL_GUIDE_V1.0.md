@@ -99,12 +99,16 @@ Succeeded
 
 - Portal Deployment Git Repository URL : https://github.com/PaaS-TA/portal-deployment/tree/v5.1.1
 
-```
 # Deployment 다운로드 파일 위치 경로 생성 및 설치 경로 이동
+
+```
 $ mkdir -p ~/workspace/paasta-5.5.1/deployment
 $ cd ~/workspace/paasta-5.5.1/deployment
+```
 
 # Deployment 파일 다운로드
+
+```
 $ git clone https://github.com/PaaS-TA/portal-deployment.git -b v5.1.1
 ```
 
@@ -179,6 +183,7 @@ Succeeded
 - Portal-UI에서 사용하는 변수는 system_domain, paasta_api_version, uaa_client_portal_secret 이다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
+
 ```
 # BOSH INFO
 bosh_ip: "10.0.1.6"				# BOSH IP
@@ -227,14 +232,13 @@ portal_web_user_url: "http://portal-web-user.52.78.88.252.xip.io"
 
 ### ETC INFO
 abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io")
-
 ```
-
 
 
 - Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/portal-deployment/portal-ui/vars.yml  
+
 ```
 # STEMCELL INFO
 stemcell_os: "ubuntu-xenial"                                             # stemcell os
@@ -286,6 +290,7 @@ portal_default_api_desc: "PaaS-TA 5.5.1 install infra"                   # ETC :
      (선택) -o operations/use-compiled-releases.yml (ubuntu-xenial/621.94로 컴파일 된 릴리즈 사용)  
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/portal-deployment/portal-ui/deploy.sh
+
 ```
 #!/bin/bash
 
@@ -302,6 +307,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d portal-ui deploy portal-ui.yml \
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/portal-deployment/portal-ui   
 $ sh ./deploy.sh  
@@ -311,7 +317,7 @@ $ sh ./deploy.sh
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
   
-  - 설치 릴리즈 파일 다운로드 : [paasta-portal-ui-release-2.4.0.tgz](https://nextcloud.paas-ta.org/index.php/s/sEF75LCgqCXgF4s/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-portal-ui-release-2.4.0.tgz](https://nextcloud.paas-ta.org/index.php/s/sEF75LCgqCXgF4s/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -343,10 +349,10 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d portal-ui deploy portal-ui.yml \
     -l ${COMMON_VARS_PATH} \
     -l vars.yml \
     -v releases_dir="/home/ubuntu/workspace/paasta-5.5.1/release"  
-
 ```  
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/portal-deployment/portal-ui  
 $ sh ./deploy.sh  
@@ -384,6 +390,7 @@ Portal 5.1.0 버전 이상부터는 배포된 어플리케이션의 SSH 접속�
 이를 위해 Portal SSH App을 먼저 배포해야 한다.
 
 - Portal 배포를 위한 조직 및 공간 생성
+
 ```
 ### Portal 배포를 위한 조직 및 공간 생성 및 설정 
 $ cf create-quota portal_quota -m 20G -i -1 -s -1 -r -1 --reserved-route-ports -1 --allow-paid-service-plans
@@ -394,6 +401,7 @@ $ cf target -o portal -s system
 
 
 - Portal SSH 다운로드 및 배포
+
 ```
 $ cd ~/workspace/paasta-5.5.1/release/portal
 $ wget --content-disposition https://nextcloud.paas-ta.org/index.php/s/awPjYDYCMiHY7yF/download
@@ -411,8 +419,7 @@ PaaS-TA는 기본적으로 일반 사용자는 조직을 생성할 수 없도록
 
 ```
 $ cf enable-feature-flag user_org_creation
-```
-```
+
 Setting status of user_org_creation as admin...
 OK
 
@@ -451,9 +458,12 @@ $ uaac client add portalclient -s xxxxx --redirect_uri "http://portal-web-user.x
 
 ### <div id="3.4"/> 3.4. Log
 Paas-TA Portal 각각 Instance의 log를 확인 할 수 있다.
-1. 로그를 확인할 Instance에 접근한다.
+
+(1) 로그를 확인할 Instance에 접근한다.
+
     > bosh ssh -d [deployment name] [instance name]
        
+       ```
        Instance                                                          Process State  AZ  IPs            VM CID                                   VM Type        Active   
        haproxy/8cc2d633-2b43-4f3d-a2e8-72f5279c11d5                      running        z5  10.30.107.213  vm-315bfa1b-9829-46de-a19d-3bd65e9f9ad4  portal_large   true  
                                                                                             115.68.46.214                                                            
@@ -488,17 +498,21 @@ Paas-TA Portal 각각 Instance의 log를 확인 할 수 있다.
        See "man sudo_root" for details.
        
        paas-ta-portal-webadmin/48fa0c5a-52eb-4ae8-a7b9-91275615318c:~$ 
+       ```
 
-2. 로그파일이 있는 폴더로 이동한다.
+(2) 로그파일이 있는 폴더로 이동한다.
     > 위치 : /var/vcap/sys/log/[job name]/
     
+         ```
          paas-ta-portal-webadmin/48fa0c5a-52eb-4ae8-a7b9-91275615318c:~$ cd /var/vcap/sys/log/paas-ta-portal-webadmin/
          paas-ta-portal-webadmin/48fa0c5a-52eb-4ae8-a7b9-91275615318c:/var/vcap/sys/log/paas-ta-portal-webadmin$ ls
          paas-ta-portal-webadmin.stderr.log  paas-ta-portal-webadmin.stdout.log
+	 ```
 
-3. 로그파일을 열어 내용을 확인한다.
+(3) 로그파일을 열어 내용을 확인한다.
     > vim [job name].stdout.log
         
+	```
         예)
         vim paas-ta-portal-webadmin.stdout.log
         2018-09-04 02:08:42.447 ERROR 7268 --- [nio-2222-exec-1] p.p.a.e.GlobalControllerExceptionHandler : Error message : Response : org.springframework.security.web.firewall.FirewalledResponse@298a1dc2
@@ -536,37 +550,42 @@ Paas-TA Portal 각각 Instance의 log를 확인 할 수 있다.
                 at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
                 at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
                 at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	```
 
 ### <div id="3.5"/> 3.5. 카탈로그 적용
+
 ##### 1. Catalog 빌드팩, 서비스팩 추가
+
 Paas-TA Portal 설치 후에 관리자 포탈에서 빌드팩, 서비스팩을 등록해야 사용자 포탈에서 사용이 가능하다.
  
- 1. 관리자 포탈에 접속한다.(portal-web-admin.[public ip].xip.io)
+ (1) 관리자 포탈에 접속한다.(portal-web-admin.[public ip].xip.io)
     >![paas-ta-portal-15]
- 2. 운영관리를 누른다.
+ (2) 운영관리를 누른다.
     >![paas-ta-portal-16]
- 2. 카탈로그 페이지에 들어간다.
+ (3) 카탈로그 페이지에 들어간다.
     >![paas-ta-portal-17]
- 3. 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.
+ (4) 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.
     >![paas-ta-portal-18]
- 4. 사용자포탈에서 변경된값이 적용되어있는지 확인한다.
+ (5) 사용자포탈에서 변경된값이 적용되어있는지 확인한다.
     >![paas-ta-portal-19] 
     
 ### <div id="3.6"/> 3.6. 모니터링 및 오토스케일링 적용
-##### 1. 포탈 설치 이전 모니터링 설정 적용
-###### 1.PaaS-TA 에서 제공하고있는 모니터링을 미리 설치를 한 후에 진행해야 한다.
- 1. Paas-TA Portal 설치 시 공통 변수 파일과 Deployment 변수 파일의 monitoring_api_url=<모니터링 API URL>, webuser_monitoring=true로 적용 한 후 설치 하면 정상적으로 모니터링 페이지 및 오토스케일링을 사용 할 수 있다.
+##### (1) 포탈 설치 이전 모니터링 설정 적용
 
-##### 2. 포탈 설치 이후 모니터링 설정 적용
- 1. 사용자 포탈의 앱 상세 페이지로 이동한다.
+      PaaS-TA 에서 제공하고있는 모니터링을 미리 설치를 한 후에 진행해야 한다.
+      
+ 1) Paas-TA Portal 설치 시 공통 변수 파일과 Deployment 변수 파일의 monitoring_api_url=<모니터링 API URL>, webuser_monitoring=true로 적용 한 후 설치 하면 정상적으로 모니터링 페이지 및 오토스케일링을 사용 할 수 있다.
+
+##### (2) 포탈 설치 이후 모니터링 설정 적용
+ 1) 사용자 포탈의 앱 상세 페이지로 이동한다.
     >![paas-ta-portal-30]
- 2. ① 상세페이지 레이아웃 하단의 모니터링 버튼을 누른다.
+ 2) ① 상세페이지 레이아웃 하단의 모니터링 버튼을 누른다.
     
- 3. ② 모니터링 오토 스케일링 화면
+ 3) ② 모니터링 오토 스케일링 화면
     
- 4. ③ 모니터링 알람 설정 화면
+ 4) ③ 모니터링 알람 설정 화면
     
- 5. 추이차트 탭에서 디스크 메모리 네트워크 사용량을 인스턴스 별로 확인이 가능하다.        
+ 5) 추이차트 탭에서 디스크 메모리 네트워크 사용량을 인스턴스 별로 확인이 가능하다.        
     
 [paas-ta-portal-01]:../../install-guide/portal/images/Paas-TA-Portal_01.png
 [paas-ta-portal-02]:../../install-guide/portal/images/Paas-TA-Portal_02.png
