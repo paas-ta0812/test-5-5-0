@@ -120,10 +120,11 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAdc4dIUh1AbmMrMQtLH6nTNt6WZA9K5BzyNAEsDbb
 ```
 
 - 사용할 Master, Worker Node의 authorized_keys 파일 본문의 마지막 부분(기존 본문 내용 아래 추가)에 공개키를 복사한다.
+
 ```
 $ vi .ssh/authorized_keys
 
-#ex)
+ex)
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDU+CSWd/bC4IfC+cuRDDJwAfjiPXAZAYFc7S8B8rUqAcuCPZUcbSZu5BIEAxZC+DCtpAJmtCGl/w7Gp1Wwij6hm/WlYeWapoqTe1yeLA/k0YhY0kQWuobfGlo9w7gxFKY8Aqtft+lRLhxteYc+/XxENFoq+eVFbX9jAOBbhM73K1oiV2YZcNAriLXixFYYVTmOPnJYUabJLi7E5ZEo3RaQ7Wol2fPPKQyvblwl9T5AoKF+/haWifeNEDHsd4XW9lveIRMsY3x7zUsnCtxzAlQKsw/eogKpyCc6E1GhmSTNy+K5fzhLgBJvl3J8t/+MKf8UGJA11pAn1L0vt56dTOdj aws-paasta-kube-key
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAdc4dIUh1AbmMrMQtLH6nTNt6WZA9K5BzyNAEsDbbm8OzCYjGPFNexrxU2OyfHAUzLhs+ovXafX0RG5bvm44B04LH01maV8j32Vkag0DtNEiA96WjR9wpTeqfZy0Qwko9+TJOfK7lVT7+GCPm112pzU/t3i9oaptFdalGLYC+ib2+ViibkV0rZ8ds/zz/i0uzXDqvYl1HYfc7kA1CtinAimxV2FU/7WDTIj5HAfPnhyXPf+k1d3hPJEZ+T3qUmLnVpIXS2AHETPz29mu/I8EWUfc8/OVFJqS8RAyGghfnbFPrVEL3+jp/
 ```
@@ -135,8 +136,8 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAdc4dIUh1AbmMrMQtLH6nTNt6WZA9K5BzyNAEsDbb
 Kubespray 설치에 필요한 Source File을 Download 받아 Kubespray 설치 작업 경로로 위치시킨다.
 
 - Kubespray Download URL : https://github.com/PaaS-TA/paas-ta-container-platform-deployment
-
 - git clone 명령을 통해 다음 경로에서 Kubespray 다운로드를 진행한다. 본 설치 가이드에서의 Kubespray 버전은 v2.14.2 이다.
+
 ```
 $ git clone https://github.com/PaaS-TA/paas-ta-container-platform-deployment.git
 ```
@@ -147,16 +148,19 @@ $ git clone https://github.com/PaaS-TA/paas-ta-container-platform-deployment.git
 Kubespray 설치에 필요한 Ansible, Jinja 등 Python Package 설치를 진행한다.
 
 - apt-get update를 진행한다.
+
 ```
 $ sudo apt-get update
 ```
 
 - python3-pip Package를 설치한다.
+
 ```
 $ sudo apt-get install -y python3-pip
 ```
 
 - Kubespray 설치경로 이동, pip를 이용하여 Kubespray 설치에 필요한 Python Package 설치를 진행한다.
+
 ```
 # AWS 환경 설치 시
 $ cd paas-ta-container-platform-deployment/standalone/aws
@@ -175,9 +179,8 @@ Kubespray inventory 파일에는 배포할 Master, Worker Node의 구성을 정�
 (기본 Cluster 환경 구성은 Master Node 1개와 Worker Node 1개 이상을 필요로 한다.)
 
 - mycluster 디렉토리의 inventory.ini 파일을 설정한다.
-```
+
 $ vi inventory/mycluster/inventory.ini
-```
 
 ```
 # inventory.ini
@@ -219,6 +222,7 @@ calico-rr
 Ansible playbook을 이용하여 Kubespray 설치를 진행한다.
 
 - 인벤토리 빌더로 Ansible 인벤토리 파일을 업데이트한다.
+
 ```
 # {MASTER_NODE_IP}, {WORKER_NODE_IP} : Master, Worker Node Private IP
 # {WORKER_NODE_IP}는 사용할 WORKER_NODE 개수(1개 이상)에 따라 작성
@@ -233,6 +237,7 @@ $ CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/i
 ```
 
 - Openstack 환경에 설치 시 추가적인 환경변수 설정이 필요하며 설정 파일을 다운로드 받아 자동으로 환경변수 등록이 가능하다.
+
 ```
 # Openstack UI 로그인 > 프로젝트 선택 > API 액세스 메뉴 선택 > OpenStack RC File 다운로드 클릭
 # 스크립트 파일 실행 후 Openstack 계정 패스워드 입력
@@ -241,6 +246,7 @@ Please enter your OpenStack Password for project admin as user admin: {패스워
 ```
 
 - Openstack 네트워크 인터페이스의 MTU값이 기본값 1450이 아닐 경우 CNI Plugin MTU 설정 변경이 필요하다.
+
 ```
 # MTU 확인 (ex mtu 1400)
 
@@ -260,11 +266,13 @@ calico_mtu: 1450 > calico_mtu: 1400
 ```
 
 - Ansible playbook으로 Kubespray 배포를 진행한다. playbook은 root로 실행하도록 옵션을 지정한다. (--become-user=root)
+
 ```
 $ ansible-playbook -i inventory/mycluster/hosts.yaml  --become --become-user=root cluster.yml
 ```
 
 - Kubespray 설치 완료 후 Cluster 사용을 위하여 다음 과정을 실행한다.
+
 ```
 $ mkdir -p $HOME/.kube
 $ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -329,6 +337,7 @@ $ ansible-playbook -i inventory/mycluster/hosts.yaml  --become --become-user=roo
 Kubespray 설치 이후에 Cluster Role을 가진 운영자의 Service Account를 생성한다. 해당 Service Account의 Token은 운영자 포털에서 Super Admin 계정 생성 시 이용된다.
 
 - Service Account를 생성한다.
+
 ```
 # {SERVICE_ACCOUNT} : 생성할 Service Account 명
 $ kubectl create serviceaccount {SERVICE_ACCOUNT} -n kube-system
@@ -336,11 +345,13 @@ $ kubectl create serviceaccount {SERVICE_ACCOUNT} -n kube-system
 ```
 
 - Cluster Role을 생성한 Service Account에 바인딩한다.
+
 ```
 $ kubectl create clusterrolebinding {SERVICE_ACCOUNT} --clusterrole=cluster-admin --serviceaccount=kube-system:{SERVICE_ACCOUNT}
 ```
 
 - 생성한 Service Account의 Token을 획득한다.
+
 ```
 # {SECRET_NAME} : Mountable secrets 값 확인
 $ kubectl describe serviceaccount {SERVICE_ACCOUNT} -n kube-system
@@ -352,6 +363,7 @@ $ kubectl describe secret {SECRET_NAME} -n kube-system | grep -E '^token' | cut 
 포털에서 Namespace 생성 및 사용자 등록 이후 Token값을 획득 시 이용된다.
 
 - Namespace 사용자의 Token을 획득한다.
+
 ```
 # {SECRET_NAME} : Mountable secrets 값 확인
 # {NAMESPACE} : Namespace 명
@@ -364,9 +376,11 @@ $ kubectl describe secret {SECRET_NAME} -n {NAMESPACE} | grep -E '^token' | cut 
 컨테이너 플랫폼 배포 시 최초 Temp Namespace 생성이 필요하다. 해당 Temp Namespace는 포털 내 사용자 계정 관리를 위해 이용된다.
 
 - Temp Namespace를 생성한다.
+
 ```
 $ kubectl create namespace paas-ta-container-platform-temp-namespace
 ```
+
 <br>
 
 ## <div id='5'> 5. Resource 생성 시 주의사항
