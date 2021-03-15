@@ -69,6 +69,7 @@ Kubespary를 통해 Kubernetes Cluster를 설치하고 BOSH 릴리즈로 Databas
 Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell 이 업로드 되어 있는 것을 확인한다. (PaaS-TA 5.5 와 동일 Stemcell 사용)
 - Stemcell 업로드 및 Cloud Config, Runtime Config 설정 부분은 [PaaS-TA 5.5 설치가이드](https://github.com/PaaS-TA/Guide/blob/v5.5.0/install-guide/paasta/PAAS-TA_CORE_INSTALL_GUIDE_V5.0.md)를 참고 한다.  
 > $ bosh -e micro-bosh stemcells
+
 ```
 Using environment '10.0.1.6' as client 'admin'
 
@@ -102,6 +103,7 @@ $ cd paas-ta-container-platform-deployment/bosh/
 BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다. Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 BOSH 2.0 가이드를 참고한다.
 - Cloud config 설정 내용을 확인한다.
 > $ bosh -e micro-bosh cloud-config
+
 ```
 Using environment '10.0.1.6' as client 'admin'
 
@@ -232,8 +234,8 @@ private_image_repository_azs: [z7]                                              
 private_image_repository_port: 5001                                                  # private image repository port (e.g. 5001)-- Do Not Use "5000"
 private_image_repository_root_directory: "/var/vcap/data/private-image-repository"   # private image repository root directory
 private_image_repository_persistent_disk_type: "10GB"                                # private image repository's persistent disk type
-
 ```
+
 - 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정한다.
 > $ vi ~/workspace/paasta-5.5.0/deployment/paas-ta-container-platform-deployment/bosh/deploy-{IAAS}.sh  
 (e.g. {IAAS} :: aws)
@@ -274,6 +276,7 @@ $ ls ~/workspace/paasta-5.5.0/release/service
 ```
 
 - 서비스를 설치한다.
+
 ```
 $ cd ~/workspace/paasta-5.5.0/deployment/paas-ta-container-platform-deployment/bosh
 $ chmod +x *.sh
@@ -347,9 +350,10 @@ $ cd ~/workspace/paasta-5.5.0/container-platform/container-service-image
 $ ls ~/workspace/paasta-5.5.0/container-platform/container-service-image
   container-jenkins-broker.tar.gz  container-service-broker.tar.gz      container-service-dashboard.tar.gz  paasta-jenkins.tar.gz
   container-service-api.tar.gz     container-service-common-api.tar.gz  image_upload_caas.sh 
- ```
+```
  
  + Private Repository에 이미지를 업로드한다.
+ 
  ```
  $ chmod +x *.sh  
  $ ./image_upload_caas.sh {HAProxy_IP}:5001 
@@ -361,11 +365,12 @@ $ ls ~/workspace/paasta-5.5.0/container-platform/container-service-image
  $ curl -H 'Authorization:Basic YWRtaW46YWRtaW4=' http://{HAProxy_IP}:5001/v2/_catalog
  
  {"repositories":["container-jenkins-broker","container-service-api","container-service-broker","container-service-common-api","container-service-dashboard","paasta_jenkins"]} 
-```
+ ```
 
 
 ### <div id='3.3'>3.3. Secret 생성
 Private Repository에 등록된 이미지를 활용하기 위해 Kubernetes에 secret을 생성한다.
+ 
 ```
 $ kubectl create secret docker-registry cp-secret --docker-server={HAProxy_IP}:5001 --docker-username=admin --docker-password=admin --namespace=default
 ```
@@ -382,6 +387,7 @@ PaaS-TA 사용자포털에서 컨테이너 서비스를 추가하기 전 Kuberne
 ```
 
 - 컨테이너 플랫폼 yaml 파일 경로이동
+
 ```
 $ cd ~/workspace/paasta-5.5.0/container-platform/container-service-yaml
 $ ls ~/workspace/paasta-5.5.0/container-platform/container-service-yaml
@@ -430,7 +436,7 @@ spec:
         - name: cp-secret
       nodeSelector:
         kubernetes.io/hostname: {NODE_HOST_NAME} # Worker Node Host Name
----
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -447,7 +453,6 @@ spec:
   selector:
     app: service-common-api
   type: NodePort
-
 ```
 
 #### <div id='3.4.2'>3.4.2. container-service-api 배포
@@ -485,7 +490,7 @@ spec:
         - name: cp-secret
       nodeSelector:
         kubernetes.io/hostname: {NODE_HOST_NAME}   # Worker Node Host Name 
----
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -502,7 +507,6 @@ spec:
   selector:
     app: service-api
   type: NodePort
-
 ```
 
 #### <div id='3.4.3'>3.4.3. container-service-dashboard 배포
@@ -544,7 +548,7 @@ spec:
         - name: cp-secret
       nodeSelector:
         kubernetes.io/hostname: {NODE_HOST_NAME}     # Worker Node Host Name  
----
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -561,7 +565,6 @@ spec:
   selector:
     app: service-dashboard
   type: NodePort
-
 ```
 
 #### <div id='3.4.4'>3.4.4.  container-service-broker 배포
@@ -621,7 +624,7 @@ spec:
         - name: cp-secret
       nodeSelector:
         kubernetes.io/hostname: {NODE_HOST_NAME}  # Worker Node Host Name     
----
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -638,7 +641,6 @@ spec:
   selector:
     app: service-broker
   type: NodePort
-
 ```
 
 ```
@@ -658,6 +660,7 @@ $ kubectl apply -f container-service-broker.yml
 deployment.apps/service-deployment-deployment created
 service/service-deployment-deployment created
 ```
+
 - 배포 확인
 
 배포된 Deployment, Pod, Service를 확인한다.
@@ -687,7 +690,6 @@ service-api-deployment          NodePort    xxx.xxx.xxx.xxx   <none>        3333
 service-common-api-deployment   NodePort    xxx.xxx.xxx.xxx   <none>        3334:30334/TCP   2m8s
 service-dashboard-deployment    NodePort    xxx.xxx.xxx.xxx   <none>        8091:32091/TCP   105s
 service-broker-deployment       NodePort    xxx.xxx.xxx.xxx   <none>        8888:31888/TCP   118s
-
 ```
 
 ## <div id='4'>4. 컨테이너 서비스 브로커
@@ -696,7 +698,6 @@ service-broker-deployment       NodePort    xxx.xxx.xxx.xxx   <none>        8888
 ### <div id='4.1'>4.1. 컨테이너 서비스 브로커 등록
 
 서비스 브로커 등록 시 개방형 클러스터 플랫폼에서 서비스 브로커를 등록할 수 있는 사용자로 로그인이 되어 있어야 한다.
-
 
 - 서비스 브로커 목록을 확인한다.
 
@@ -712,11 +713,13 @@ No service brokers found
 > - 서비스팩 사용자 ID/비밀번호 : 서비스팩에 접근할 수 있는 사용자 ID/비밀번호
 > - 서비스팩 URL : Kubernetes Worker Node IP 와 배포된 컨테이너 서비스 브로커 NodePort
 >   + Worker Node IP : [container-service-broker.yml](https://github.com/PaaS-TA/paas-ta-container-platform/blob/master/install-guide/bosh/paas-ta-container-platform-bosh-deployment-caas-guide-v1.0.md#344--container-service-broker-%EB%B0%B0%ED%8F%AC)에서 작성하여 배포한 {NODE_IP} 값을 입력한다.
+
 ```
 $ cf create-service-broker container-service-broker admin cloudfoundry http://xxx.xxx.xxx.xxx:31888
 ```
 
 - 등록된 컨테이너 서비스 브로커를 확인한다.
+
 ```
 $ cf service-brokers
 Getting service brokers as admin...
@@ -726,6 +729,7 @@ container-service-broker   http://xxx.xxx.xxx.xxx:31888
 ```
 
 - 접근 가능한 서비스 목록을 확인한다.
+
 ```
 $ cf service-access
 Getting service access as admin...
@@ -736,7 +740,8 @@ broker: container-service-broker
    container-service   Small      none      
 ```
 
- - 특정 조직에 해당 서비스 접근 허용을 할당한다.
+- 특정 조직에 해당 서비스 접근 허용을 할당한다.
+ 
 ```
 $ cf enable-service-access container-service
 Enabling access to all plans of service container-service for all orgs as admin...
@@ -744,6 +749,7 @@ OK
 ```
 
 - 접근 가능한 서비스 목록을 확인한다.
+
 ```
 $ cf service-access
 Getting service access as admin...
@@ -758,6 +764,7 @@ broker: container-service-broker
 UAA 포털 계정 등록 절차에 대한 순서를 확인한다.
 
 - uaac의 endpoint를 설정하고 uaac 로그인을 실행한다.
+
 ```
 # endpoint 설정
 $ uaac target https://uaa.<DOMAIN> --skip-ssl-validation
@@ -862,7 +869,6 @@ mariadb/448be54d-f2ff-4fc9-8bf1-621eda8e2577                   running        z5
 private-image-repository/561550fb-95de-4c12-95bf-94ac5fde53cc  running        z7  10.0.0.123    i-02ff1da176d1d0a16  small    true
 
 3 vms
-
 ```
 
 ```
@@ -888,6 +894,7 @@ ex)
 
 ### <div id='5.1'>5.1. Kubernetes Cluster 설정
 > 컨테이너 서비스 배포용 Kubernetes Master Node, Worker Node에서 daemon.json 에 insecure-registries 로 Private Image Repository URL 설정 후 Docker를 재시작한다.
+
 ```
 # Master Node, Worker Node 모두 설정 필요
 $ sudo vi /etc/docker/daemon.json
@@ -910,6 +917,7 @@ PaaS-TA 사용자포털에서 Jenkins 서비스를 추가하기 전 Kubernetes�
 ```
 
 - 컨테이너 플랫폼 yaml 파일 경로이동
+
 ```
 $ cd ~/workspace/paasta-5.5.0/container-platform/container-service-yaml
 $ ls ~/workspace/paasta-5.5.0/container-platform/container-service-yaml
@@ -967,7 +975,7 @@ spec:
         - name: cp-secret
       nodeSelector:
         kubernetes.io/hostname: {NODE_HOST_NAME}    # Worker Node Host Name
----
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -984,7 +992,6 @@ spec:
   selector:
     app: jenkins-broker
   type: NodePort
-
 ```
 
 ```
@@ -1012,7 +1019,6 @@ jenkins-broker-deployment-7f84f69cf8-wgzbv       1/1     Running   0          2m
 $ kubectl get svc
 NAME                            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 jenkins-broker-deployment       NodePort    10.233.9.92     <none>        8787:31787/TCP   2m49s
-
 ```
 
 ### <div id='5.3'>5.3. Jenkins 서비스 브로커 등록
@@ -1026,6 +1032,7 @@ Getting service brokers as admin...
 name                       url
 container-service-broker   http://xxx.xxx.xxx.xxx:31888
 ```
+
  - Jenkins 서비스 브로커를 등록한다.
 > $ create-service-broker {서비스팩 이름} {서비스팩 사용자ID} {서비스팩 사용자비밀번호} http://{Worker Node IP}:31787
 > - 서비스팩 이름 : 서비스 팩 관리를 위해 개방형 클라우드 플랫폼에서 보여지는 명칭
@@ -1035,17 +1042,21 @@ container-service-broker   http://xxx.xxx.xxx.xxx:31888
 
 ```
 $ cf create-service-broker jenkins-service-broker admin cloudfoundry http://xxx.xxx.xxx.xxx:31787
- ```
-  - 등록된 Jenkins 서비스 브로커를 확인한다.
- ```
- $ cf service-brokers
+```
+ 
+ - 등록된 Jenkins 서비스 브로커를 확인한다.
+  
+```
+$ cf service-brokers
 Getting service brokers as admin...
 
 name                       url
 container-service-broker   http://xxx.xxx.xxx.xxx:31888
 jenkins-service-broker     http://xxx.xxx.xxx.xxx:31787
 ```
+
 - 접근 가능한 서비스 목록을 확인한다.
+
 ```
 $ cf service-access
 Getting service access as admin...
@@ -1059,13 +1070,17 @@ broker: jenkins-service-broker
   service                     plan                        access   orgs
   container-jenkins-service   jenkins_20GB                limit
 ```
+
 - 특정 조직에 해당 서비스 접근 허용을 할당한다.
+
 ```
 $ cf enable-service-access container-jenkins-service
 Enabling access to all plans of service container-jenkins-service for all orgs as admin...
 OK
 ```
+
 - 접근 가능한 서비스 목록을 확인한다.
+
 ```
 $ cf service-access
 Getting service access as admin...
