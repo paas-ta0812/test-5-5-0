@@ -642,31 +642,31 @@ Paas-TA Portal 설치 후에 관리자 포탈에서 빌드팩, 서비스팩을 �
 1) 관리자 포탈에 접속한다.(portal-web-admin.[public ip].xip.io)
 
 
-    ![](/test-5-5-0/guide-5.5.0-semini/install-guide/portal/images//Paas-TA-Portal_15.png)
+![](/test-5-5-0/guide-5.5.0-semini/install-guide/portal/images//Paas-TA-Portal_15.png)
     
 
 2) 운영관리를 누른다.
 
 
-    ![](/test-5-5-0/guide-5.5.0-semini/install-guide/portal/images/Paas-TA-Portal_16.png)
+![](/test-5-5-0/guide-5.5.0-semini/install-guide/portal/images/Paas-TA-Portal_16.png)
     
     
 3) 카탈로그 페이지에 들어간다.
 
 
-    ![](/test-5-5-0/guide-5.5.0-semini/install-guide/portal/images/Paas-TA-Portal_17.png)
+![](/test-5-5-0/guide-5.5.0-semini/install-guide/portal/images/Paas-TA-Portal_17.png)
     
 
 4) 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.
 
 
-    ![](/test-5-5-0/guide-5.5.0-semini/install-guide/portal/images/Paas-TA-Portal_18.png)
+![](/test-5-5-0/guide-5.5.0-semini/install-guide/portal/images/Paas-TA-Portal_18.png)
     
 
 5) 사용자포탈에서 변경된값이 적용되어있는지 확인한다.
 
 
-    ![](/test-5-5-0/guide-5.5.0-semini/install-guide/portal/images/Paas-TA-Portal_19.png) 
+![](/test-5-5-0/guide-5.5.0-semini/install-guide/portal/images/Paas-TA-Portal_19.png) 
     
     
 [paas-ta-portal-01]:../../install-guide/portal/images/Paas-TA-Portal_01.png
