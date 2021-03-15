@@ -879,7 +879,7 @@ ex) uaa_client_portal_secret="portalclient"
   paasta-portal deploy 파일 안의 portal_client_secret의 값과 일치해야 한다.
 ```
 
->![](./images/uaa-login-2.png)
+>![](./images/paasta-value.png)
 
 (6) uaa_client_admin_secret : UAAC Admin Client에 접근하기 위한 Secret 변수
 
