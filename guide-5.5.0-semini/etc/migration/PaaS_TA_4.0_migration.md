@@ -188,4 +188,4 @@ $ cf login
 $ cf apps
 ```
 
-\[PaaSTa\_Migration\_Image\]:./images/paasta4.0-migration.png
+[PaaSTa_Migration_Image]:./images/paasta4.0-migration.png
