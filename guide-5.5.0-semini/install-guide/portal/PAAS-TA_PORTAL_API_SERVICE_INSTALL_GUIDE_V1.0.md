@@ -490,43 +490,43 @@ $ uaac client add portalclient -s xxxxx --redirect_uri "http://portal-web-user.x
 ##### (2) 마이그레이션할 table의 레코드 데이터를 전부 삭제한다.
 
 
->![paas-ta-portal-25]
+![paas-ta-portal-25]
 
 
 ##### (3) Tools - Data Transfer를 클릭해서 마이그레이션 설정창을 띄운다.
 
 
->![paas-ta-portal-21]
+![paas-ta-portal-21]
 
 
 ##### (4) 마이그레이션할 source DB(기존 DB), target DB(Paas-TA 3.5 Portal DB)를 설정한다.
 
 
->![paas-ta-portal-20]
+![paas-ta-portal-20]
 
 
 ##### (5) Option에 들어가 Table Options의 Create tables 옵션에 체크를 해제, Orther Options의 Contiune on error를 체크한 후 next를 누른다.
 
 
->![paas-ta-portal-24]
+![paas-ta-portal-24]
 
 
 ##### (6) 데이터를 이동할 테이블을 설정 후 next를 누른다.
 
 
->![paas-ta-portal-22]
+![paas-ta-portal-22]
 
 
 ##### (7). 마이그레이션이 정상적으로 완료된 모습
 
 
->![paas-ta-portal-23]
+![paas-ta-portal-23]
 
 
 ##### (8) 마이그레이션 오류난 모습
 
 
->![paas-ta-portal-26]
+![paas-ta-portal-26]
 
 
 ##### (9) 기존 DB에 오류난 Paas-TA Portal table의 Design에 맞춰 수정후에 다시 마이그레이션을 진행한다.
