@@ -486,6 +486,7 @@ $ uaac client add portalclient -s xxxxx --redirect_uri "http://portal-web-user.x
 
 ##### (1) DB tool을 이용해 기존에 사용한 DB와 Paas-TA 3.5 Portal DB를 연결한다. 
  * 가이드의 DB tool을 이용한 마이그레이션 설명은 navicat을 기준으로 한다.
+ 
 ##### (2) 마이그레이션할 table의 레코드 데이터를 전부 삭제한다.
 
 
