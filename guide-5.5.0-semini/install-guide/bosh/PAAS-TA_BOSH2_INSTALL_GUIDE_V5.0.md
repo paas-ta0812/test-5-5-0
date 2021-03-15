@@ -129,7 +129,8 @@ BOSH 및 PaaS-TA 설치를 위해 Inception 서버에 구성해야 할 컴포넌
 
 - IaaS Security Group의 inbound 의 ICMP types 13 (timestamp request), types 14 (timestamp response) Rule을 비활성화 한다. (CVE-1999-0524 ICMP timestamp response 보안 이슈 적용)  
 
-  예 - AWS security group config)  
+  예 - AWS security group config)
+  
   ![Security_Group_ICMP_Image1](./images/security-group-icmp-01.png)  
 
 
