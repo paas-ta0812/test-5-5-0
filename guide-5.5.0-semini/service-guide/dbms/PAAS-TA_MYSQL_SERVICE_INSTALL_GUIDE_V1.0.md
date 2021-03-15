@@ -168,6 +168,7 @@ Succeeded
 - Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/service-deployment/mysql/vars.yml	
+
 ```
 # STEMCELL
 stemcell_os: "ubuntu-xenial"                                     # stemcell os
@@ -223,6 +224,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d mysql deploy --no-redact mysql.yml \
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/mysql  
 $ sh ./deploy.sh  
@@ -231,8 +233,7 @@ $ sh ./deploy.sh
 ### <div id="2.6"/> 2.6. 서비스 설치 - 다운로드 된 PaaS-TA Release 파일 이용 방식
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
-  
-  - 설치 릴리즈 파일 다운로드 : [paasta-mysql-2.0.1.tgz](http://45.248.73.44/index.php/s/iAbN8WkGMRGrm2p/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-mysql-2.0.1.tgz](http://45.248.73.44/index.php/s/iAbN8WkGMRGrm2p/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -264,10 +265,10 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d mysql deploy --no-redact mysql.yml \
 ```  
 
 - 서비스를 설치한다.  
-```
+
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/mysql  
 $ sh ./deploy.sh  
-```  	
+
 
 ### <div id="2.7"/> 2.7. 서비스 설치 확인
 
@@ -290,9 +291,7 @@ mysql/ea075ae6-6326-478b-a1ba-7fbb0b5b0bf5                     running        z5
 proxy/5b883a78-eb43-417f-98a2-d44c13c29ed4                     running        z5  10.30.107.168  vm-e447eb75-1119-451f-adc9-71b0a6ef1a6a  minimal  true  
 
 5 vms
-
-Succeeded
-```	
+```
 
 ## <div id='3'> 3. MySQL 연동 Sample Web App 설명  
 
@@ -305,7 +304,8 @@ Mysql 서비스팩 배포가 완료 되었으면 Application에서 서비스 팩
 ##### 서비스 브로커 목록을 확인한다.
 
 >`$ cf service-brokers`  
-```  
+
+``` 
 Getting service brokers as admin...
 
 name   url
@@ -321,6 +321,7 @@ No service brokers found
   서비스팩 URL : 서비스팩이 제공하는 API를 사용할 수 있는 URL을 입력한다.  
 
 >`$ cf create-service-broker mysql-service-broker admin cloudfoundry http://10.30.107.167:8080`
+
 ```  
 cf create-service-broker mysql-service-broker admin cloudfoundry http://10.30.107.167:8080
 Creating service broker mysql-service-broker as admin...
@@ -330,6 +331,7 @@ OK
 ##### 등록된 MySQL 서비스 브로커를 확인한다.
 
 >`$ cf service-brokers`
+
 ```  
 $ cf service-brokers
 Getting service brokers as admin...
@@ -341,6 +343,7 @@ mysql-service-broker      http://10.30.107.167:8080
 ##### 접근 가능한 서비스 목록을 확인한다.
 
 >`$ cf service-access`
+
 ```  
 $ cf service-access
 Getting service access as admin...
@@ -349,12 +352,14 @@ broker: mysql-service-broker
    Mysql-DB   Mysql-Plan1-10con    none
    Mysql-DB   Mysql-Plan2-100con   none
 ```  
+
 >서비스 브로커 생성시 디폴트로 접근을 허용하지 않는다.
 
 ##### 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
 
 >`$ cf enable-service-access Mysql-DB`  
 >`$ cf service-access`  
+
 ```  
 $ cf enable-service-access Mysql-DB
 Enabling access to all plans of service Mysql-DB for all orgs as admin...
@@ -386,6 +391,7 @@ Sample App 구조는 다음과 같다.
 > $ cd mysql-sample-app  
 
 >`$ ls -all`  
+
 ```   
 $ ls -all  
 drwxr-xr-x 1 demo 197121        0 Nov 20 20:14 ./
@@ -401,7 +407,8 @@ Sample App에서 MySQL 서비스를 사용하기 위해서는 서비스 신청(P
 
 ##### 먼저 PaaS-TA Marketplace에서 서비스가 있는지 확인을 한다.  
 
->`$ cf marketplace`  
+>`$ cf marketplace` 
+ 
 ```  
 $ cf marketplace
 Getting services from marketplace in org demo / space dev as demo...
@@ -421,7 +428,8 @@ TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans o
 >서비스플랜 : 서비스에 대한 정책으로 plans에 있는 정보 중 하나를 선택한다. MySQL 서비스는 10 connection, 100 connection 를 지원한다.  
 >내 서비스명 : 내 서비스에서 보여지는 명칭이다. 이 명칭을 기준으로 환경설정정보를 가져온다.  
 
->`$ cf create-service Mysql-DB Mysql-Plan2-100con mysql-service-instance`  
+>`$ cf create-service Mysql-DB Mysql-Plan2-100con mysql-service-instance` 
+ 
 ```  
 $ cf create-service Mysql-DB Mysql-Plan2-100con mysql-service-instance
 Creating service instance mysql-service-instance in org demo / space dev as demo...
@@ -433,6 +441,7 @@ Attention: The plan `Mysql-Plan2-100con` of service `Mysql-DB` is not free.  The
 ##### 생성된 MySQL 서비스 인스턴스를 확인한다.  
 
 >`$ cf services`
+
 ```  
 $ cf services
 Getting services in org demo / space dev as demo...
@@ -469,6 +478,7 @@ applications:
 ```
 
 ##### App을 배포한다.  
+
 ```  
 $ cf push
 Using manifest file D:\mysql-sample-app\manifest.yml
@@ -545,6 +555,7 @@ buildpack: java_buildpack
 ##### rule.json 화일을 만들고 아래와 같이 내용을 넣는다.  
 >`$ vi rule.json`   
 destination ips : mysql 인스턴스 ips.
+
 ```json
 [
   {
@@ -570,6 +581,7 @@ destination ips : mysql 인스턴스 ips.
 >`$ cf bind-running-security-group p-mysql`  
 >`$ cf restart mysql-sample-app`  
 >![update_mysql_vsphere_31](../images/mysql/update_mysql_vsphere_31.png)
+
 ```  
 $ cf restart mysql-sample-app  
 Stopping app mysql-sample-app in org demo / space dev as demo...
