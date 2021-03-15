@@ -443,7 +443,7 @@ Feature user_org_creation Enabled.
 ### <div id="3.2"/> 3.2. 사용자포탈 UAA페이지 오류  
 
 
->![paas-ta-portal-31]
+![paas-ta-portal-31]
 
 
 (1) uaac portalclient가 등록이 되어있지 않다면 해당 화면과 같이 redirect오류가 발생한다.
@@ -463,7 +463,7 @@ $ uaac client add portalclient -s xxxxx --redirect_uri "http://portal-web-user.x
 --autoapprove="openid , cloud_controller_service_permissions.read"
 
 
- >![paas-ta-portal-32]
+ ![paas-ta-portal-32]
  
  
 (1) uaac portalclient가 url이 잘못 등록되어있다면 해당 화면과 같이 redirect오류가 발생한다. 
@@ -642,31 +642,31 @@ Paas-TA Portal 설치 후에 관리자 포탈에서 빌드팩, 서비스팩을 �
 1) 관리자 포탈에 접속한다.(portal-web-admin.[public ip].xip.io)
 
 
-    >![paas-ta-portal-15]
+    ![paas-ta-portal-15]
     
 
 2) 운영관리를 누른다.
 
 
-    >![paas-ta-portal-16]
+    ![paas-ta-portal-16]
     
     
 3) 카탈로그 페이지에 들어간다.
 
 
-    >![paas-ta-portal-17]
+    ![paas-ta-portal-17]
     
 
 4) 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.
 
 
-    >![paas-ta-portal-18]
+    ![paas-ta-portal-18]
     
 
 5) 사용자포탈에서 변경된값이 적용되어있는지 확인한다.
 
 
-    >![paas-ta-portal-19] 
+    ![paas-ta-portal-19] 
     
     
 [paas-ta-portal-01]:../../install-guide/portal/images/Paas-TA-Portal_01.png
