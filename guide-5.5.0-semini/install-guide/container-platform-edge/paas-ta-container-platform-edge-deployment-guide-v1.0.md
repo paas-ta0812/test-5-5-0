@@ -107,6 +107,7 @@ $ sudo apt-get install -y \
 ```
 
 - Docker Download 및 설치를 위한 apt-key 및 apt-repository를 추가한다.
+
 ```
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
@@ -119,6 +120,7 @@ $ sudo add-apt-repository \
 ```
 
 - 설치 가능한 Docker 버전 정보를 확인한다.
+
 ```
 $ apt-cache madison docker-ce
  docker-ce | 5:19.03.13~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
@@ -153,12 +155,14 @@ $ apt-cache madison docker-ce
 ```
 
 - Docker 설치를 진행한다.
+
 ```
 # {VERSION_STRING} : Version 정보. (ex : 5:19.03.12~3-0~ubuntu-bionic)
 $ sudo apt-get install -y docker-ce={VERSION_STRING} docker-ce-cli={VERSION_STRING} containerd.io
 ```
 
 - Docker 설치 후 사용자에 권한을 부여한다.
+
 ```
 # {USER_NAME} : 현재 사용자
 $ sudo usermod -aG docker {USER_NAME}
@@ -170,11 +174,13 @@ $ sudo usermod -aG docker {USER_NAME}
 KubeEdge 설치를 위해서는 Master Node에 Kubernetes Cluster가 배포되어있어야 한다. Cluster를 배포하기 위해 전체 Node에 kubeadm, kubectl, kubelet 설치가 진행되어야한다.
 
 - apt-get update 및 필요한 Package 설치를 진행한다.
+
 ```
 $ sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 ```
 
 - kubeadm, kubectl, kubelet Download 및 설치를 위한 apt-key 및 apt-repository를 추가한다.
+
 ```
 $ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
@@ -184,6 +190,7 @@ EOF
 ```
 
 - apt-get update 및 kubeadm, kubectl, kubelet 설치를 진행한다. 본 설치 가이드에서는 v1.18.6 기준으로 설치를 진행한다.
+
 ```
 $ sudo apt-get update
 
@@ -191,6 +198,7 @@ $ sudo apt-get install -y kubelet=1.18.6-00 kubeadm=1.18.6-00 kubectl=1.18.6-00
 ```
 
 - kubeadm, kubectl, kubelet Package를 자동으로 설치, 업그레이드, 제거하지 않도록 고정한다.
+
 ```
 $ sudo apt-mark hold kubelet kubeadm kubectl
 ```
@@ -201,6 +209,7 @@ $ sudo apt-mark hold kubelet kubeadm kubectl
 KubeEdge 설치를 위해서는 Master Node에 Kubernetes Cluster가 배포되어있어야 한다. 
 
 - Master Node에 Kubernetes Cluster 배포를 진행한다. Cluster 배포는 kubeadm을 통해 진행하며 배포 완료 후 출력되는 kubeadm join 명령어는 KubeEdge 설치에서는 사용하지 않는다.
+
 ```
 # {MASTER_NODE_IP} : Master Node Private IP
 # --pod-network-cidr=10.244.0.0/16은 flannel CNI 설치 시 설정값
@@ -208,6 +217,7 @@ $ sudo kubeadm init --apiserver-advertise-address={MASTER_NODE_IP} --pod-network
 ```
 
 - Cluster 배포 완료 후 사용을 위하여 다음 과정을 진행한다.
+
 ```
 $ mkdir -p $HOME/.kube
 
@@ -217,6 +227,7 @@ $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 - 추후 keadm 사용을 위해 root 계정으로 전환하여 동일한 과정을 진행한다.
+
 ```
 $ sudo su -
 
@@ -231,6 +242,7 @@ $ sudo su -
 
 - KubeEdge에서는 본 설치 가이드 작성 시점에 CNI를 지원하지 않으나 Master Node 구성 시 CNI Plugin이 배포되지 않으면 CoreDNS Pod가 Pending 상태를 유지하는 이슈가 발생한다. 따라서 Master Node에는 CNI Pod 배포가 필요하다. 본 설치 가이드에서는 flannel을 사용한다.
 > CNI 이슈 : https://github.com/kubeedge/kubeedge/issues/2083
+
 ```
 # CNI Plugin 배포 전 CodrDNS 확인, Pending 상태로 확인
 $ kubectl get pods -n kube-system
@@ -260,11 +272,13 @@ kube-scheduler-ip-10-0-0-96            1/1     Running   0          8m41s
 ```
 
 - 이후 Worker Node에 배포되지 않도록 CNI Plugin의 DaemonSet yaml 수정을 진행한다.
+
 ```
 $ kubectl edit daemonsets.apps -n kube-system kube-flannel-ds-amd64
 ```
 
 - spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms.matchExpressions 경로에 아래 내용을 추가한다.
+
 ```
 - key: node-role.kubernetes.io/edge
   operator: DoesNotExist
@@ -276,6 +290,7 @@ $ kubectl edit daemonsets.apps -n kube-system kube-flannel-ds-amd64
 KubeEdge 설치를 위한 keadm 설치를 진행한다. keadm 실행 시 Super User 혹은 root 권한이 필요하므로 root 권한으로 설치를 진행한다.
 
 - root 계정으로 전환 후 전체 Master, Worker Node에 keadm 다운로드 및 설치를 진행한다.
+
 ```
 $ sudo su -
 
@@ -293,12 +308,14 @@ $ sudo su -
 KubeEdge Cloud Side에 CloudCore를 설치하여 설정을 진행한다.
 
 - keadm init 명령으로 Cloud Side에 CloudCore 설치를 진행한다.
+
 ```
 # {CLOUD_SIDE_IP} : Cloud Side Private IP
 # keadm init --advertise-address={CLOUD_SIDE_IP} --master=https://{CLOUD_SIDE_IP}:6443 --kubeedge-version 1.4.0
 ```
 
 - Edge Side에 EdgeCore를 설치하기 위한 Token값을 가져온다.
+
 ```
 # keadm gettoken
 ```
@@ -309,6 +326,7 @@ KubeEdge Cloud Side에 CloudCore를 설치하여 설정을 진행한다.
 KubeEdge Edge Side에 EdgeCore를 설치하여 설정을 진행한다.
 
 - keadm join 명령으로 Edge Side에 EdgeCore 설치를 진행한다.
+
 ```
 # {CLOUD_SIDE_IP} : Cloud Side Private IP
 # {INTERFACE_NAME} : 실제 Edge Side에서 사용중인 인터페이스 이름 (ex: ens5)
@@ -322,11 +340,13 @@ KubeEdge Edge Side에 EdgeCore를 설치하여 설정을 진행한다.
 KubeEdge v1.4.0 에서는 기본적으로 kubectl logs 명령을 사용할 수 없는 이슈가 존재한다. 본 설치 가이드에서는 해당 기능을 활성화 하기 위한 설정 가이드를 제공한다.
 
 - Cloud Side에서 kubernetes ca.crt 및 ca.key 파일을 확인한다.
+
 ```
 # ls /etc/kubernetes/pki/
 ```
 
 - Cloud Side에서 CLOUDCOREIPS 환경변수 설정 및 확인을 진행한다. (HA Cluster 구성 시 VIP 설정)
+
 ```
 # {CLOUD_SIDE_IP} : Cloud Side Private IP
 # export CLOUDCOREIPS="{CLOUD_SIDE_IP}"
@@ -335,6 +355,7 @@ KubeEdge v1.4.0 에서는 기본적으로 kubectl logs 명령을 사용할 수 �
 ```
 
 - Cloud Side에서 certgen.sh 다운로드 및 인증서 생성을 진행한다.
+
 ```
 # cd /etc/kubeedge
 
@@ -346,16 +367,16 @@ KubeEdge v1.4.0 에서는 기본적으로 kubectl logs 명령을 사용할 수 �
 ```
 
 - Cloud Side에서 iptables을 설정한다.
+
 ```
 # iptables -t nat -A OUTPUT -p tcp --dport 10350 -j DNAT --to $CLOUDCOREIPS:10003
 ```
 
 - Cloud Side에서 cloudcore.yaml 파일을 수정한다. (enable: true 로 변경)
-```
-# vi /etc/kubeedge/config/cloudcore.yaml
-```
 
 ```
+# vi /etc/kubeedge/config/cloudcore.yaml
+
 cloudStream:
   enable: true
   streamPort: 10003
@@ -369,11 +390,10 @@ cloudStream:
 ```
 
 - Edge Side에서 edgecore.yaml 파일을 수정한다. (enable: true, server: {CLOUD_SIDE_IP}:10004)
-```
-# vi /etc/kubeedge/config/edgecore.yaml
-```
 
 ```
+# vi /etc/kubeedge/config/edgecore.yaml
+
 # {CLOUD_SIDE_IP} : Cloud Side Private IP
 
 edgeStream:
@@ -388,6 +408,7 @@ edgeStream:
 ```
 
 - Cloud Side에서 cloudcore를 재시작한다.
+
 ```
 # pkill cloudcore
 # nohup cloudcore > cloudcore.log 2>&1 &
@@ -397,16 +418,19 @@ edgeStream:
   kube-proxy 배포되어 있을 경우 edgecore 재시작이 불가능하므로 edgecore 재시작 시 kube-proxy 배포 여부를 우회할 수 있는 방법을 기술한다.
 
 - edgecore.service 파일을 수정한다.
+
 ```
 $ sudo vi /etc/kubeedge/edgecore.service
 ```
 
 - edgecore.service 파일의 [Service]에 다음을 추가한다.
+
 ```
 Environment="CHECK_EDGECORE_ENVIRONMENT=false"
 ```
 
 - Edge Side에서 edgecore를 재시작한다.
+
 ```
 # systemctl daemon-reload
 # systemctl restart edgecore.service
@@ -444,16 +468,16 @@ kube-scheduler-ip-10-0-0-18            1/1     Running   0          58m
 또한 KubeEdge에서 Metrics-Server 배포 시 2.8. kubectl logs 기능 활성화 가 필수적으로 진행되어야 한다.
 
 - Metrics-Server 배포를 위한 yaml 파일을 다운받는다.
+
 ```
 $ wget https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.4.0/components.yaml
 ```
 
 - components.yaml 파일을 수정한다.
-```
-$ vi components.yaml
-```
 
 ```
+$ vi components.yaml
+
 # spec.template.spec 하위에 추가
 # {CLOUD_SIDE_HOSTNAME} : 실제 Cloud Side Hostname
 
@@ -486,6 +510,7 @@ $ vi components.yaml
 ```
 
 - 노드의 Taint 설정을 해제한다.
+
 ```
 $ kubectl taint nodes --all node-role.kubernetes.io/master-
 node/ip-10-0-0-251 untainted
@@ -493,11 +518,13 @@ error: taint "node-role.kubernetes.io/master" not found
 ```
 
 - Metrics-Server를 배포한다.
+
 ```
 $ kubectl apply -f components.yaml
 ```
 
 - Metrics 정보를 확인한다.
+
 ```
 $ kubectl top nodes
 NAME            CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
@@ -524,11 +551,13 @@ metrics-server-68cb9f9b79-xvkks         3m           12Mi
 Cloud Side, Edge Side에서 KubeEdge를 중지한다. 필수구성요소는 삭제하지 않는다.
 
 - Cloud Side에서 cloudcore를 중지하고 kubeedge Namespace와 같은 Kubernetes Master에서 KubeEdge 관련 리소스를 삭제한다.
+
 ```
 # keadm reset --kube-config=$HOME/.kube/config
 ```
 
 - Edge Side에서 edgecore를 중지한다.
+
 ```
 # keadm reset
 ```
@@ -541,6 +570,7 @@ Cloud Side, Edge Side에서 KubeEdge를 중지한다. 필수구성요소는 삭�
 Kubespray 설치 이후에 Cluster Role을 가진 운영자의 Service Account를 생성한다. 해당 Service Account의 Token은 운영자 포털에서 Super Admin 계정 생성 시 이용된다.
 
 - Service Account를 생성한다.
+
 ```
 # {SERVICE_ACCOUNT} : Service Account 명
 $ kubectl create serviceaccount {SERVICE_ACCOUNT} -n kube-system
@@ -548,11 +578,13 @@ $ kubectl create serviceaccount {SERVICE_ACCOUNT} -n kube-system
 ```
 
 - Cluster Role을 생성한 Service Account에 바인딩한다.
+
 ```
 $ kubectl create clusterrolebinding {SERVICE_ACCOUNT} --clusterrole=cluster-admin --serviceaccount=kube-system:{SERVICE_ACCOUNT}
 ```
 
 - 생성한 Service Account의 Token을 획득한다.
+
 ```
 # {SECRET_NAME} : Mountable secrets 값 확인
 $ kubectl describe serviceaccount {SERVICE_ACCOUNT} -n kube-system
@@ -564,6 +596,7 @@ $ kubectl describe secret {SECRET_NAME} -n kube-system | grep -E '^token' | cut 
 포털에서 Namespace 생성 및 사용자 등록 이후 Token값을 획득 시 이용된다.
 
 - Namespace 사용자의 Token을 획득한다.
+
 ```
 # {SECRET_NAME} : Mountable secrets 값 확인
 # {NAMESPACE} : Namespace 명
@@ -576,6 +609,7 @@ $ kubectl describe secret {SECRET_NAME} -n {NAMESPACE} | grep -E '^token' | cut 
 컨테이너 플랫폼 배포 시 최초 Temp Namespace 생성이 필요하다. 해당 Temp Namespace는 포털 내 사용자 계정 관리를 위해 이용된다.
 
 - Temp Namespace를 생성한다.
+
 ```
 $ kubectl create namespace paas-ta-container-platform-temp-namespace
 ```
