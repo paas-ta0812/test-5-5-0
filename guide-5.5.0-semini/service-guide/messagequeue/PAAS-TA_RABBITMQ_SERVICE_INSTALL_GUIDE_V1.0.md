@@ -173,6 +173,7 @@ Succeeded
 - RabbitMQ에서 사용하는 변수는 system_domain, paasta_admin_username, paasta_admin_password 이다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
+
 ```
 # BOSH INFO
 bosh_ip: "10.0.1.6"				# BOSH IP
@@ -221,7 +222,6 @@ portal_web_user_url: "http://portal-web-user.52.78.88.252.xip.io"
 
 ### ETC INFO
 abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io")
-
 ```
 
 
@@ -286,6 +286,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d rabbitmq deploy --no-redact rabbitmq.yml \
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/rabbitmq  
 $ sh ./deploy.sh  
@@ -294,8 +295,7 @@ $ sh ./deploy.sh
 ### <div id="2.6"/> 2.6. 서비스 설치 - 다운로드 된 PaaS-TA Release 파일 이용 방식
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
-  
-  - 설치 릴리즈 파일 다운로드 : [paasta-rabbitmq-2.0.tgz](http://45.248.73.44/index.php/s/3eT2Zmia5Jww5Gx/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-rabbitmq-2.0.tgz](http://45.248.73.44/index.php/s/3eT2Zmia5Jww5Gx/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -327,6 +327,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d rabbitmq deploy --no-redact rabbitmq.yml \
 ```  
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/rabbitmq  
 $ sh ./deploy.sh  
@@ -390,7 +391,6 @@ cubrid-service-broker   http://10.30.101.1:8080
 $ cf create-service-broker rabbitmq-service-broker admin admin http://10.30.53.33:4567
 Creating service broker rabbitmq-service-broker as admin...
 OK
-
 ```
 <br>
 
