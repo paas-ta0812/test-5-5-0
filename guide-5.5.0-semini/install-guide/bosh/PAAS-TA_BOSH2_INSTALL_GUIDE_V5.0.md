@@ -131,7 +131,9 @@ BOSH 및 PaaS-TA 설치를 위해 Inception 서버에 구성해야 할 컴포넌
 
   예 - AWS security group config)
   
+  
   ![Security_Group_ICMP_Image1](./images/security-group-icmp-01.png)  
+
 
 
 ### <div id='3.3.2'/>3.3.2.    BOSH CLI 및 Dependency 설치
