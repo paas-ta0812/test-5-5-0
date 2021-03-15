@@ -166,6 +166,7 @@ $ unzip stemcell.zip
 - 오프라인 Stemcell 업로드 Script의 설정 수정 (BOSH_ENVIRONMENT, STEMCELL_DIR 수정)
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/paasta-deployment/bosh/offline-upload-stemcell.sh
+
 ```                     
 #!/bin/bash
 STEMCELL_VERSION=621.94
@@ -200,6 +201,7 @@ $ source offline-upload-stemcell.sh
 ## <div id='3.4'/>3.4. Runtime Config 설정 
 Runtime config는 BOSH로 배포되는 VM에 적용되는 설정이다.
 기본적인 Runtime Config 설정 명령어는 다음과 같다.  
+
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} update-runtime-config {PATH} --name={NAME}
 ```
@@ -217,6 +219,7 @@ PaaS-TA 5.5.1은 Runtime Config 설정 스크립트를 지원하며, BOSH 로그
 
   - Runtime Config 업데이트 Script 수정 (BOSH_ENVIRONMENT 수정)
 > $ vi ~/workspace/paasta-5.5.1/deployment/paasta-deployment/bosh/update-runtime-config.sh
+
 ```                     
 #!/bin/bash
 
@@ -225,13 +228,16 @@ BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (PaaS-TA에
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n runtime-configs/dns.yml
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n --name=os-conf runtime-configs/os-conf.yml
 ```
+
 - Runtime Config 업데이트 Script 실행
+
 ```                     
 $ cd ~/workspace/paasta-5.5.1/deployment/paasta-deployment/bosh
 $ source update-runtime-config.sh
 ```
 
-  - Runtime Config 확인  
+  - Runtime Config 확인
+    
   ```  
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config --name=os-conf
@@ -257,6 +263,7 @@ $ wget https://nextcloud.paas-ta.org/index.php/s/G7ossXeZZHeMPTQ/download --cont
 - 오프라인 Runtime Config 업데이트 Script 수정 (BOSH_ENVIRONMENT, RELEASE_DIR 수정)
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/paasta-deployment/bosh/offline-update-runtime-config.sh
+
 ```                     
 #!/bin/bash
   
@@ -623,7 +630,11 @@ PaaS-TA를 설치하는 환경에 따라 다르게 설정해도 된다.
 VM Type은 IaaS에서 정의된 VM Type이다.  
 
 ※ 다음은 AWS에서 정의한 Instance Type이다.
+
+
 ![PaaSTa_FLAVOR_Image]
+
+
 
 ### <div id='3.5.3'/>● Compilation
 PaaS-TA 및 서비스 설치 시, PaaS-TA는 Compile VM을 생성하여 소스를 컴파일하고, PaaS-TA VM을 생성하여 컴파일된 파일을 대상 VM에 설치한다.  
@@ -731,6 +742,7 @@ abacus_url: "http://abacus.xx.xx.xxx.xxx.xip.io"	# Abacus URL (e.g. "http://abac
 PaaS-TA를 설치 할 때 적용되는 각종 변수값이나 배포 될 VM의 설정을 변경할 수 있다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/paasta-deployment/paasta/vars.yml
+
 ```
 # SERVICE VARIABLE
 deployment_name: "paasta"			# Deployment Name
@@ -946,6 +958,7 @@ ex) uaa_client_admin_secret="admin-secret"
 
 ### <div id='3.6.2'/>3.6.2. PaaS-TA Operation 파일
 
+```
 <table>
 <tr>
 <td>파일명</td>
@@ -1035,11 +1048,11 @@ PaaS-TA VM 중 singleton-blobstore, database의 AZs(zone)을 변경하면 조직
 **※ PaaS-TA 설치 시 명령어는 BOSH deploy를 사용한다. (IaaS 환경에 따라 Option이 다름)**
 
 PaaS-TA 배포 BOSH 명령어 예시
-
 ```
+
 $ bosh -e ${BOSH_ENVIRONMENT} -d paasta deploy paasta-deployment.yml
-```
 
+```
 PaaS-TA 배포 시, 설치 Option을 추가해야 한다. 설치 Option에 대한 설명은 아래와 같다.
 
 <table>
@@ -1065,12 +1078,10 @@ PaaS-TA 배포 시, 설치 Option을 추가해야 한다. 설치 Option에 대�
 <td>YAML파일에 작성한 변수를 읽어올때 사용한다.</td>
 </tr>
 </table>
-
-
-
-### 
+```
 
 #### <div id='3.6.3.1'/>● deploy-aws.sh
+
 ```
 BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
 
@@ -1086,6 +1097,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-T
 ```
 
 #### <div id='3.6.3.2'/>● deploy-openstack.sh
+
 ```
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
 	-o operations/openstack.yml \					# OpenStack 설정
