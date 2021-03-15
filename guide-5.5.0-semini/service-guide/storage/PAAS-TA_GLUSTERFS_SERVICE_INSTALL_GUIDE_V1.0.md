@@ -169,6 +169,7 @@ Succeeded
 - glusterfs에서 사용하는 변수는 system_domain, paasta_admin_username, paasta_admin_password 이다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
+
 ```
 # BOSH INFO
 bosh_ip: "10.0.1.6"				# BOSH IP
@@ -217,9 +218,7 @@ portal_web_user_url: "http://portal-web-user.52.78.88.252.xip.io"
 
 ### ETC INFO
 abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io")
-
 ```
-
 
 
 - Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
@@ -293,6 +292,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d glusterfs deploy --no-redact glusterfs.yml \
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/glusterfs  
 $ sh ./deploy.sh  
@@ -301,8 +301,7 @@ $ sh ./deploy.sh
 ### <div id="2.6"/> 2.6. 서비스 설치 - 다운로드 된 PaaS-TA Release 파일 이용 방식
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
-  
-  - 설치 릴리즈 파일 다운로드 : [paasta-glusterfs-2.0.1.tgz](http://45.248.73.44/index.php/s/Y3dirSrzNtQ9WPf/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-glusterfs-2.0.1.tgz](http://45.248.73.44/index.php/s/Y3dirSrzNtQ9WPf/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -318,6 +317,7 @@ paasta-glusterfs-2.0.1.tgz
      (추가) -v releases_dir="<RELEASE_DIRECTORY>"  
      
 > $ vi ~/workspace/paasta-5.5.1/deployment/service-deployment/glusterfs/deploy.sh
+
 ```
 #!/bin/bash
 
@@ -332,6 +332,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d glusterfs deploy --no-redact glusterfs.yml \
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/glusterfs  
 $ sh ./deploy.sh  
@@ -370,6 +371,7 @@ GlusterFS 서비스팩 배포가 완료 되었으면 Application에서 서비스
 ##### 서비스 브로커 목록을 확인한다.
 
 >`$ cf service-brokers`
+
 ```  
 $ cf service-brokers
 Getting service brokers as admin...
@@ -385,6 +387,7 @@ No service brokers found
 > [USERNAME] / [PASSWORD] : 서비스 브로커에 접근할 수 있는 사용자 ID / PASSWORD
 > [SERVICE_BROKER_URL] : 서비스 브로커 접근 URL
 >`$ cf create-service-broker glusterfs-service admin cloudfoundry http://10.30.107.197:8080`
+
 ```  
 $ cf create-service-broker glusterfs-service admin cloudfoundry http://10.30.107.197:8080
 Creating service broker glusterfs-service as admin...
@@ -394,6 +397,7 @@ OK
 ##### 등록된 GlusterFS 서비스 브로커를 확인한다.
 
 >`$ cf service-brokers`  
+
 ```  
 $ cf service-brokers
 Getting service brokers as admin...
@@ -405,6 +409,7 @@ glusterfs-service              http://10.30.107.197:8080
 ##### 접근 가능한 서비스 목록을 확인한다.
 
 >`$ cf service-access`  
+
 ```  
 $ cf service-access
 Getting service access as admin...
@@ -413,13 +418,15 @@ broker: glusterfs-service
    glusterfs   glusterfs-5Mb      none
    glusterfs   glusterfs-100Mb    none
    glusterfs   glusterfs-1000Mb   none
-```  
+```
+
 >서비스 브로커 등록시 최초에는 접근을 허용하지 않는다. 따라서 access는 none으로 설정된다.
 
 ##### 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
 
 >`$ cf enable-service-access glusterfs`  
->`$ cf service-access`  
+>`$ cf service-access` 
+ 
 ```  
 $ cf enable-service-access glusterfs
 Enabling access to all plans of service glusterfs for all orgs as admin...
@@ -433,7 +440,6 @@ broker: glusterfs-service
    glusterfs   glusterfs-100Mb    all
    glusterfs   glusterfs-1000Mb   all
 ```  
-
 
 
 ### <div id="3.2"/> 3.2. Sample App 구조
