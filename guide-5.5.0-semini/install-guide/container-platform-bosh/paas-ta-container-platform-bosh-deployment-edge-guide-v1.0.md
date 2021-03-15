@@ -66,7 +66,9 @@ Kubeadm를 통해 Kubernetes Cluster를 설치하고 Kubernetes 환경에 KubeEd
 ### <div id='2.2'>2.2. Stemcell 확인
 Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell 이 업로드 되어 있는 것을 확인한다. (PaaS-TA 5.5 와 동일 Stemcell 사용)
 - Stemcell 업로드 및 Cloud Config, Runtime Config 설정 부분은 [PaaS-TA 5.5 설치가이드](https://github.com/PaaS-TA/Guide/blob/master/install-guide/paasta/PAAS-TA_CORE_INSTALL_GUIDE_V5.0.md)를 참고 한다. 
+
 > $ bosh -e micro-bosh stemcells
+
 ```
 Using environment '10.0.1.6' as client 'admin'
 
@@ -97,6 +99,7 @@ $ git clone https://github.com/PaaS-TA/paas-ta-container-platform-deployment.git
 BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다. Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 BOSH 2.0 가이드를 참고한다.
 - Cloud config 설정 내용을 확인한다.
 > $ bosh -e micro-bosh cloud-config
+
 ```
 Using environment '10.0.1.6' as client 'admin'
 
@@ -228,6 +231,7 @@ private_image_repository_port: 5001                                             
 private_image_repository_root_directory: "/var/vcap/data/private-image-repository"   # private image repository root directory
 private_image_repository_persistent_disk_type: "10GB"                                # private image repository's persistent disk type
 ```
+
 - 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정한다.
 > $ vi ~/workspace/paasta-5.5.0/deployment/paas-ta-container-platform-deployment/bosh/deploy-{IAAS}.sh
 
@@ -248,6 +252,7 @@ bosh -e ${CONTAINER_BOSH2_NAME} -n -d ${CONTAINER_DEPLOYMENT_NAME} deploy --no-r
     -v director_name=${CONTAINER_BOSH2_NAME} \
     -v director_uuid=${CONTAINER_BOSH2_UUID}
 ```
+
 ### <div id='2.5'>2.5. 릴리즈 설치
 - 릴리즈 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 릴리즈 설치 작업 경로로 위치시킨다.  
   + 설치 릴리즈 파일 다운로드 :  
@@ -265,6 +270,7 @@ $ ls ~/workspace/paasta-5.5.0/release/service
 ```
 
 - 릴리즈를 설치한다.
+
 ```
 $ cd ~/workspace/paasta-5.5.0/deployment/paas-ta-container-platform-deployment/bosh  
 $ chmod +x *.sh
@@ -274,6 +280,7 @@ $ ./deploy-{IAAS}.sh
 ### <div id='2.6'>2.6. 릴리즈 설치 확인
 설치 완료된 릴리즈를 확인한다.
 > $ bosh -e micro-bosh -d paasta-container-platform vms
+
 ```
 Using environment '10.0.1.6' as client 'admin'
 
@@ -298,6 +305,7 @@ Succeeded
 
 ## <div id='3'>3. 컨테이너 플랫폼 배포
 3.컨테이너 플랫폼 배포 항목부터는 Master Node에서 진행을 하면 된다. kubernetes에서 PaaS-TA용 컨테이너 플랫폼을 사용하기 위해서는 Bosh 릴리즈 배포 후 Repository에 등록된 이미지를 Kubernetes에 배포하여 사용하여야 한다.
+
 
 ### <div id='3.1'>3.1. kubernetes Cluster 설정
 > 단독배포용 Kubernetes Master Node, Worker Node에서 daemon.json 에 insecure-registries 로 Private Image Repository URL 설정 후 Docker를 재시작한다.
@@ -340,6 +348,7 @@ $ ls ~/workspace/paasta-5.5.0/container-platform/container-platform-image
  ```
  
  + Private Repository에 이미지를 업로드한다.
+ 
  ```
  $ chmod +x *.sh  
  $ ./image-upload-standalone.sh {HAProxy_IP}:5001 
@@ -350,12 +359,13 @@ $ ls ~/workspace/paasta-5.5.0/container-platform/container-platform-image
  ```
  $ curl -H 'Authorization:Basic YWRtaW46YWRtaW4=' http://{HAProxy_IP}:5001/v2/_catalog
  
-{"repositories":["container-platform-api","container-platform-common-api","container-platform-webadmin","container-platform-webuser"]}
-```
+ {"repositories":["container-platform-api","container-platform-common-api","container-platform-webadmin","container-platform-webuser"]}
+ ```
 
 
 ### <div id='3.3'>3.3. Secret 생성
 Private Repository에 등록된 이미지를 활용하기 위해 Kubernetes에 secret을 생성한다.
+    
 ```
 $ kubectl create secret docker-registry cp-secret --docker-server={HAProxy_IP}:5001 --docker-username=admin --docker-password=admin --namespace=default
 ```
@@ -364,12 +374,14 @@ $ kubectl create secret docker-registry cp-secret --docker-server={HAProxy_IP}:5
 컨테이너 플랫폼 배포 전 최초 Temp Namespace 생성이 필요하다.<br> 해당 Temp Namespace는 컨테이너 플랫폼 내 사용자 계정 관리를 위해 이용된다.
 
 - Temp Namespace를 생성한다.
+
 ```
 $ kubectl create namespace paas-ta-container-platform-temp-namespace
 ```
 
 ### <div id='3.5'>3.5. Taint 해제
 노드의 Taint 설정을 해제한다.(이미 KubeEdge 설치 가이드에서 [Taint 설정 해제](https://github.com/PaaS-TA/paas-ta-container-platform/blob/master/install-guide/edge/paas-ta-container-platform-edge-deployment-guide-v1.0.md#3)를 했으면 안해도 된다.)
+    
 ```
 $ kubectl taint nodes --all node-role.kubernetes.io/master-
 
@@ -387,6 +399,7 @@ taint "node-role.kubernetes.io/master" not found
 #### <div id='3.6.1'>3.6.1. paas-ta-container-platform-common-api 배포
 
 + 컨테이너 플랫폼 yaml 파일 
+
 ```
 # 컨테이너 플랫폼 yaml 파일 경로이동
 $ cd ~/workspace/paasta-5.5.0/container-platform/container-platform-edge-yaml
@@ -447,7 +460,7 @@ spec:
         effect: "NoSchedule"    
       imagePullSecrets:
         - name: cp-secret
----
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -465,6 +478,7 @@ spec:
     app: common-api
   type: NodePort
 ```
+
 #### <div id='3.6.2'>3.6.2. paas-ta-container-platform-api 배포
 
 > vi paas-ta-container-platform-api.yml
@@ -517,7 +531,7 @@ spec:
         effect: "NoSchedule"    
       imagePullSecrets:
         - name: cp-secret
----
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -535,6 +549,7 @@ spec:
     app: api
   type: NodePort
 ```
+
 #### <div id='3.6.3'>3.6.3. paas-ta-container-platform-webuser 배포
 
 > vi paas-ta-container-platform-webuser.yml
@@ -587,7 +602,7 @@ spec:
         effect: "NoSchedule"    
       imagePullSecrets:
         - name: cp-secret
----
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -605,6 +620,7 @@ spec:
     app: webuser
   type: NodePort
 ```
+
 #### <div id='3.6.4'>3.6.4. paas-ta-container-platform-webadmin 배포
 
 > vi paas-ta-container-platform-webadmin.yml
@@ -650,7 +666,7 @@ spec:
         effect: "NoSchedule"  
       imagePullSecrets:
         - name: cp-secret
----
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -668,6 +684,7 @@ spec:
     app: webadmin
   type: NodePort
 ```
+
 ```
 $ kubectl apply -f paas-ta-container-platform-common-api.yml
 deployment.apps/common-api-deployment created
@@ -710,7 +727,6 @@ api-deployment          NodePort    xxx.xxx.xxx.xxx  <none>        3333:30333/TC
 common-api-deployment   NodePort    xxx.xxx.xxx.xxx  <none>        3334:30334/TCP   2m1s
 webadmin-deployment     NodePort    xxx.xxx.xxx.xxx  <none>        8080:32080/TCP   73s
 webuser-deployment      NodePort    xxx.xxx.xxx.xxx  <none>        8091:32091/TCP   86s
-
 ```
 
 ## <div id='4'>4. 컨테이너 플랫폼 운영자/사용자 포털 회원가입
@@ -727,6 +743,7 @@ webuser-deployment      NodePort    xxx.xxx.xxx.xxx  <none>        8091:32091/TC
 ### <div id='4.1'/>4.1. 컨테이너 플랫폼 운영자 포털 회원가입
 운영자 포털을 접속하기 전 네임스페이스 'paas-ta-container-platform-temp-namespace' 가 정상적으로 생성되어 있는지 확인한다.
 > $ kubectl get namespace 
+
 ```
 NAME                                        STATUS   AGE
 default                                     Active   5d19h
@@ -742,12 +759,14 @@ Kubernetes Cluster 정보, 생성할 Namespace 명, User 정보를 입력 후 [�
 > - Kubernetes Cluster Name : <br> [paas-ta-container-platform-api.yml](https://github.com/PaaS-TA/paas-ta-container-platform/blob/master/install-guide/bosh/paas-ta-container-platform-bosh-deployment-edge-guide-v1.0.md#3.6.2)에서 작성하여 배포한 {CLUSTER_NAME} 값을 입력한다. <br><br> 
 > - Kubernetes Cluster API URL : <br> https://{K8S_IP}:6443 을 입력한다. {K8S_IP}는 [paas-ta-container-platform-api.yml](https://github.com/PaaS-TA/paas-ta-container-platform/blob/master/install-guide/bosh/paas-ta-container-platform-bosh-deployment-edge-guide-v1.0.md#3.6.2)에서 작성하여 배포한 {MASTER_NODE_PUBLIC_IP} 값을 입력한다. <br><br> 
 > - Kubernetes Cluster Token : <br> KubeEdge 설치 가이드의 [5.1. Cluster Role 운영자 생성 및 Token 획득](https://github.com/PaaS-TA/paas-ta-container-platform/blob/master/install-guide/edge/paas-ta-container-platform-edge-deployment-guide-v1.0.md#5.1)을 참고한다.
+
 ```
 # ex) 이해를 돕기 위한 예시 정보 
 # {Kubernetes Cluster Name} : cp-cluster
 # {Kubernetes Cluster API URL} : https://xxx.xxx.xxx.xxx:6443
 # {Kubernetes Cluster Token} : qY3k2xaZpNbw3AJxxxxx......
 ```
+
 ### <div id='4.2'/>4.2. 컨테이너 플랫폼 운영자 포털 로그인
 - 사용자 ID와 비밀번호를 입력 후 [로그인] 버튼을 클릭하여 컨테이너 플랫폼 운영자 포털에 로그인 한다. 
 
