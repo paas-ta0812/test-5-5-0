@@ -182,6 +182,7 @@ Succeeded
 - MongoDB에서 사용하는 변수는 system_domain, paasta_admin_username, paasta_admin_password, paasta_nats_ip, paasta_nats_port, paasta_nats_user,	paasta_nats_password 이다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/common/common_vars.yml
+
 ```
 # BOSH INFO
 bosh_ip: "10.0.1.6"				# BOSH IP
@@ -229,13 +230,13 @@ portal_web_user_ip: "52.78.88.252"
 portal_web_user_url: "http://portal-web-user.52.78.88.252.xip.io" 
 
 ### ETC INFO
-abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io")
-
+abacus_url: "http://abacus.61.252.53.248.xip.io"	# abacus url (e.g. "http://abacus.xxx.xxx.xxx.xxx.xip.io"
 ```
 
 - Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/service-deployment/mongodb/vars.yml
+
 ```
 # STEMCELL
 stemcell_os: "ubuntu-xenial"                                     # stemcell os
@@ -349,6 +350,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d mongodb deploy --no-redact mongodb.yml \
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/mongodb  
 $ sh ./deploy.sh  
@@ -356,8 +358,7 @@ $ sh ./deploy.sh
 ### <div id="2.6"/> 2.6. 서비스 설치 - 다운로드 된 PaaS-TA Release 파일 이용 방식
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
-  
-  - 설치 릴리즈 파일 다운로드 : [paasta-mongodb-shard-2.0.1.tgz](http://45.248.73.44/index.php/s/7DyiWNWD2N8pT8J/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-mongodb-shard-2.0.1.tgz](http://45.248.73.44/index.php/s/7DyiWNWD2N8pT8J/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -390,6 +391,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d mongodb deploy --no-redact mongodb.yml \
 ```  
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/mongodb  
 $ sh ./deploy.sh  
@@ -565,17 +567,16 @@ Sample Web App에서 Mongodb 서비스를 사용하기 위해서는 서비스 �
 
 ##### Sample Web App 디렉토리로 이동하여 manifest 파일을 확인한다.
 다운로드 :: http://45.248.73.44/index.php/s/x8Tg37WDFiL5ZDi/download
+
 ```
 $ wget -O sample.zip http://45.248.73.44/index.php/s/x8Tg37WDFiL5ZDi/download
 $ unzip sample.zip -d sample
 $ cd sample/Service/hello-spring-mongodb
-
 ```
 
 >`$ vi manifest.yml` <br>
 
 ```
----
 applications:
 - name: hello-spring-mysql       #배포할 App 이름
   memory: 1G                # 배포시 메모리 사이즈
@@ -658,9 +659,11 @@ path: target/hello-spring-mysql-1.0.0-BUILD-SNAPSHOT.war      #배포하는 App 
 <br>
 
 -	App을 리부팅 한다.
+
 ```
 $ cf restart hello-spring-Mongodb
 ```
+
 ![mongodb_image_21](../images/mongodb/mongodb_image_21.png)
 
 
