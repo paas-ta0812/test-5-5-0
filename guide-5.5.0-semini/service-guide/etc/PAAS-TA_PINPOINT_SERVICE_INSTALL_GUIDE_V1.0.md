@@ -88,10 +88,10 @@ PaaS-TA 3.5 버전부터는 Bosh2.0 기반으로 deploy를 진행하며 기존 B
  ※ bosh-dns include deployments에 pinpoint가 없다면 ~/workspace/paasta-5.5.1/deployment/paasta-deployment/bosh/runtime-configs 의 dns.yml 을 열어서 pinpoint를 추가하고, bosh runtime-config를 업데이트 해준다.    
 
 > $ bosh -e micro-bosh runtime-config
+
 ```
 Using environment '10.0.1.6' as client 'admin'
 
----
 addons:
 - include:
     deployments:
@@ -228,6 +228,7 @@ Succeeded
 - Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/service-deployment/pinpoint/vars.yml
+
 ```
 # STEMCELL
 stemcell_os: "ubuntu-xenial"                                     # stemcell os
@@ -305,6 +306,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d pinpoint deploy --no-redact pinpoint.yml \
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/pinpoint  
 $ sh ./deploy.sh  
@@ -313,8 +315,7 @@ $ sh ./deploy.sh
 ### <div id="2.6"/> 2.6. 서비스 설치 - 다운로드 된 PaaS-TA Release 파일 이용 방식
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 서비스 설치 작업 경로로 위치시킨다.  
-  
-  - 설치 릴리즈 파일 다운로드 : [paasta-pinpoint-release.tgz](http://45.248.73.44/index.php/s/SJ6SoLksWEc3ckJ/download)
+- 설치 릴리즈 파일 다운로드 : [paasta-pinpoint-release.tgz](http://45.248.73.44/index.php/s/SJ6SoLksWEc3ckJ/download)
 
 ```
 # 릴리즈 다운로드 파일 위치 경로 생성
@@ -330,6 +331,7 @@ paasta-pinpoint-release.tgz
      (추가) -v releases_dir="<RELEASE_DIRECTORY>"  
      
 > $ vi ~/workspace/paasta-5.5.1/deployment/service-deployment/pinpoint/deploy.sh
+
 ```
 #!/bin/bash
 
@@ -348,6 +350,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d pinpoint deploy --no-redact pinpoint.yml \
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/pinpoint  
 $ sh ./deploy.sh  
@@ -389,9 +392,10 @@ Pinpoint 서비스팩 배포가 완료 되었으면 Application에서 서비스 
 
 서비스 브로커 등록시 PaaS-TA에서 서비스브로커를 등록 할 수 있는 사용자로 로그인이 되어 있어야 한다.
 
--   서비스 브로커 목록을 확인한다.
+-  서비스 브로커 목록을 확인한다.
 
 $ cf service-brokers
+
 ```
 Getting service brokers as admin...
 
@@ -399,9 +403,10 @@ name   url
 No service brokers found
 ```
 
--   Pinpoint 서비스 브로커를 등록한다.
+-  Pinpoint 서비스 브로커를 등록한다.
 
 $ cf create-service-broker {서비스브로커 이름} {서비스브로커 사용자ID} {서비스브로커 사용자비밀번호} http://{서비스브로커 URL(IP)}
+
 ```
 서비스브로커 이름 : 서비스브로커 관리를 위해 PaaS-TA에서 보여지는 명칭이다. 서비스 Marketplace에서는 각각의 API 서비스 명이 보여지니 여기서 명칭은 서비스브로커 명칭이다.
 
@@ -411,42 +416,48 @@ $ cf create-service-broker {서비스브로커 이름} {서비스브로커 사�
 ```
 
 $ cf create-service-broker pinpoint-service-broker admin cloudfoundry http://<URL(IP)>:8080
+
 ```
 Creating service broker pinpoint-service-broker as admin...
 OK
 ```
 
--   등록된 Pinpoint 서비스 브로커를 확인한다.
+-  등록된 Pinpoint 서비스 브로커를 확인한다.
 
 $ cf service-brokers
+
 ```
 Getting service brokers as admin...
 name url
 pinpoint-service-broker http://URL(IP):8080
 ```
 
--   접근 가능한 서비스 목록을 확인한다.
+-  접근 가능한 서비스 목록을 확인한다.
 
 $ cf service-access
+
 ```
 Getting service access as admin...
 broker: Pinpoint-service-broker
 service plan access orgs
 Pinpoint Pinpoint\_standard none
 ```
+
 서비스 브로커 생성시 디폴트로 접근을 허용하지 않는다.
 
--   특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
+-  특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
 
 $ cf enable-service-access Pinpoint
+
 ```
 Enabling access to all plans of service Pinpoint for all orgs as admin...
 OK
 ```
 
--   서비스 접근 허용을 확인한다.
+-  서비스 접근 허용을 확인한다.
 
 $ cf service-access
+
 ```
 Getting service access as admin...
 broker: Pinpoint-service-broker
@@ -462,6 +473,7 @@ Sample Web App은 PaaS-TA에 App으로 배포가 된다. 배포된 App에 Pinpoi
 -   앱을 다운로드 후 –b 옵션을 주어 buildpack을 지정하여 push 해 놓는다.
 
 $ cf push -b java_buildpack_pinpoint --no-start
+
 ```
 Using manifest file /home/ubuntu/workspace/bd_test/spring-music/manifest.yml
 
@@ -482,6 +494,7 @@ OK
 ```
 
 $ cf apps
+
 ```
 Getting apps in org org / space space as admin...
 OK
@@ -499,9 +512,10 @@ Sample Web App에서 Pinpoint 서비스를 사용하기 위해서는 서비스 �
 \*참고: 서비스 신청시 PaaS-TA에서 서비스를 신청 할 수 있는
 사용자로 로그인이 되어 있어야 한다.
 
--   먼저 PaaS-TA Marketplace에서 서비스가 있는지 확인을 한다.
+-  먼저 PaaS-TA Marketplace에서 서비스가 있는지 확인을 한다.
 
 $ cf marketplace
+
 ```
 Getting services from marketplace in org org / space space as admin...
 OK
@@ -510,9 +524,10 @@ service    plans               description
 Pinpoint   Pinpoint_standard   A simple pinpoint implementation
 ```
 
--   Marketplace에서 원하는 서비스가 있으면 서비스 신청(Provision)을 하여 서비스 인스턴스를 생성한다.
+-  Marketplace에서 원하는 서비스가 있으면 서비스 신청(Provision)을 하여 서비스 인스턴스를 생성한다.
 
 $ cf create-service {서비스명} {서비스플랜} {내서비스명}
+
 ```
 서비스명 : p-Pinpoint로 Marketplace에서 보여지는 서비스 명칭이다.
 서비스플랜 : 서비스에 대한 정책으로 plans에 있는 정보 중 하나를 선택한다. Pinpoint 서비스는 10 connection, 100 connection 를 지원한다.
@@ -520,14 +535,16 @@ $ cf create-service {서비스명} {서비스플랜} {내서비스명}
 ```
 
 $ cf create-service Pinpoint Pinpoint_standard PS1
+
 ```
 Creating service instance PS1 in org org / space space as admin...
 OK
 ```
 
--   생성된 Pinpoint 서비스 인스턴스를 확인한다.
+-  생성된 Pinpoint 서비스 인스턴스를 확인한다.
 
 $ cf services
+
 ```
 Getting services in org org / space space as admin...
 OK
@@ -542,11 +559,12 @@ PS1                      Pinpoint                 Pinpoint_standard             
 
 \*참고: 서비스 Bind 신청시 PaaS-TA 플랫폼에서 서비스 Bind신청 할 수 있는 사용자로 로그인이 되어 있어야 한다.
 
--   Sample Web App에서 생성한 서비스 인스턴스 바인드 신청을 한다.
+- Sample Web App에서 생성한 서비스 인스턴스 바인드 신청을 한다.
 
 - 서비스 인스턴스 확인
  
 $ cf s
+
 ```
 Getting services in org org / space space as admin...
 OK
@@ -559,6 +577,7 @@ my_rabbitmq_service      p-rabbitmq               standard                      
 - 서비스 바인드
 
 $ cf bind-service spring-music-pinpoint PS1 -c '{"application_name":"spring-music"}'
+
 ```
 Binding service PS1 to app spring-music-pinpoint in org org / space space as admin...
 OK
@@ -566,18 +585,21 @@ TIP: Use 'cf restage spring-music-pinpoint' to ensure your env variable changes 
 ```
 
 **cf cli 리눅스 버전 :**
+
 ```
 cf bind-service <application이름> PS1 -c ‘{"application_name\":"<application이름>"}
 ```
 
 **cf cli window 버전 :**
+
 ```
 cf bind-service <application이름> PS1 -c "{\"application_name\":\"<application이름>\"}"
 ```
 
--   바인드가 적용되기 위해서 App을 restage한다.
+-  바인드가 적용되기 위해서 App을 restage한다.
 
 $ cf restage spring-music-pinpoint
+
 ```
 Restaging app spring-music-pinpoint in org org / space space as admin...
 Downloading binary_buildpack...
@@ -634,14 +656,15 @@ App started
 OK
 ```
 
--   App이 정상적으로 Pinpoint 서비스를 사용하는지 확인한다.
+-  App이 정상적으로 Pinpoint 서비스를 사용하는지 확인한다.
 
-![pinpoint_image_03](../images/pinpoint/pinpoint-image3.png)
+![](../images/pinpoint/pinpoint-image3.png)
 
 
--  환경변수 확인
+- 환경변수 확인
 
 $ cf env spring-music-pinpoint
+
 ```
 Getting env variables for app spring-music-pinpoint in org org / space space as admin...
 OK
