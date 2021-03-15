@@ -896,11 +896,15 @@ ex) uaa_login_logout_redirect_parameter_whitelist=["{PaaS-TA PORTAL URI}","{PaaS
 
 2. uaa_login_links_passwd : UAA 페이지에서 Reset Password 버튼 클릭 시 이동하는 링크 주소
 
-<img src="https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/paasta/images/uaa-login.png" width="663px">
+
+>![](./images/uaa-login.png)
+
 
 3. uaa_login_links_signup : UAA 페이지에서 Create Account 버튼 클릭 시 이동하는 링크 주소
 
-<img src="https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/paasta/images/uaa-login-2.png">
+
+>![](./images/uaa-login-2.png)
+
 
 ```
 ex) uaa_login_links_signup="{PaaS-TA PORTAL URI}/createuser"
@@ -1038,6 +1042,7 @@ ex) uaa_client_admin_secret="admin-secret"
     Requires value :  -v releases_dir</td>
 </tr>
 </table>
+```
 
 ### <div id='3.6.3'/>3.6.3.   PaaS-TA 설치 Shell Scripts
 paasta-deployment.yml 파일은 PaaS-TA를 배포하는 Manifest 파일이며, PaaS-TA VM에 대한 설치 정의를 하게 된다.  
@@ -1048,13 +1053,13 @@ PaaS-TA VM 중 singleton-blobstore, database의 AZs(zone)을 변경하면 조직
 **※ PaaS-TA 설치 시 명령어는 BOSH deploy를 사용한다. (IaaS 환경에 따라 Option이 다름)**
 
 PaaS-TA 배포 BOSH 명령어 예시
+
 ```
-
 $ bosh -e ${BOSH_ENVIRONMENT} -d paasta deploy paasta-deployment.yml
-
 ```
 PaaS-TA 배포 시, 설치 Option을 추가해야 한다. 설치 Option에 대한 설명은 아래와 같다.
 
+```
 <table>
 <tr>
 <td>-e</td>
