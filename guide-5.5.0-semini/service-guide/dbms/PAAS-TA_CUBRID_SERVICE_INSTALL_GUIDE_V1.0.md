@@ -170,6 +170,7 @@ Succeeded
 - Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
 
 > $ vi ~/workspace/paasta-5.5.1/deployment/service-deployment/cubrid/vars.yml
+
 ```
 # STEMCELL
 stemcell_os: "ubuntu-xenial"             # stemcell os
@@ -220,6 +221,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d cubrid deploy --no-redact cubrid.yml \
 ```
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/cubrid    
 $ sh ./deploy.sh  
@@ -261,6 +263,7 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d cubrid deploy --no-redact cubrid.yml \
 ```  
 
 - 서비스를 설치한다.  
+
 ```
 $ cd ~/workspace/paasta-5.5.1/deployment/service-deployment/cubrid  
 $ sh ./deploy.sh  
@@ -299,6 +302,7 @@ Cubrid 서비스팩 배포가 완료 되었으면 Application에서 서비스 �
 ##### 서비스 브로커 목록을 확인한다.
 
 >`cf service-brokers`
+
 ```  
 $ cf service-brokers
 Getting service brokers as admin...
@@ -315,6 +319,7 @@ No service brokers found
 > - [SERVICE_BROKER_URL] : 서비스 브로커 접근 URL
  
 >`cf create-service-broker cubrid-service-broker admin cloudfoundry http://10.30.101.1:8080`
+
 ```  
 $ cf create-service-broker cubrid-service-broker admin cloudfoundry http://10.30.101.1:8080
 Creating service broker cubrid-service-broker as admin...
@@ -324,6 +329,7 @@ OK
 ##### 등록된 Cubrid 서비스 브로커를 확인한다.
 
 >`$ cf service-brokers`
+
 ```  
 $ cf service-brokers
 Getting service brokers as admin...
@@ -335,6 +341,7 @@ cubrid-service-broker     http://10.30.101.1:8080
 - 접근 가능한 서비스 목록을 확인한다.
 
 >`$ cf service-access`
+
 ```  
 $ cf service-access
 Getting service access as admin...
@@ -427,14 +434,17 @@ TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans o
 **내서비스명**내 서비스에서 보여지는 명칭이다. 이 명칭을 기준으로 환경설정정보를 가져온다.  
 
 >`$ cf create-service CubridDB utf8 cubrid-service-instance `
+
 ```  
 $ cf create-service CubridDB utf8 cubrid-service-instance
 Creating service instance cubrid-service-instance in org demo / space dev as demo...
 OK
 ```  
+
 ##### 생성된 Cubrid 서비스 인스턴스를 확인한다.
 
 >`$ cf services`
+
 ```  
 $ cf services
 Getting services in org demo / space dev as demo...
@@ -450,11 +460,11 @@ cubrid-service-instance   CubridDB   utf8                create succeeded
 
 ##### Sample Web App 디렉토리로 이동하여 manifest 파일을 확인한다.
 다운로드 :: http://45.248.73.44/index.php/s/x8Tg37WDFiL5ZDi/download
+
 ```
 $ wget -O sample.zip http://45.248.73.44/index.php/s/x8Tg37WDFiL5ZDi/download
 $ unzip sample.zip -d sample
 $ cd sample/Service/hello-spring-cubrid
-
 ```
 
 >`$ vi manifest.yml` <br>
@@ -498,6 +508,7 @@ OK
 ##### 배포된 Sample App을 확인하고 로그를 수행한다.
 
 >`$ cf apps`
+
 ```  
 $ cf apps
 Getting apps in org demo / space dev as demo...
@@ -510,15 +521,16 @@ sampleapp             started           1/1         1G       1G     sampleapp.11
 
 >`$ cf logs {배포된 App명}` <br>
 >`$ cf logs hello-spring-cubrid`
+
 ```  
 $ cf logs hello-spring-cubrid
 Retrieving logs for app hello-spring-cubrid in org demo / space dev as demo...
-
-
 ```  
+
 ###### Sample Web App에서 생성한 서비스 인스턴스 바인드 신청을 한다. 
 
 >`$ cf bind-service hello-spring-cubrid cubrid-service-instance` 
+
 ```  
 $ cf bind-service hello-spring-cubrid cubrid-service-instance
 Binding service cubrid-service-instance to app hello-spring-cubrid in org demo / space dev as demo...
@@ -611,6 +623,7 @@ buildpack: client-certificate-mapper=1.8.0_RELEASE container-security-provider=1
      state     since                    cpu    memory       disk           details
 #0   running   2019-11-18 06:10:42 PM   0.0%   125M of 1G   128.8M of 1G
 ```  
+
 - (참고) 바인드 후 App구동시 Cubrid 서비스 접속 에러로 App 구동이 안될 경우 보안 그룹을 추가한다.
 
 ```  
@@ -636,6 +649,7 @@ $ cf restart hello-spring-cubrid
 
 ##### curl 로 확인
 >`$ curl hello-spring-cubrid.115.68.47.178.xip.io`
+
 ```  
 $ curl hello-spring-cubrid.115.68.47.178.xip.io
 
@@ -667,7 +681,6 @@ $ curl hello-spring-cubrid.115.68.47.178.xip.io
 
 </body>
 </html>
-
 ```  
 
 ##### 브라우져에서 확인
