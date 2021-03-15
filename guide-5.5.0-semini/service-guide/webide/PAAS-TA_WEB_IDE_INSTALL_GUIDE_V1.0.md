@@ -310,6 +310,7 @@ OK
 
 ##### 등록된 WEB-IDE 서비스 브로커를 확인한다.
 >`$ cf service-brokers`
+
 ```
 $ cf service-brokers
 Getting service brokers as admin...
@@ -321,6 +322,7 @@ webide-service-broker         http://10.30.56.56:8080
 
 #### 접근 가능한 서비스 목록을 확인한다.
 >`$ cf service-access`
+
 ```
 $ cf service-access
 Getting service access as admin...
@@ -335,12 +337,12 @@ broker: webide-service-broker
 #### 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
 >`$ cf enable-service-access webide`<br>
 >`$ cf service-access`
+
 ```
 $ cf enable-service-access webide
 Enabling access to all plans of service webide for all orgs as admin...
 OK
-```
-```
+
 $ cf service-access
 Getting service access as admin...
 
@@ -353,6 +355,7 @@ broker: webide-service-broker
 #### PaaS-TA Marketplace에서 서비스가 있는지 확인을 한다.
 
 >`$ cf marketplace`
+
 ```
 $ cf marketplace
 Getting services from marketplace in org system / space dev as admin...
@@ -372,6 +375,7 @@ webide                   webide-shared                           A paasta web id
 
 
 >`$ cf create-service webide webide-shared webide-service`
+
 ```
 $ cf create-service webide webide-shared paasta-webide-service
 Creating service instance paasta-webide-service in org system / space dev as admin...
@@ -382,6 +386,7 @@ OK
 #### 생성된 WEB-IDE 서비스 인스턴스를 확인한다.
 
 >`$ cf services`
+
 ```
 $ cf services
 Getting services in org system / space dev as admin...
