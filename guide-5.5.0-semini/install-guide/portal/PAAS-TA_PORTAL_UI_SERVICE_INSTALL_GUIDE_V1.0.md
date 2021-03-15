@@ -433,6 +433,7 @@ Feature user_org_creation Enabled.
 
 
 (1) uaac portalclient가 등록이 되어있지 않다면 해당 화면과 같이 redirect오류가 발생한다.
+
 (2) uaac client add를 통해 potalclient를 추가시켜주어야 한다.
     > $ uaac target\
     $ uaac token client get\
