@@ -427,15 +427,19 @@ Feature user_org_creation Enabled.
 ```
 
 ### <div id="3.2"/> 3.2. 사용자포탈 UAA페이지 오류
+
+
 >![paas-ta-portal-31]
-1. uaac portalclient가 등록이 되어있지 않다면 해당 화면과 같이 redirect오류가 발생한다.
-2. uaac client add를 통해 potalclient를 추가시켜주어야 한다.
+
+
+(1) uaac portalclient가 등록이 되어있지 않다면 해당 화면과 같이 redirect오류가 발생한다.
+(2) uaac client add를 통해 potalclient를 추가시켜주어야 한다.
     > $ uaac target\
     $ uaac token client get\
         Client ID:  admin\
         Client secret:  *****
         
-3. uaac client add portalclient –s “portalclient Secret” 
+(3) uaac client add portalclient –s “portalclient Secret” 
 >--redirect_uri "사용자포탈 Url, 사용자포탈 Url/callback"\
 $ uaac client add portalclient -s xxxxx --redirect_uri "http://portal-web-user.xxxx.xip.io, http://portal-web-user.xxxx.xip.io/callback" \
 --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \
@@ -443,20 +447,25 @@ $ uaac client add portalclient -s xxxxx --redirect_uri "http://portal-web-user.x
 --authorities="uaa.resource" \
 --autoapprove="openid , cloud_controller_service_permissions.read"
 
+
  >![paas-ta-portal-32]
-1. uaac portalclient가 url이 잘못 등록되어있다면 해당 화면과 같이 redirect오류가 발생한다. 
-2. uaac client update를 통해 url을 수정해야한다.
+ 
+ 
+(1) uaac portalclient가 url이 잘못 등록되어있다면 해당 화면과 같이 redirect오류가 발생한다. 
+(2) uaac client update를 통해 url을 수정해야한다.
    > $ uaac target\
     $ uaac token client get\
    Client ID:  admin\
    Client secret:  *****
-3. uaac client update portalclient --redirect_uri "사용자포탈 Url, 사용자포탈 Url/callback"
+(3) uaac client update portalclient --redirect_uri "사용자포탈 Url, 사용자포탈 Url/callback"
     >$ uaac client update portalclient --redirect_uri "http://portal-web-user.xxxx.xip.io, http://portal-web-user.xxxx.xip.io/callback"
 
 ### <div id="3.3"/> 3.3. 운영자 포탈 유저 페이지 조회 오류
-1. 페이지 이동시 정보를 가져오지 못하고 오류가 났을 경우 common-api VM으로 이동후에 DB 정보 config를 수정후 재시작을 해 주어야 한다.
+
+페이지 이동시 정보를 가져오지 못하고 오류가 났을 경우 common-api VM으로 이동후에 DB 정보 config를 수정후 재시작을 해 주어야 한다.
 
 ### <div id="3.4"/> 3.4. Log
+
 Paas-TA Portal 각각 Instance의 log를 확인 할 수 있다.
 
 (1) 로그를 확인할 Instance에 접근한다.
@@ -554,31 +563,44 @@ Paas-TA Portal 각각 Instance의 log를 확인 할 수 있다.
 
 ### <div id="3.5"/> 3.5. 카탈로그 적용
 
-##### 1. Catalog 빌드팩, 서비스팩 추가
+##### (1) Catalog 빌드팩, 서비스팩 추가
 
 Paas-TA Portal 설치 후에 관리자 포탈에서 빌드팩, 서비스팩을 등록해야 사용자 포탈에서 사용이 가능하다.
  
- (1) 관리자 포탈에 접속한다.(portal-web-admin.[public ip].xip.io)
+ 1) 관리자 포탈에 접속한다.(portal-web-admin.[public ip].xip.io)
+ 
     >![paas-ta-portal-15]
- (2) 운영관리를 누른다.
+    
+ 2) 운영관리를 누른다.
+ 
     >![paas-ta-portal-16]
- (3) 카탈로그 페이지에 들어간다.
+    
+ 3) 카탈로그 페이지에 들어간다.
+ 
     >![paas-ta-portal-17]
- (4) 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.
+    
+ 4) 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.
+
     >![paas-ta-portal-18]
- (5) 사용자포탈에서 변경된값이 적용되어있는지 확인한다.
+    
+ 5) 사용자포탈에서 변경된값이 적용되어있는지 확인한다.
+ 
     >![paas-ta-portal-19] 
     
 ### <div id="3.6"/> 3.6. 모니터링 및 오토스케일링 적용
 ##### (1) 포탈 설치 이전 모니터링 설정 적용
 
-      PaaS-TA 에서 제공하고있는 모니터링을 미리 설치를 한 후에 진행해야 한다.
+PaaS-TA 에서 제공하고있는 모니터링을 미리 설치를 한 후에 진행해야 한다.
       
  1) Paas-TA Portal 설치 시 공통 변수 파일과 Deployment 변수 파일의 monitoring_api_url=<모니터링 API URL>, webuser_monitoring=true로 적용 한 후 설치 하면 정상적으로 모니터링 페이지 및 오토스케일링을 사용 할 수 있다.
 
 ##### (2) 포탈 설치 이후 모니터링 설정 적용
  1) 사용자 포탈의 앱 상세 페이지로 이동한다.
+ 
+ 
     >![paas-ta-portal-30]
+    
+    
  2) ① 상세페이지 레이아웃 하단의 모니터링 버튼을 누른다.
     
  3) ② 모니터링 오토 스케일링 화면
