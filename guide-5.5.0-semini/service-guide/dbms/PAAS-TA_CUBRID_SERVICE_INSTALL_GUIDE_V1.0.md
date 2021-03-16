@@ -39,8 +39,13 @@ PaaS-TA 3.5 버전부터는 Bosh2.0 기반으로 deploy를 진행하며 기존 B
 
 
 ### <div id='1.3'> 1.3. 시스템 구성도
-본 문서의 설치된 시스템 구성도이다. Cubrid Server, Cubrid 서비스 브로커로 최소사항을 구성하였다.  
-![시스템 구성도][1-3-0-0]
+본 문서의 설치된 시스템 구성도이다. Cubrid Server, Cubrid 서비스 브로커로 최소사항을 구성하였다. 
+	
+	
+	
+![시스템 구성도](../images/cubrid/1-3-0-0.png)
+
+
 
 * 설치할때 cloud config에서 사용하는 VM_Tpye명과 스펙 
 
@@ -402,7 +407,7 @@ Sample Web App 구조는 다음과 같다.
 
 >`$ ls -all `
 
->![3-1-0-0]
+>![](../images/cubrid/3-1-0-0.png)
 
 <br>
 
