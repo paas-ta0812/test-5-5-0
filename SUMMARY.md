@@ -23,7 +23,7 @@
       * [단독 배포용 Release 설치 가이드](./guide-5.5.0-semini/install-guide/container-platform-bosh/paas-ta-container-platform-bosh-deployment-spray-guide-v1.0.md)
       * [Edge 배포 설치 가이드](./guide-5.5.0-semini/install-guide/container-platform-edge/paas-ta-container-platform-edge-deployment-guide-v1.0.md)
       * [Edge 배포용 Release 설치 가이드](./guide-5.5.0-semini/install-guide/container-platform-bosh/paas-ta-container-platform-bosh-deployment-edge-guide-v1.0.md)
-      * [CaaS 단독 배포 설치 가이드](./guide-5.5.0-semini/install-guide/container-platform-standalone/paas-ta-container-platform-standalone-deployment-guide-v1.0.md)
+      * [CaaS 단독 배포 설치 가이드](./guide-5.5.0-semini/install-guide/container-platform-standalone/paas-ta-container-platform-standalone-deployment-guide-1-v1.0.md)
       * [CaaS 서비스용 Release 설치 가이드](./guide-5.5.0-semini/install-guide/container-platform-bosh/paas-ta-container-platform-bosh-deployment-caas-guide-v1.0.md)
   * [Service-Guide](guide-5.5.0-semini/service-guide/README.md)
     * [DBMS](guide-5.5.0-semini/service-guide/dbms/README.md)
