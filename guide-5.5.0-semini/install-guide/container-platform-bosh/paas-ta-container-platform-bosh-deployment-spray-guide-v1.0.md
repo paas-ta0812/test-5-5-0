@@ -356,8 +356,8 @@ $ ls ~/workspace/paasta-5.5.0/container-platform/container-platform-image
  ```
  $ curl -H 'Authorization:Basic YWRtaW46YWRtaW4=' http://{HAProxy_IP}:5001/v2/_catalog
  
-{"repositories":["container-platform-api","container-platform-common-api","container-platform-webadmin","container-platform-webuser"]}
-```
+ {"repositories":["container-platform-api","container-platform-common-api","container-platform-webadmin","container-platform-webuser"]}
+ ```
 
 
 ### <div id='3.3'>3.3. Secret 생성
