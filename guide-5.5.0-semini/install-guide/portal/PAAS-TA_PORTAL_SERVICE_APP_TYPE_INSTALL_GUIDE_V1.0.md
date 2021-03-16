@@ -565,11 +565,11 @@ Context: admin, from client admin
 - redirect오류 - portalclient 미등록  
 
 
-![](./images/Paas-TA-Portal_27.png)  
+![](./images/Paas-TA-Portal_27.jpg)  
 
 
-1. uaac portalclient가 등록이 되어있지 않다면 해당 화면과 같이 redirect오류가 발생한다.  
-2. uaac client add를 통해 potalclient를 추가시켜주어야 한다.   
+(1) uaac portalclient가 등록이 되어있지 않다면 해당 화면과 같이 redirect오류가 발생한다.  
+(2) uaac client add를 통해 potalclient를 추가시켜주어야 한다.   
 > $ uaac client add <PORTAL_UAA_CLIENT_ID> -s <PORTAL_UAA_CLIENT_SECRET> --redirect_uri <PORTAL_WEB_USER_URI>, <PORTAL_WEB_USER_URI>/callback --scope   "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" --authorized_grant_types "authorization_code , client_credentials , refresh_token" --authorities="uaa.resource" --autoapprove="openid , cloud_controller_service_permissions.read"  
   
 ```
@@ -585,11 +585,11 @@ $ uaac client add portalclient -s clientsecret --redirect_uri "http://portal-web
 - redirect오류 - portalclient의 redirect_uri 등록 오류  
 
 
-![](./images/Paas-TA-Portal_28.png)  
+![](./images/Paas-TA-Portal_28.jpg)  
 
 
-1. uaac portalclient가 uri가 잘못 등록되어있다면 해당 화면과 같이 redirect오류가 발생한다.   
-2. uaac client update를 통해 uri를 수정해야한다.  
+(1) uaac portalclient가 uri가 잘못 등록되어있다면 해당 화면과 같이 redirect오류가 발생한다.   
+(2) uaac client update를 통해 uri를 수정해야한다.  
 > $ uaac client update portalclient --redirect_uri "<PORTAL_WEB_USER_URI>, <PORTAL_WEB_USER_URI>/callback"   
 
 ```
