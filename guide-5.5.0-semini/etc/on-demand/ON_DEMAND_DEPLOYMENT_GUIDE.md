@@ -197,7 +197,7 @@ On-Demand 형식을 구현하기 위한 Bosh API는 다음과 같다.
 
 1. Bosh Api Setting
 1.1.   BoshDirector
-Bosh Director에 로그인 및 토큰을 받아 저장 및 Bosh API 접근가능한 오브젝트를 생성한다.
+       Bosh Director에 로그인 및 토큰을 받아 저장 및 Bosh API 접근가능한 오브젝트를 생성한다.
 
 ##### parameter
 
@@ -692,10 +692,8 @@ public class JpaServiceInstance extends ServiceInstance {
 사용자가 서비스를 신청할 경우 과정에서 VM 재기동 또는 생성을 진행한다.
 
 1.1. Deployment가 현재 구성이 제대로 되어있는지 확인 및 Instance List를 가져온다.
-     ```
 
-     ```
-##### 1.1. 에서 에러가 날 경우 서비스 생성을 중지한다.
+     1.1. 에서 에러가 날 경우 서비스 생성을 중지한다.
 
      ```
      예시)
@@ -840,8 +838,10 @@ public class JpaServiceInstance extends ServiceInstance {
 4. On-Demand deleteServiceInstance
 
 1.1. Service Instance를 제거해 반환한다.
+
 1.2. 비동기방식으로 삭제한 Instance에 할당된 VM을 중지시키기 위한 준비를 한다.
-##### 해당 Deployment가 Lock상태인지 조회한다. Lock인경우 15초 뒤에 다시 조회후 Lock이 아닌 경우 해당 VM을 중지시킨다.
+
+    해당 Deployment가 Lock상태인지 조회한다. Lock인경우 15초 뒤에 다시 조회후 Lock이 아닌 경우 해당 VM을 중지시킨다.
 
       ```
       예시)
@@ -1379,6 +1379,7 @@ Deployment manifest 에는 sotfware를 설치 하기 위해서 어떤 Stemcell (
         port: "((service_port))"
 
     ```
+    
 3. 서비스 배포 성공후 브로커 등록 및 서비스 신청시 해당 서비스 instance 생성 확인, 생성 완료시 On-Demand-Service 설치 완료
 
 
