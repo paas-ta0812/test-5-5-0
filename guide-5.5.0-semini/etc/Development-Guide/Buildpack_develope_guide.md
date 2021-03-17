@@ -1335,27 +1335,27 @@ https://username:password@github.com/johndoe/my-buildpack.git\#my-branch-name
 작업이 필요할 수 있다.
 
 ```
-[^1]: Application Manifests,[***http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html***](http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html)
+[1]: Application Manifests,[***http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html***](http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html)
 
-[^2]: YAML Ain’t Markup Language, [***http://www.yaml.org***](http://www.yaml.org),[***http://ko.wikipedia.org/wiki/YAML***](http://ko.wikipedia.org/wiki/YAML)
+[2]: YAML Ain’t Markup Language, [***http://www.yaml.org***](http://www.yaml.org),[***http://ko.wikipedia.org/wiki/YAML***](http://ko.wikipedia.org/wiki/YAML)
 
-[^3]: 컨테이너는 호스트운영체제의 자원(CPU, 메모리, 블록I/O, 네트워크
+[3]: 컨테이너는 호스트운영체제의 자원(CPU, 메모리, 블록I/O, 네트워크
     등)을 공유하여 사용한다.
 
-[^4]: 루비의 서드파티 라이브러리들을 gem이라하며, RubyGems라는 패키지
+[4]: 루비의 서드파티 라이브러리들을 gem이라하며, RubyGems라는 패키지
     매니저로 관리할 수 있다.
 
-[^5]: NPM은 javascript를 위한 패키지 매니저이다.
+[5]: NPM은 javascript를 위한 패키지 매니저이다.
 
-[^6]: Rack, ruby web server interface
+[6]: Rack, ruby web server interface
 
-[^7]: Ruby Make(Rake), [***https://github.com/ruby/rake***](https://github.com/ruby/rake)
+[7]: Ruby Make(Rake), [***https://github.com/ruby/rake***](https://github.com/ruby/rake)
 
-[^8]: Rake’s version of Makefiles(Rakefiles)
+[8]: Rake’s version of Makefiles(Rakefiles)
 
-[^9]: cf stack, the root file system
+[9]: cf stack, the root file system
 
-[^10]: Rspec, 루비를 위한 BDD(behavior-driven development) 프레임워크[***http://rspec.info/***](http://rspec.info/)
+[10]: Rspec, 루비를 위한 BDD(behavior-driven development) 프레임워크[***http://rspec.info/***](http://rspec.info/)
 ```
 
 [buildpack_develope_guide_01]:/images/openpaas-buildpack-devolpe-guide/buildpack_develope_guide_01.png
