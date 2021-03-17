@@ -32,7 +32,7 @@
   - [Edge 배포 설치](./install-guide/container-platform-edge/paas-ta-container-platform-edge-deployment-guide-v1.0.md)
   - [Edge 배포용 Release 설치](./install-guide/container-platform-bosh/paas-ta-container-platform-bosh-deployment-edge-guide-v1.0.md)
 - CaaS 서비스 배포
-  - [단독 배포 설치](./install-guide/container-platform-standalone/paas-ta-container-platform-standalone-deployment-guide-1-v1.0.md)
+  - [단독 배포 설치](install-guide/container-platform-standalone/paas-ta-container-platform-standalone-deployment-guide-1-v1.0.md)
   - [CaaS 서비스용 Release 설치](./install-guide/container-platform-bosh/paas-ta-container-platform-bosh-deployment-caas-guide-v1.0.md)
 
 
