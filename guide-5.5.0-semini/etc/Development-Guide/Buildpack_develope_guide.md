@@ -1339,11 +1339,9 @@ https://username:password@github.com/johndoe/my-buildpack.git\#my-branch-name
 
 [2]: YAML Ain’t Markup Language, [***http://www.yaml.org***](http://www.yaml.org),[***http://ko.wikipedia.org/wiki/YAML***](http://ko.wikipedia.org/wiki/YAML)
 
-[3]: 컨테이너는 호스트운영체제의 자원(CPU, 메모리, 블록I/O, 네트워크
-    등)을 공유하여 사용한다.
+[3]: 컨테이너는 호스트운영체제의 자원(CPU, 메모리, 블록I/O, 네트워크 등)을 공유하여 사용한다.
 
-[4]: 루비의 서드파티 라이브러리들을 gem이라하며, RubyGems라는 패키지
-    매니저로 관리할 수 있다.
+[4]: 루비의 서드파티 라이브러리들을 gem이라하며, RubyGems라는 패키지 매니저로 관리할 수 있다.
 
 [5]: NPM은 javascript를 위한 패키지 매니저이다.
 
