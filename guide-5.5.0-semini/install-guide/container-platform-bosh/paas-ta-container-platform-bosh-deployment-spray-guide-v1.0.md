@@ -757,8 +757,8 @@ Namespace 관리자는 해당 Namespace를 이용중인 사용자의 Role 변경
 
 ### <div id='4.6'/>4.6. 컨테이너 플랫폼 사용자/운영자 포털 사용 가이드
 - 컨테이너 플랫폼 포털 사용방법은 아래 사용가이드를 참고한다.  
-  + [컨테이너 플랫폼 운영자 포털  사용 가이드](https://github.com/PaaS-TA/paas-ta-container-platform/blob/master/use-guide/portal/paas-ta-container-platform-admin-guide-v1.0.md)    
-  + [컨테이너 플랫폼 사용자 포털  사용 가이드](https://github.com/PaaS-TA/paas-ta-container-platform/blob/master/use-guide/portal/paas-ta-container-platform-user-guide-v1.0.md) 
+  + [컨테이너 플랫폼 운영자 포털  사용 가이드](../../use-guide/container-platform/paas-ta-container-platform-admin-guide-v1.0.md)    
+  + [컨테이너 플랫폼 사용자 포털  사용 가이드](../../use-guide/container-platform/paas-ta-container-platform-user-guide-v1.0.md) 
 
 
 ----
