@@ -164,7 +164,6 @@ BOSH는 스템셀을 생성하는 VM을 AWS에 생성하고 관리한다. 스템
 		|Description           |임의 (예: BOSH builds Stemcells)   |시큐리티 그룹에 대한 설명|
 		|VPC                   |VPC 구성에서 생성한 VPC             |시큐리티 그룹을 적용할 VPC|
 
-
 	3.  생성한 시큐리티 그룹에 보안정책을 설정하기 위해 ‘Inbound’ 탭의 ‘Edit’을 선택한다.
 
 		![](./images/iaas_setup/aws/open-edit-security-group-modal.png)
