@@ -597,35 +597,36 @@ $ uaac client add portalclient -s clientsecret --redirect_uri "http://portal-web
 $ uaac client update portalclient --redirect_uri "http://portal-web-user.<DOMAIN>, http://portal-web-user.<DOMAIN>/callback" 
 ```
 
-### <div id="4.3"/> 4.3. 카탈로그 적용  
-##### 1. Catalog 빌드팩, 서비스팩 추가  
+### <div id="4.3"/> 4.3. 카탈로그 적용 
+### <div id="4.3.1"/> 4.3.1. Catalog 빌드팩, 서비스팩 추가
+
 Paas-TA Portal 설치 후에 관리자 포탈에서 빌드팩, 서비스팩을 등록해야 사용자 포탈에서 사용이 가능하다.  
  
-1. 관리자 포탈에 접속한다.(portal-web-admin.\<DOMAIN\>)
+(1) 관리자 포탈에 접속한다.(portal-web-admin.\<DOMAIN\>)
 
 
 ![](./images/Paas-TA-Portal_15.png)
 
 
-2. 운영관리를 누른다.
+(2) 운영관리를 누른다.
 
 
 ![](./images/Paas-TA-Portal_16.png)
 
 
-3. 카탈로그 페이지에 들어간다.
+(3) 카탈로그 페이지에 들어간다.
 
 
 ![](./images/Paas-TA-Portal_17.png)
 
 
-4. 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.
+(4) 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.
 
 
 ![](./images/Paas-TA-Portal_18.png)
 
 
-5. 사용자포탈에서 변경된값이 적용되어있는지 확인한다.
+(5) 사용자포탈에서 변경된값이 적용되어있는지 확인한다.
 
 
 ![](./images/Paas-TA-Portal_19.png)
