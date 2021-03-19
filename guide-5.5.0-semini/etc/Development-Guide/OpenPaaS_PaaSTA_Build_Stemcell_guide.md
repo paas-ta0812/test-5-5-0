@@ -74,29 +74,20 @@ BOSH는 스템셀을 생성하는 VM을 AWS에 생성하고 관리한다. 스템
 
 		![](./images/iaas_setup/aws/account-dashboard.png)
 
-
-
 	2.  화면 우측 상단의 계정을 선택하여 Security Credentials를 선택
 
 		![](./images/iaas_setup/aws/security-credentials-menu.png)
 
-
-
 	3.  'AWS IAM' 확인 팝업이 나타나면 'Continue to Security Credentials' 버튼을 선택하여 Security Credentials 화면으로 이동
-
 
 	4.  Access Keys를 선택하여 Create New Access Key 버튼을 눌러 Access Key를 생성한다.
     
 		![](./images/iaas_setup/aws/security-credentials-dashboard.png)
 
-
-
 	5.  생성한 키 정보를 확인한다.
 
 		![](./images/iaas_setup/aws/access-keys-modal.png)
 		
-
-
 		화면의 Access Key ID를 ***BOSH\_AWS\_ACCESS\_KEY\_ID***에 설정한다.
 
 		화면의 Secret Access Key를 ***BOSH\_AWS\_SECRET\_ACCESS\_KEY***에 설정한다.
@@ -110,44 +101,27 @@ BOSH는 스템셀을 생성하는 VM을 AWS에 생성하고 관리한다. 스템
 
 	1.  화면 우측 상단의 지역메뉴를 선택한다. (현재 N. Virginia 지역에서만 light stemcell을 사용할 수 있다.)
 
-
 		![](./images/iaas_setup/aws/account-dashboard-region-menu.png)
-
-
 
 	2.  AWS 콘솔 화면에서 VPC 메뉴를 선택한다.
 
-
 		![](./images/iaas_setup/aws/account-dashboard-vpc.png)
-
-
 
 	3.  VPC 마법사를 선택한다.
 
-
 		![](./images/iaas_setup/aws/vpc-dashboard-start.png)
-
 
 	4.  “VPC with a Single Public Subnet” 선택
 
-
 		![](./images/iaas_setup/aws/vpc-dashboard-wizard.png)
-
-
 
 	5.  네트워크 정보를 입력하고 VPC 생성 버튼을 눌러 VPC를 생성한다.
 	
-	
 		![](./images/iaas_setup/aws/create-vpc.png)
-
-
 
 	6.  아래와 같이 생성한 VPC의 목록이 출력된다.
 
-
 		![](./images/iaas_setup/aws/list-subnets.png)
-
-
 
 		Subnet ID를 ***BOSH\_AWS\_SUBNET\_ID***에 설정한다.
 
@@ -160,13 +134,9 @@ BOSH는 스템셀을 생성하는 VM을 AWS에 생성하고 관리한다. 스템
 
 		![](./images/iaas_setup/aws/list-key-pairs.png)
 
-
-
 	3.  Key Pair 생성 다이얼로그 화면에서 Key Pair명을 입력하여 Key Pair를 생성하고 다운로드 한다.
 
 		![](./images/iaas_setup/aws/create-key-pair.png)
-
-
 
 	4.  다운로드한 Key(예: bosh.pem)를 키 보관 디렉토리에 옮기고 권한을 변경한다.
 
@@ -184,13 +154,9 @@ BOSH는 스템셀을 생성하는 VM을 AWS에 생성하고 관리한다. 스템
 
 		![](./images/iaas_setup/aws/list-security-groups.png)
 
-
-
 	2.  시큐리티 그룹 생성 팝업화면에서 다음과 같이 값을 입력하여 시큐리티 그룹을 생성한다.
 
 		![](./images/iaas_setup/aws/create-security-group.png)
-
-
 
 		|항목                  |설정값                             |설명|
 		|---------------------|----------------------------------|----------------------------
@@ -202,8 +168,6 @@ BOSH는 스템셀을 생성하는 VM을 AWS에 생성하고 관리한다. 스템
 	3.  생성한 시큐리티 그룹에 보안정책을 설정하기 위해 ‘Inbound’ 탭의 ‘Edit’을 선택한다.
 
 		![](./images/iaas_setup/aws/open-edit-security-group-modal.png)
-
-
 
 	4.  아래표와 같이 보안정책을 추가한다.
 
