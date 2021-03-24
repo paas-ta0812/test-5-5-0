@@ -53,7 +53,7 @@
     * [Tools](guide-5.5.0-semini/service-guide/tools/README.md)
       * [Application Gateway 설치 가이드](guide-5.5.0-semini/service-guide/tools/PAAS-TA_APPLICATION_GATEWAY_SERVICE_INSTALL_GUIDE_V1.0.md)
       * [Container Sevice 설치 가이드](guide-5.5.0-semini/service-guide/tools/PAAS-TA_CONTAINER_SERVICE_INSTALL_GUIDE_V2.0.md)
-      * [형상관리 서비스 설치 가이드](guide-5.5.0-semini/service-guide/tools/PAAS-TA_DELIVERY_PIPELINE_SERVICE_INSTALL_GUIDE_V1.0.md)
+      * [Delivery Pipeline 서비스 설치 가이드](guide-5.5.0-semini/service-guide/tools/PAAS-TA_DELIVERY_PIPELINE_SERVICE_INSTALL_GUIDE_V1.0.md)
       * [Lifecycle Management 설치 가이드](guide-5.5.0-semini/service-guide/tools/PAAS-TA_LIFECYCLE_MANAGEMENT_SERVICE_INSTALL_GUIDE_V1.0.md)
       * [Logging Service 설치 가이드](guide-5.5.0-semini/service-guide/tools/PAAS-TA_LOGGING_SERVICE_INSTALL_GUIDE_V1.0.md)
       * [Source Control Service 설치 가이드](guide-5.5.0-semini/service-guide/tools/PAAS-TA_SOURCE_CONTROL_SERVICE_INSTALL_GUIDE_V1.0.md)
